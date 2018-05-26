@@ -242,4 +242,3 @@ Time frame: 15 minutes
 | Storm | <https://azure.microsoft.com/en-us/documentation/articles/hdinsight-storm-overview/> |
 | Hive | <https://azure.microsoft.com/en-us/documentation/articles/hdinsight-use-hive/> |
 | Spark | <https://azure.microsoft.com/en-us/documentation/articles/hdinsight-apache-spark-overview/> |
-|
