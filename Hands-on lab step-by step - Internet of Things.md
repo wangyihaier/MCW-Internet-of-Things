@@ -1,10 +1,17 @@
-[](images/HeaderPic.png "Microsoft Cloud Workshops")
+![](images/HeaderPic.png "Microsoft Cloud Workshops")
 
-# Internet of Things
+<div class="MCWHeader1">
+Internet of Things
+</div>
 
-## Hands-on lab step-by-step
+<div class="MCWHeader2">
+Hands-on lab step-by-step
+</div>
 
-## March 2018
+<div class="MCWHeader3">
+March 2018
+</div>
+
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
 
@@ -15,48 +22,44 @@ The names of manufacturers, products, or URLs are provided for informational pur
 
 Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
-## Contents
+**Contents**
 
 <!-- TOC -->
 
-- [Internet of Things](#internet-of-things)
-    - [Hands-on lab step-by-step](#hands-on-lab-step-by-step)
-    - [March 2018](#march-2018)
-    - [Contents](#contents)
 - [Internet of Things hands-on lab step-by-step](#internet-of-things-hands-on-lab-step-by-step)
     - [Abstract and learning objectives](#abstract-and-learning-objectives)
     - [Overview](#overview)
     - [Requirements](#requirements)
     - [Before the hands-on lab](#before-the-hands-on-lab)
-        - [Task 1: Provision Power BI](#task-1--provision-power-bi)
-        - [Task 2: Provision an HDInsight with Spark Cluster](#task-2--provision-an-hdinsight-with-spark-cluster)
-        - [Task 3: Setup a lab virtual machine (VM)](#task-3--setup-a-lab-virtual-machine-vm)
-        - [Task 4: Connect to the lab VM](#task-4--connect-to-the-lab-vm)
-        - [Task 5: Prepare an SSH client](#task-5--prepare-an-ssh-client)
-    - [Exercise 1: Environment setup](#exercise-1--environment-setup)
-        - [Task 1: Download and open the Smart Meter Simulator project](#task-1--download-and-open-the-smart-meter-simulator-project)
-    - [Exercise 2: IoT Hub provisioning](#exercise-2--iot-hub-provisioning)
-        - [Task 1: Provision an IoT Hub](#task-1--provision-an-iot-hub)
-        - [Task 2: Configure the Smart Meter Simulator](#task-2--configure-the-smart-meter-simulator)
-    - [Exercise 3: Completing the Smart Meter Simulator](#exercise-3--completing-the-smart-meter-simulator)
-        - [Task 1: Implement device management with the IoT Hub](#task-1--implement-device-management-with-the-iot-hub)
-        - [Task 2: Implement the communication of telemetry with the IoT Hub](#task-2--implement-the-communication-of-telemetry-with-the-iot-hub)
-        - [Task 3: Verify device registration and telemetry](#task-3--verify-device-registration-and-telemetry)
-    - [Exercise 4: Hot path data processing with Stream Analytics](#exercise-4--hot-path-data-processing-with-stream-analytics)
-        - [Task 1: Create a Stream Analytics job for hot path processing to Power BI](#task-1--create-a-stream-analytics-job-for-hot-path-processing-to-power-bi)
-        - [Task 2: Visualize hot data with Power BI](#task-2--visualize-hot-data-with-power-bi)
-    - [Exercise 5: Cold path data processing with HDInsight Spark](#exercise-5--cold-path-data-processing-with-hdinsight-spark)
-        - [Task 1: Create the Stream Analytics job for cold path processing](#task-1--create-the-stream-analytics-job-for-cold-path-processing)
-        - [Task 2: Verify CSV files in blob storage](#task-2--verify-csv-files-in-blob-storage)
-        - [Task 3: Update pandas version on the Spark cluster](#task-3--update-pandas-version-on-the-spark-cluster)
-        - [Task 4: Process with Spark SQL](#task-4--process-with-spark-sql)
-    - [Exercise 6: Reporting device outages with IoT Hub Operations Monitoring](#exercise-6--reporting-device-outages-with-iot-hub-operations-monitoring)
-        - [Task 1: Enable verbose connection monitoring on the IoT Hub](#task-1--enable-verbose-connection-monitoring-on-the-iot-hub)
-        - [Task 2: Collect device connection telemetry with the hot path Stream Analytics job](#task-2--collect-device-connection-telemetry-with-the-hot-path-stream-analytics-job)
-        - [Task 3: Test the device outage notifications](#task-3--test-the-device-outage-notifications)
-        - [Task 4: Visualize disconnected devices with Power BI](#task-4--visualize-disconnected-devices-with-power-bi)
+        - [Task 1: Provision Power BI](#task-1-provision-power-bi)
+        - [Task 2: Provision an HDInsight with Spark Cluster](#task-2-provision-an-hdinsight-with-spark-cluster)
+        - [Task 3: Setup a lab virtual machine (VM)](#task-3-setup-a-lab-virtual-machine-vm)
+        - [Task 4: Connect to the lab VM](#task-4-connect-to-the-lab-vm)
+        - [Task 5: Prepare an SSH client](#task-5-prepare-an-ssh-client)
+    - [Exercise 1: Environment setup](#exercise-1-environment-setup)
+        - [Task 1: Download and open the Smart Meter Simulator project](#task-1-download-and-open-the-smart-meter-simulator-project)
+    - [Exercise 2: IoT Hub provisioning](#exercise-2-iot-hub-provisioning)
+        - [Task 1: Provision an IoT Hub](#task-1-provision-an-iot-hub)
+        - [Task 2: Configure the Smart Meter Simulator](#task-2-configure-the-smart-meter-simulator)
+    - [Exercise 3: Completing the Smart Meter Simulator](#exercise-3-completing-the-smart-meter-simulator)
+        - [Task 1: Implement device management with the IoT Hub](#task-1-implement-device-management-with-the-iot-hub)
+        - [Task 2: Implement the communication of telemetry with the IoT Hub](#task-2-implement-the-communication-of-telemetry-with-the-iot-hub)
+        - [Task 3: Verify device registration and telemetry](#task-3-verify-device-registration-and-telemetry)
+    - [Exercise 4: Hot path data processing with Stream Analytics](#exercise-4-hot-path-data-processing-with-stream-analytics)
+        - [Task 1: Create a Stream Analytics job for hot path processing to Power BI](#task-1-create-a-stream-analytics-job-for-hot-path-processing-to-power-bi)
+        - [Task 2: Visualize hot data with Power BI](#task-2-visualize-hot-data-with-power-bi)
+    - [Exercise 5: Cold path data processing with HDInsight Spark](#exercise-5-cold-path-data-processing-with-hdinsight-spark)
+        - [Task 1: Create the Stream Analytics job for cold path processing](#task-1-create-the-stream-analytics-job-for-cold-path-processing)
+        - [Task 2: Verify CSV files in blob storage](#task-2-verify-csv-files-in-blob-storage)
+        - [Task 3: Update pandas version on the Spark cluster](#task-3-update-pandas-version-on-the-spark-cluster)
+        - [Task 4: Process with Spark SQL](#task-4-process-with-spark-sql)
+    - [Exercise 6: Reporting device outages with IoT Hub Operations Monitoring](#exercise-6-reporting-device-outages-with-iot-hub-operations-monitoring)
+        - [Task 1: Enable verbose connection monitoring on the IoT Hub](#task-1-enable-verbose-connection-monitoring-on-the-iot-hub)
+        - [Task 2: Collect device connection telemetry with the hot path Stream Analytics job](#task-2-collect-device-connection-telemetry-with-the-hot-path-stream-analytics-job)
+        - [Task 3: Test the device outage notifications](#task-3-test-the-device-outage-notifications)
+        - [Task 4: Visualize disconnected devices with Power BI](#task-4-visualize-disconnected-devices-with-power-bi)
     - [After the hands-on lab](#after-the-hands-on-lab)
-        - [Task 1: Delete the resource group](#task-1--delete-the-resource-group)
+        - [Task 1: Delete the resource group](#task-1-delete-the-resource-group)
 
 <!-- /TOC -->
 

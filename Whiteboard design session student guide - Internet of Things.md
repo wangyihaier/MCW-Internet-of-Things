@@ -1,10 +1,16 @@
 ![](images/HeaderPic.png "Microsoft Cloud Workshops")
 
-# Internet of Things
+<div class="MCWHeader1">
+Internet of Things
+</div>
 
-## Whiteboard design session student guide
+<div class="MCWHeader2">
+Whiteboard design session student guide
+</div>
 
-## April 2018
+<div class="MCWHeader3">
+March 2018
+</div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
 
@@ -15,24 +21,19 @@ The names of manufacturers, products, or URLs are provided for informational pur
 
 Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
-## Contents
+**Contents**
 
 <!-- TOC -->
 
-- [Internet of Things](#internet-of-things)
-    - [Whiteboard design session student guide](#whiteboard-design-session-student-guide)
-    - [April 2018](#april-2018)
-    - [Contents](#contents)
 - [Internet of Things whiteboard design session student guide](#internet-of-things-whiteboard-design-session-student-guide)
     - [Abstract and learning objectives](#abstract-and-learning-objectives)
-    - [Step 1: Review the customer case study](#step-1--review-the-customer-case-study)
-        - [Facilitator/subject matter expert (SME) presentation of customer case study](#facilitator-subject-matter-expert-sme-presentation-of-customer-case-study)
+    - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study)
         - [Customer situation](#customer-situation)
         - [Customer needs](#customer-needs)
         - [Customer objections](#customer-objections)
         - [Infographic of common scenarios](#infographic-of-common-scenarios)
-    - [Step 2: Design a proof of concept solution](#step-2--design-a-proof-of-concept-solution)
-    - [Step 3: Present the solution](#step-3--present-the-solution)
+    - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution)
+    - [Step 3: Present the solution](#step-3-present-the-solution)
     - [Wrap-up](#wrap-up)
     - [Additional references](#additional-references)
 
@@ -52,23 +53,17 @@ Learning objectives:
 
 -   Visualize hot data with Power BI
 
-## Step 1: Review the customer case study
+## Step 1: Review the customer case study 
 
-**Outcome**
+**Outcome** 
 
-Analyze your customer's needs.
+Analyze your customer’s needs.
+Time frame: 15 minutes 
+Directions: With all participants in the session, the facilitator/SME presents an overview of the customer case study along with technical tips. 
+1.  Meet your table participants and trainer 
+2.  Read all of the directions for steps 1–3 in the student guide 
+3.  As a table team, review the following customer case study
 
-### Facilitator/subject matter expert (SME) presentation of customer case study
-
-Timeframe: 15 minutes
-
-Directions: With all participants in the session, the facilitator/subject matter expert (SME) presents an overview of the customer case study along with technical tips.
-
-1.  Meet your table participants and leader.
-
-2.  Read all the directions for Steps 1--3 in this Student guide.
-
-3.  As a table team, review the following customer case study.
 
 ### Customer situation
 
@@ -120,25 +115,22 @@ In addition to collecting telemetry, Fabrikam not only seeks to gain competitive
 
 ![Screenshot of a sample Internet of Things workflow, which is broken into On-Premises and Azure services.](images/Whiteboarddesignsessiontrainerguide-InternetofThingsimages/media/image2.png "Internet of Things workflow")
 
-## Step 2: Design a proof of concept solution 
+## Step 2: Design a proof of concept solution
 
-**Outcome**
+**Outcome** 
+Design a solution and prepare to present the solution to the target customer audience in a 15-minute chalk-talk format. 
 
-Design a solution and prepare to present the solution to the target customer audience in a 15-minute chalk-talk format.
-
-Timeframe: 60 minutes
+Time frame: 60 minutes
 
 **Business needs**
 
-Directions: With all participants at your table, answer the following questions and list the answers on a flip chart.
-
-1.  Who should you present this solution to? Who is your target customer audience? Who are the decision makers?
-
+Directions: With all participants at your table, answer the following questions and list the answers on a flip chart. 
+1.  Who should you present this solution to? Who is your target customer audience? Who are the decision makers? 
 2.  What customer business needs do you need to address with your solution?
 
-**Design**
-
+**Design** 
 Directions: With all participants at your table, respond to the following questions on a flip chart.
+
 
 *High-level architecture*
 
@@ -204,45 +196,36 @@ The "cold" path for Fabrikam is highlighted by the notion that Fabrikam does not
 
 **Prepare**
 
-Directions: With all participants at your table:
+Directions: With all participants at your table: 
 
-1.  Identify any customer needs that are not addressed with the proposed solution.
+1.  Identify any customer needs that are not addressed with the proposed solution. 
+2.  Identify the benefits of your solution. 
+3.  Determine how you will respond to the customer’s objections. 
 
-2.  Identify the benefits of your solution.
+Prepare a 15-minute chalk-talk style presentation to the customer. 
 
-3.  Determine how you will respond to the customer's objections.
-
-Prepare a 15-minute chalk-talk style presentation to the customer.
-
-## Step 3: Present the solution 
+## Step 3: Present the solution
 
 **Outcome**
-
+ 
 Present a solution to the target customer audience in a 15-minute chalk-talk format.
 
-**Presentation**
+Time frame: 30 minutes
 
-Timeframe: 30 minutes
+**Presentation** 
 
-**Directions**
-
+Directions:
 1.  Pair with another table.
-
 2.  One table is the Microsoft team and the other table is the customer.
-
 3.  The Microsoft team presents their proposed solution to the customer.
-
 4.  The customer makes one of the objections from the list of objections.
-
 5.  The Microsoft team responds to the objection.
-
-6.  The customer team gives feedback to the Microsoft team.
-
-7.  Tables switch roles and repeat Steps 2--6.
+6.  The customer team gives feedback to the Microsoft team. 
+7.  Tables switch roles and repeat Steps 2–6.
 
 ## Wrap-up 
 
-Timeframe: 15 minutes
+Time frame: 15 minutes
 
 -   Tables reconvene with the larger group to hear a SME share the preferred solution for the case study.
 
