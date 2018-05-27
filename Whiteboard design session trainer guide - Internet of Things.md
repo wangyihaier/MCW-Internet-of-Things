@@ -570,7 +570,7 @@ We have heard of Azure IoT Suite---does it offer a good starting point for us?
 
 Azure IoT Suite offers preconfigured solutions that automate the provisioning and configuration of scenario-oriented solutions that make use of a combination of Azure services. The idea is that a customer can take the preconfigured solution deployed by Azure IoT Suite and customize it to meet their needs. The Remote Monitoring preconfigured solution provided by Azure IoT Suite provides a solution that is reasonably close to the needs of Fabrikam (see the illustration below for the architecture deployed by the Remote Monitoring solution), although some additional work is needed to handle the cold path processing, to capitalize on Spark, or to use Azure SQL Data Warehouse.
 
-![Screenshot of the Azure IoT Suite workflow. At a very high level, the solution includes the following: Web App, Document DB (Device Registry), Web Job, Azure Storage Blob, Event Hubs, Azure Stream Analytics, an IoT Hub, and Simulated Device.](images/Whiteboarddesignsessiontrainerguide-InternetofThingsimages/media/image7.tiff "Azure IoT Suite solution")
+![Screenshot of the Azure IoT Suite workflow. At a very high level, the solution includes the following: Web App, Document DB (Device Registry), Web Job, Azure Storage Blob, Event Hubs, Azure Stream Analytics, an IoT Hub, and Simulated Device.](images/Whiteboarddesignsessiontrainerguide-InternetofThingsimages/media/image7.png "Azure IoT Suite solution")
 
 We need to know when devices are not transmitting telemetry. Is there a way for us to find out?
 
