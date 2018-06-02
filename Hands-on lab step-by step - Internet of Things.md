@@ -30,36 +30,30 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
     - [Abstract and learning objectives](#abstract-and-learning-objectives)
     - [Overview](#overview)
     - [Requirements](#requirements)
-    - [Before the hands-on lab](#before-the-hands-on-lab)
-        - [Task 1: Provision Power BI](#task-1-provision-power-bi)
-        - [Task 2: Provision an HDInsight with Spark Cluster](#task-2-provision-an-hdinsight-with-spark-cluster)
-        - [Task 3: Setup a lab virtual machine (VM)](#task-3-setup-a-lab-virtual-machine-vm)
-        - [Task 4: Connect to the lab VM](#task-4-connect-to-the-lab-vm)
-        - [Task 5: Prepare an SSH client](#task-5-prepare-an-ssh-client)
-    - [Exercise 1: Environment setup](#exercise-1-environment-setup)
-        - [Task 1: Download and open the Smart Meter Simulator project](#task-1-download-and-open-the-smart-meter-simulator-project)
-    - [Exercise 2: IoT Hub provisioning](#exercise-2-iot-hub-provisioning)
-        - [Task 1: Provision an IoT Hub](#task-1-provision-an-iot-hub)
-        - [Task 2: Configure the Smart Meter Simulator](#task-2-configure-the-smart-meter-simulator)
-    - [Exercise 3: Completing the Smart Meter Simulator](#exercise-3-completing-the-smart-meter-simulator)
-        - [Task 1: Implement device management with the IoT Hub](#task-1-implement-device-management-with-the-iot-hub)
-        - [Task 2: Implement the communication of telemetry with the IoT Hub](#task-2-implement-the-communication-of-telemetry-with-the-iot-hub)
-        - [Task 3: Verify device registration and telemetry](#task-3-verify-device-registration-and-telemetry)
-    - [Exercise 4: Hot path data processing with Stream Analytics](#exercise-4-hot-path-data-processing-with-stream-analytics)
-        - [Task 1: Create a Stream Analytics job for hot path processing to Power BI](#task-1-create-a-stream-analytics-job-for-hot-path-processing-to-power-bi)
-        - [Task 2: Visualize hot data with Power BI](#task-2-visualize-hot-data-with-power-bi)
-    - [Exercise 5: Cold path data processing with HDInsight Spark](#exercise-5-cold-path-data-processing-with-hdinsight-spark)
-        - [Task 1: Create the Stream Analytics job for cold path processing](#task-1-create-the-stream-analytics-job-for-cold-path-processing)
-        - [Task 2: Verify CSV files in blob storage](#task-2-verify-csv-files-in-blob-storage)
-        - [Task 3: Update pandas version on the Spark cluster](#task-3-update-pandas-version-on-the-spark-cluster)
-        - [Task 4: Process with Spark SQL](#task-4-process-with-spark-sql)
-    - [Exercise 6: Reporting device outages with IoT Hub Operations Monitoring](#exercise-6-reporting-device-outages-with-iot-hub-operations-monitoring)
-        - [Task 1: Enable verbose connection monitoring on the IoT Hub](#task-1-enable-verbose-connection-monitoring-on-the-iot-hub)
-        - [Task 2: Collect device connection telemetry with the hot path Stream Analytics job](#task-2-collect-device-connection-telemetry-with-the-hot-path-stream-analytics-job)
-        - [Task 3: Test the device outage notifications](#task-3-test-the-device-outage-notifications)
-        - [Task 4: Visualize disconnected devices with Power BI](#task-4-visualize-disconnected-devices-with-power-bi)
+    - [Exercise 1: Environment setup](#exercise-1--environment-setup)
+        - [Task 1: Download and open the Smart Meter Simulator project](#task-1--download-and-open-the-smart-meter-simulator-project)
+    - [Exercise 2: IoT Hub provisioning](#exercise-2--iot-hub-provisioning)
+        - [Task 1: Provision an IoT Hub](#task-1--provision-an-iot-hub)
+        - [Task 2: Configure the Smart Meter Simulator](#task-2--configure-the-smart-meter-simulator)
+    - [Exercise 3: Completing the Smart Meter Simulator](#exercise-3--completing-the-smart-meter-simulator)
+        - [Task 1: Implement device management with the IoT Hub](#task-1--implement-device-management-with-the-iot-hub)
+        - [Task 2: Implement the communication of telemetry with the IoT Hub](#task-2--implement-the-communication-of-telemetry-with-the-iot-hub)
+        - [Task 3: Verify device registration and telemetry](#task-3--verify-device-registration-and-telemetry)
+    - [Exercise 4: Hot path data processing with Stream Analytics](#exercise-4--hot-path-data-processing-with-stream-analytics)
+        - [Task 1: Create a Stream Analytics job for hot path processing to Power BI](#task-1--create-a-stream-analytics-job-for-hot-path-processing-to-power-bi)
+        - [Task 2: Visualize hot data with Power BI](#task-2--visualize-hot-data-with-power-bi)
+    - [Exercise 5: Cold path data processing with HDInsight Spark](#exercise-5--cold-path-data-processing-with-hdinsight-spark)
+        - [Task 1: Create the Stream Analytics job for cold path processing](#task-1--create-the-stream-analytics-job-for-cold-path-processing)
+        - [Task 2: Verify CSV files in blob storage](#task-2--verify-csv-files-in-blob-storage)
+        - [Task 3: Update pandas version on the Spark cluster](#task-3--update-pandas-version-on-the-spark-cluster)
+        - [Task 4: Process with Spark SQL](#task-4--process-with-spark-sql)
+    - [Exercise 6: Reporting device outages with IoT Hub Operations Monitoring](#exercise-6--reporting-device-outages-with-iot-hub-operations-monitoring)
+        - [Task 1: Enable verbose connection monitoring on the IoT Hub](#task-1--enable-verbose-connection-monitoring-on-the-iot-hub)
+        - [Task 2: Collect device connection telemetry with the hot path Stream Analytics job](#task-2--collect-device-connection-telemetry-with-the-hot-path-stream-analytics-job)
+        - [Task 3: Test the device outage notifications](#task-3--test-the-device-outage-notifications)
+        - [Task 4: Visualize disconnected devices with Power BI](#task-4--visualize-disconnected-devices-with-power-bi)
     - [After the hands-on lab](#after-the-hands-on-lab)
-        - [Task 1: Delete the resource group](#task-1-delete-the-resource-group)
+        - [Task 1: Delete the resource group](#task-1--delete-the-resource-group)
 
 <!-- /TOC -->
 
@@ -97,229 +91,6 @@ In this hands-on lab, you will construct an end-to-end solution for an IoT scena
 
 3.  A running HDInsight Spark cluster (see [Before the Hands-on Lab](#_Before_the_Hands-on)).
 
-## Before the hands-on lab
-
-Duration: 45 minutes
-
-In this exercise, you will set up your environment for use in the rest of the hands-on lab. You should follow all the steps provided in the Before the hands-on lab section to prepare your environment *before* attending the hands-on lab.
-
-### Task 1: Provision Power BI
-
-If you do not already have a Power BI account:
-
-1.  Go to <https://powerbi.microsoft.com/features/>.
-
-2.  Scroll down until you see the **Try Power BI for free!** section of the page and click the **Try Free\>** button.
-    
-    ![Screenshot of the Try Power BI Pro for free page.](images/Hands-onlabstep-bystep-InternetofThingsimages/media/image2.png "Try Power BI Pro for Free ")
-
-3.  On the page, enter your work email address (which should be the same account as the one you use for your Azure subscription), and select **Sign up**.
-    
-    ![The Get started page has a place to enter your work email address, and a sign up arrow.](images/Hands-onlabstep-bystep-InternetofThingsimages/media/image3.png "Get started page")
-
-4.  Follow the on-screen prompts, and your Power BI environment should be ready within minutes. You can always return to it via <https://app.powerbi.com/>.
-
-### Task 2: Provision an HDInsight with Spark Cluster
-
-Using the Azure Portal, provision a new HDInsight cluster.
-
-1.  Open a browser, and go to the Azure portal (<https://portal.azure.com>).
-
-2.  Select **+New**, select **Data + Analytics**, then select **HDInsight**.
-    
-    ![The Azure Portal has the New button selected in the left pane. In the New pane, under Azure Marketplace, Data + Analytics is selected, and under Featured, HDInsights is selected.](images/Hands-onlabstep-bystep-InternetofThingsimages/media/image4.png "Azure Portal, New pane")
-
-3.  On the HDInsight blade, select **Custom (size, settings, apps)**.
-    
-    ![The HDInsight blade has the Custom (sie, settings, apps) selected.](images/Hands-onlabstep-bystep-InternetofThingsimages/media/image5.png "HDInsight blade")
-
-4.  On the Basics blade, enter the following settings:
-
-    -   Cluster name: Enter a unique name (verified by the green checkmark).
-
-    -   Subscription: Select the Azure subscription into which you want to deploy the cluster.
-
-    -   Custer type: Select ***Configure required settings***.
-
-        ![Configure required settings link](images/Hands-onlabstep-bystep-InternetofThingsimages/media/image6.png "Configure required settings link")
-
-        i.  On the Cluster configuration blade, set the **Cluster type** to **Spark** and the **Version** to **Spark 2.1.0 (HDI 3.6)**. Note that the Operating System option for the Spark cluster is fixed to Linux.
-            
-        ![Cluster configuration dialog with the Cluster type and Version optioins highlighted. The Cluster type is Spark and the version is Spark 2.1.0 (HDI 3.6)](images/Hands-onlabstep-bystep-InternetofThingsimages/media/image7.png "Cluster configuration dialog")
-
-        ii. Select **Select** to close the Cluster configuration blade.
-
-    -   Cluster login username: Leave as **admin**.
-
-    -   Cluster login password: Enter **Password.1!!** for the admin password.
-
-    -   Secure Shell (SSH) username: Enter **sshuser**.
-
-    -   Use same password as cluster login: Ensure the checkbox is **checked**.
-
-    -   Resource group: Select the Create new radio button, and enter **iot-hol** for the resource group name.
-
-    -   Location: Select the desired location from the dropdown list, and remember this, as the same location will be used for all other Azure resources.
-        
-        ![The Basics blade fields display the previously mentioned settings.](images/Hands-onlabstep-bystep-InternetofThingsimages/media/image8.png "Basics blade")
-
-    -   Select **Next** to move on to the storage settings.
-
-5.  On the Storage blade:
-
-    -   Primary storage type: Leave set to **Azure Storage.**
-
-    -   Selection Method: Leave set to **My subscriptions**.
-
-    -   Select a Storage account: Select Create new, and enter a name for the storage account, such as iotholstorage.
-
-    -   Default container: Enter **iotcontainer**.
-
-    -   Additional storage accounts: Leave unconfigured.
-
-    -   Data Lake Store access: Leave unconfigured.
-
-    -   Metastore Settings: Leave blank. 
-
-        ![The Storage blade fields display the previously mentioned settings.](images/Hands-onlabstep-bystep-InternetofThingsimages/media/image9.png "Storage blade")
-
-    -   Select **Next**.
-
-6.  Select **Next** on the Applications (optional) blade. No applications are being added.
-
-7.  On the Cluster size blade:
-
-    -   Number of worker nodes: Leave set to **4**.
-
-    -   Select **Worker node size**, and select **D12 v2**, then select **Select**.
-        
-        ![The Cluster size blade, worker node size section has the D12 V2 Standard option circled.](images/Hands-onlabstep-bystep-InternetofThingsimages/media/image10.png "Cluster size blade, worker node size section")
-
-    -   Leave **Head node size**, set to the default, **D12 v2**.
-        
-        ![The Cluster size blade fields display the previously mentioned settings.](images/Hands-onlabstep-bystep-InternetofThingsimages/media/image11.png "Cluster Size Blade")
-
-    -   Select **Next**.
-
-8. Select **Next** on the Advanced settings blade to move to the Cluster summary blade.
-
-9. Select **Create** on the Cluster summary blade to create the cluster.
-
-10. It will take approximately 20 minutes to create your cluster. You can move on to the steps below while the cluster is provisioning.
-
-### Task 3: Setup a lab virtual machine (VM)
-
-1.  In the [Azure Portal](https://portal.azure.com/), select **+New**, then type "Visual Studio" into the search bar. Select **Visual Studio Community 2017 (latest release) on Windows Server 2016 (x64)** from the results**.
-    
-    ![In the Azure Portal, Everything pane, Visual studio is typed in the search field. Under Results, under Name, Visual Studio Community 2017 is circled.](images/Hands-onlabstep-bystep-InternetofThingsimages/media/image12.png "Azure Portal, Everything pane")
-
-2.  On the blade that comes up, at the bottom, ensure the deployment model is set to **Resource Manager** and select **Create**.
-
-    ![Resource Manager option](images/Hands-onlabstep-bystep-InternetofThingsimages/media/image13.png "Resource Manager option")
-
-3.  Set the following configuration on the Basics tab.
-
--   Name: Enter **LabVM**.
-
--   VM disk type: Select **SSD**.
-
--   User name: Enter **demouser**
-
--   Password: Enter **Password.1!!**
-
--   Subscription: Select the same subscription you used to create your cluster in [Task 1](#task-1-provision-power-bi).
-
--   Resource Group: Select Use existing, and select the resource group you provisioned while creating your cluster in Task 1.
-
--   Location: Select the same region you used in Task 1 while creating your cluster.
-    
-    ![The Basics blade fields display with the previously mentioned settings.](images/Hands-onlabstep-bystep-InternetofThingsimages/media/image14.png "Basics blade")
-
-4.  Select **OK** to move to the next step.
-
-5.  On the Choose a size blade, ensure the Supported disk type is set to SSD, and select View all. This machine won't be doing much heavy lifting, so selecting **DS2\_V3** **Standard** is a good baseline option.
-    
-    ![The Choose a size blade, worker node size section has D2S\_V3 Standard circled. Supported disk type is set to SSD, and the View all button is circled.](images/Hands-onlabstep-bystep-InternetofThingsimages/media/image15.png "Choose a size blade, worker node size section")
-
-6.  Select **Select** to move on to the Settings blade.
-
-7.  Accept all the default values on the Settings blade, and Select **OK**.
-
-8.  Select **Create** on the Create blade to provision the virtual machine.
-    
-    ![Screenshot of the Create blade, Summary section, showing that Validation passed, and detailing the offer details.](images/Hands-onlabstep-bystep-InternetofThingsimages/media/image16.png "Create blade, Summary section")
-
-9.  It may take 10+ minutes for the virtual machine to complete provisioning.
-
-### Task 4: Connect to the lab VM
-
-1.  Connect to the Lab VM. (If you are already connected to your Lab VM, skip to Step 9.)
-
-2.  From the left side menu in the Azure portal, click on **Resource groups**, then enter your resource group name into the filter box, and select it from the list.
-    \
-    ![In the Azure Portal, Resource groups is circled in the menu on the left. In the Resource groups pane, iot displays in the Subscriptions search field. Under Name, iot-hol is circled.](images/Hands-onlabstep-bystep-InternetofThingsimages/media/image17.png "Azure Portal, Resource groups pane")
-
-3.  Next, select your lab virtual machine, **LabVM**, from the list.
-    
-    ![The LabVM option is selected.](images/Hands-onlabstep-bystep-InternetofThingsimages/media/image18.png "LabVM option")
-
-4.  On your Lab VM blade, select **Connect** from the top menu.
-    
-    ![The Connect button is circled on the Lab VM blade menu bar.](images/Hands-onlabstep-bystep-InternetofThingsimages/media/image19.png "Lab VM blade menu bar")
-
-5.  Download and open the RDP file.
-
-6.  Select Connect on the Remote Desktop Connection dialog.
-    
-    ![The Connect button is circled on the Remote Desktop Connection dialog box, which asks if you still want to connect, even though the publisher of the remote connection can\'t be identified.](images/Hands-onlabstep-bystep-InternetofThingsimages/media/image20.png "Remote Desktop Connection dialog box")
-
-7.  Enter the following credentials (or the non-default credentials if you changed them):
-
-    -   User name: **demouser**
-
-    -   Password: **Password.1!!
-
-        ![Screenshot of the Windows Security, Enter your credentials window for demouser.](images/Hands-onlabstep-bystep-InternetofThingsimages/media/image21.png "Windows Security, Enter your credentials window")
-
-8.  Select **Yes** to connect, if prompted that the identity of the remote computer cannot be verified.
-    
-    ![The Yes button is circled on the Remote Desktop Connection dialog box, which asks if you still want to connect, even though the identity of the remote connection can\'t be identified.](images/Hands-onlabstep-bystep-InternetofThingsimages/media/image22.png "Remote Desktop Connection dialog box")
-
-9.  Once logged in, launch the Server Manager. This should start automatically, but you can access it via the Start menu if it does not start.
-
-10. Select Local Server, then select On next to IE Enhanced Security Configuration.
-    
-    ![In Server Manager, in the left pane, Local Server is selected. In the right, Properties pane, a callout points to On, next to IE Enhanced Security Configuration.](images/Hands-onlabstep-bystep-InternetofThingsimages/media/image23.png "Server Manager")
-
-11. In the Internet Explorer Enhanced Security Configuration dialog, select **Off** under Administrators, then select **OK**.
-    
-    ![On the Internet Explorer Enhanced Security Configuration dialog box, under Adminstrators, the Off radio button is selected and circled.](images/Hands-onlabstep-bystep-InternetofThingsimages/media/image24.png "Internet Explorer Enhanced Security Configuration dialog box")
-
-12. Close the Server Manager.
-
-### Task 5: Prepare an SSH client
-
-In this task, you will download, install, and prepare the Git Bash SSH client that you will use to access your HDInsight cluster from your Lab VM.
-
-1.  On your Lab VM, open a browser, and navigate to <https://git-scm.com/downloads> to download Git Bash.
-    
-    ![Screenshot of the Git Bash Downloads webpage.](images/Hands-onlabstep-bystep-InternetofThingsimages/media/image25.png "Download Git Bash")
-
-2.  Select the download for your OS, and then select the Download 2.15.x for... button.
-
-3.  Run the downloaded installer, select Next on each screen to accept the defaults.
-
-4.  On the last screen, select Install to complete the installation.
-    
-    ![The Git Setup, Configuring extra options page has two checkboxes selected, for Enable file system caching, and Enable Git Credential Manager.](images/Hands-onlabstep-bystep-InternetofThingsimages/media/image26.png "Git Setup Wizard Configuring options page")
-
-1. When the install is complete, you will be presented with the following screen:
-    
-    ![The Completing the Git Setup Wizard page has the check box selected to Launch Git Bash.](images/Hands-onlabstep-bystep-InternetofThingsimages/media/image27.png "Git Setup Wizard, Completing setup page")
-
-6. Check **the Launch Git Bash** checkbox, and uncheck View Release Notes. Select **Finish**.
-
-7. Leave the bash window open, as you will use it later in this lab.
 
 ## Exercise 1: Environment setup
 

@@ -3,6 +3,8 @@
 
 [Hands-on lab unguided - Internet of Things.html](https://cloudworkshop.blob.core.windows.net/internet-of-things/Hands-on%20lab%20unguided%20-%20Internet%20of%20Things.html)
 
+[Setup.html](https://cloudworkshop.blob.core.windows.net/internet-of-things/Setup.html)
+
 [Whiteboard design session student guide - Internet of Things.html](https://cloudworkshop.blob.core.windows.net/internet-of-things/Whiteboard%20design%20session%20student%20guide%20-%20Internet%20of%20Things.html)
 
 [Whiteboard design session trainer guide - Internet of Things.html](https://cloudworkshop.blob.core.windows.net/internet-of-things/Whiteboard%20design%20session%20trainer%20guide%20-%20Internet%20of%20Things.html)
