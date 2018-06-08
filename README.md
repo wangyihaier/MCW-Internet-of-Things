@@ -1,46 +1,42 @@
-# Abstract
+# Internet of Things
 
-## Workshop
+[Download cloud workshop](https://github.com/Microsoft/MCW-Internet-of-Things/archive/master.zip)
 
-This workshop is designed to guide you through an implementation of an end-to-end IoT solution simulating high velocity data emitted from smart meters and analyzed in Azure. In this session, you will design a lambda architecture, filtering a subset of the telemetry data for real-time visualization on the hot path, and storing all the data in long-term storage for the cold path. After completing the package, you will be better able to implement device registration with the IoT Hub registry and visualize hot data with Power BI.
+Fabrikam provides services and smart meters for enterprise energy (electrical power) management. Their “You-Left-The-Light-On” service enables the enterprise to understand their energy consumption.
 
-Learning objectives:
+## Target audience
 
--   Implement a simulator sending telemetry from smart meters
+* Application developer
+* IoT
 
--   Capture and process both hot and cold data using Stream Analytics and HDInsight with Spark
+## Abstract
 
--   Visualize hot data with Power BI
+### Workshop
 
+This workshop will guide you through an implementation of an end-to-end IoT solution simulating high velocity data emitted from smart meters and analyzed in Azure. You will design a lambda architecture, filtering a subset of the telemetry data for real-time visualization on the hot path, and storing all the data in long-term storage for the cold path. After completing the workshop, you will have a better understanding of implementing device registration with the IoT Hub Device Provisioning Service and visualizing hot data with Power BI.
 
-## Whiteboard Design Session
-TBD
+### Whiteboard design session
 
-## Hand-on Lab
-TBD
+In this whiteboard design session, you will work with a group to design an implementation of an end-to-end IoT solution simulating high velocity data emitted from smart meters and analyzed in Azure. You will design a lambda architecture, filtering a subset of the telemetry data for real-time visualization on the hot path, and storing all the data in long-term storage for the cold path. After completing the whiteboard design session, you will have a better understanding of implementing device registration with the IoT Hub Device Provisioning Service and visualizing hot data with Power BI.
 
+### Hand-on lab
+
+In this hands-on lab, you will implement an end-to-end IoT solution simulating high velocity data emitted from smart meters and analyzed in Azure. You will design a lambda architecture, filtering a subset of the telemetry data for real-time visualization on the hot path, and storing all the data in long-term storage for the cold path. After completing the hands-on lab, you will have a better understanding of implementing device registration with the IoT Hub Device Provisioning Service and visualizing hot data with Power BI.
 
 ## Azure services and related products
-- Azure Data Factory
-- Azure IoT Hub
-- Azure Stream Analytics
-- Azure HDInsight
-- Azure Spark & Spark SQL
-- Azure Storage
-- Power BI
 
+* Azure App Services
+* Azure Blob Storage
+* Azure Data Factory
+* Azure Databricks
+* Azure SQL Database
+* IoT Hub
+* IoT Hub Device Provisioning Service
+* Power BI Desktop
+* Visual Studio 2017
 
-# Contributing
+## Azure solution
 
-This project welcomes contributions and suggestions.  Most contributions require you to agree to a
-Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
-the rights to use your contribution. For details, visit https://cla.microsoft.com.
+## Related references
 
-When you submit a pull request, a CLA-bot will automatically determine whether you need to provide
-a CLA and decorate the PR appropriately (e.g., label, comment). Simply follow the instructions
-provided by the bot. You will only need to do this once across all repos using our CLA.
-
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
-For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
-contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
-
+[MCW](https://github.com/Microsoft/MCW)
