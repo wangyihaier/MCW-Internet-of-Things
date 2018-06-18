@@ -227,7 +227,7 @@ Fabrikam has provided a Smart Meter Simulator that they use to simulate device r
 
 4. Unzip the contents to the folder **C:\SmartMeter.**
 
-5. Open `SmartMeterSimulator.sln` with Visual Studio 2017.
+5. Navigate to the `SmartMeterSimulator.sln` file within the Hands-on lab\Starter-project folder and open it with Visual Studio 2017.
 
 6. Sign in to Visual Studio or create an account, if prompted.
 
