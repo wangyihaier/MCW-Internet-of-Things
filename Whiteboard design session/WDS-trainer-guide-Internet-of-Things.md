@@ -439,11 +439,11 @@ Tables reconvene with the larger group to hear a SME share the preferred solutio
 
 2. What would you use to query these blob files?
 
-    *Use Databricks File System (DBFS) if the storage account is mounted in Databricks, or it could be accessed via a `wasbs` path in Databricks, or HiveQL on HDInsight, Spark SQL on HDInsight, or Azure SQL Data Warehouse all of which can read from Azure Storage blobs.*
+    *A Databricks notebook should be used to query the blob files. The storage account containing the blob files can be mounted in Databricks File System (DBFS), or they could be accessed via a `wasbs` path in Databricks. If HDInsight is used, HiveQL or Spark SQL can be used for querying the files. Azure SQL Data Warehouse can also be used to read from Azure Storage blobs.*
 
 3. How would you orchestrate the processing and retain visibility into the status of the data flow? How would you configure this data flow? Be specific on what activities you would use.
 
-    *You can orchestrate the processing and get a status in flowchart form of the data flow by using Azure Data Factory (ADF). In ADF, you would configure a pipeline that has as input a dataset that is pointing to blob storage (where the telemetry data lives), and as output a dataset that writes the data to SQL Database. The pipeline itself would consist of a single activity, a Hive activity that executes the Hive query previously defined (and stored in blob storage). An on-demand HDInsight cluster would be used for computation of the Hive query.*
+    *You can orchestrate the processing and get a status in flowchart form of the data flow by using Azure Data Factory (ADF). In ADF, you would configure a pipeline that has as input a dataset that is pointing to blob storage (where the telemetry data lives), and as output a dataset that writes the data to SQL Database. The pipeline would contain an activity to execute a Databricks notebook, which would start a Databricks cluster on-demand, perform any data processing required, and output the results back into blob storage. A copy activity in the pipeline would then write the data to SQL Database. Alternatively, a single Hive activity that executes a previously defined Hive query (stored in blob storage) cound be used. An on-demand HDInsight cluster would be used for computation of the Hive query.*
 
 #### Cloud to device communication
 
@@ -475,7 +475,7 @@ Tables reconvene with the larger group to hear a SME share the preferred solutio
 
 5. We need to know when devices are not transmitting telemetry. Is there a way for us to find out?
 
-    *A good indicator that a device is not transmitting telemetry is that it has disconnected but not reconnected after a period of time. To detect this behavior, turn on verbose connection monitoring within the IoT Hub Operations Monitoring settings. Stream Analytics can use Operations Monitoring as an endpoint when selecting IoT Hub as an input source. Next, create a query that joins all connected and disconnected events with a DATEDIFF function that only returns devices with a disconnect event, but no reconnect event within the specified period of time, such as 180 seconds. There are many options for outputting that information, such as sending directly to Power BI for visualization, or sending the data to a Service Bus queue for further processing and alerting mechanisms.*
+    *A good indicator that a device is not transmitting telemetry is that it has disconnected but not reconnected after a period of time. To detect this behavior, turn on verbose connection monitoring within the IoT Hub Operations Monitoring settings. Stream Analytics can use Operations Monitoring as an endpoint when selecting IoT Hub as an input source. Next, create a query that joins all connected and disconnected events with a `DATEDIFF` function that only returns devices with a disconnect event, but no reconnect event within the specified period of time, such as 180 seconds. There are many options for outputting that information, such as sending directly to Power BI for visualization, or sending the data to a Service Bus queue for further processing and alerting mechanisms.*
 
 ### Customer quote (to be read back to the attendees at the end)
 
