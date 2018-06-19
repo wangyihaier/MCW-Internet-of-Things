@@ -15,6 +15,8 @@ Updated June 2018
 
 In this hands-on lab, you will implement an end-to-end IoT solution simulating high velocity data emitted from smart meters and analyzed in Azure. You will design a lambda architecture, filtering a subset of the telemetry data for real-time visualization on the hot path, and storing all the data in long-term storage for the cold path. After completing the hands-on lab, you will have a better understanding of implementing device registration with the IoT Hub Device Provisioning Service and visualizing hot data with Power BI.
 
+If you have not yet completed the steps to set up your environment in [Before the hands-on lab](./Setup.md), you will need to do that before proceeding.
+
 ## Contents
 
 * [Abstract](#abstract)
@@ -22,21 +24,21 @@ In this hands-on lab, you will implement an end-to-end IoT solution simulating h
 * [Solution architecture](#solution-architecture)
 * [Requirements](#requirements)
 * [Exercise 1: IoT Hub provisioning](#exercise-1-iot-hub-provisioning)
-  * [Task 1: Provision an IoT Hub](#task-1-provision-an-iot-hub)
+  * [Task 1: Provision IoT Hub](#task-1-provision-iot-hub)
   * [Task 2: Configure the Smart Meter Simulator](#task-2-configure-the-smart-meter-simulator)
-* [Exercise 3: Completing the Smart Meter Simulator](#exercise-3-completing-the-smart-meter-simulator)
+* [Exercise 2: Completing the Smart Meter Simulator](#exercise-2-completing-the-smart-meter-simulator)
   * [Task 1: Implement device management with the IoT Hub](#task-1-implement-device-management-with-the-iot-hub)
-  * [Task 2: Implement the communication of telemetry with the IoT Hub](#task-2-implement-the-communication-of-telemetry-with-the-iot-hub)
+  * [Task 2: Implement the communication of telemetry with IoT Hub](#task-2-implement-the-communication-of-telemetry-with-iot-hub)
   * [Task 3: Verify device registration and telemetry](#task-3-verify-device-registration-and-telemetry)
-* [Exercise 4: Hot path data processing with Stream Analytics](#exercise-4-hot-path-data-processing-with-stream-analytics)
+* [Exercise 3: Hot path data processing with Stream Analytics](#exercise-3-hot-path-data-processing-with-stream-analytics)
   * [Task 1: Create a Stream Analytics job for hot path processing to Power BI](#task-1-create-a-stream-analytics-job-for-hot-path-processing-to-power-bi)
   * [Task 2: Visualize hot data with Power BI](#task-2-visualize-hot-data-with-power-bi)
-* [Exercise 5: Cold path data processing with HDInsight Spark](#exercise-5-cold-path-data-processing-with-hdinsight-spark)
-  * [Task 1: Create the Stream Analytics job for cold path processing](#task-1-create-the-stream-analytics-job-for-cold-path-processing)
-  * [Task 2: Verify CSV files in blob storage](#task-2-verify-csv-files-in-blob-storage)
-  * [Task 3: Update pandas version on the Spark cluster](#task-3-update-pandas-version-on-the-spark-cluster)
+* [Exercise 4: Cold path data processing with Azure Databricks](#exercise-4-cold-path-data-processing-with-azure-databricks)
+  * [Task 1: Create a storage account](task-1-create-a-storage-account)
+  * [Task 2: Create the Stream Analytics job for cold path processing](#task-2-create-the-stream-analytics-job-for-cold-path-processing)
+  * [Task 3: Verify CSV files in blob storage](#task-3-verify-csv-files-in-blob-storage)
   * [Task 4: Process with Spark SQL](#task-4-process-with-spark-sql)
-* [Exercise 6: Reporting device outages with IoT Hub Operations Monitoring](#exercise-6-reporting-device-outages-with-iot-hub-operations-monitoring)
+* [Exercise 5: Reporting device outages with IoT Hub Operations Monitoring](#exercise-5-reporting-device-outages-with-iot-hub-operations-monitoring)
   * [Task 1: Enable verbose connection monitoring on the IoT Hub](#task-1-enable-verbose-connection-monitoring-on-the-iot-hub)
   * [Task 2: Collect device connection telemetry with the hot path Stream Analytics job](#task-2-collect-device-connection-telemetry-with-the-hot-path-stream-analytics-job)
   * [Task 3: Test the device outage notifications](#task-3-test-the-device-outage-notifications)
@@ -59,6 +61,14 @@ Fabrikam provides services and smart meters for enterprise energy (electrical po
 Below is a diagram of the solution architecture you will build in this lab. Please study this carefully, so you understand the whole of the solution as you are working on the various components.
 
 ![Diagram of the preferred solution. From a high-level, the commerce solution uses an API App to host the Payments web service with which the Vending Machine interacts to conduct purchase transactions. The Payment Web API invokes a 3rd party payment gateway as needed for authorizing and capturing credit card payments, and logs the purchase transaction to SQL DB. The data for these purchase transactions is stored using an In-Memory table with a Columnar Index, which will support the write-heavy workload while still allowing analytics to operate, such as queries coming from Power BI Desktop.](./media/preferred-solution-architecture.png "Preferred high-level architecture")
+
+![](media/preferred-solution-architecture.png)
+
+Messages are ingested from the Smart Meters via IoT Hub and temporarily stored there. A Stream Analytics job pulls telemetry messages from IoT Hub and sends the messages to two different destinations. There are two Stream Analytics jobs, one that retrieves all messages and sends them to Blob Storage (the cold path), and another that selects out only the important events needed for reporting in real time (the hot path). Data entering the hot path will be reported on using Power BI visualizations and reports. For the cold path, Azure Databricks can be used to apply the batch computation needed for the reports at scale.
+
+Other alternatives for processing of the ingested telemetry would be to use an HDInsight Storm cluster, a WebJob running the EventProcessorHost in place of Stream Analytics, or HDInsight running with Spark streaming. Depending on the type of message filtering being conducted for hot and cold stream separation, IoT Hub Message Routing might also be used, but this has the limitation that messages follow a single path, so with the current implementation, it would not be possible to send all messages to the cold path, while simultaneously sending some of the same messages into the hot path. An important limitation to keep in mind for Stream Analytics is that it is very restrictive on the format of the input data it can process: the payload must be UTF8 encoded JSON, UTF8 encoded CSV (fields delimited by commas, spaces, tabs, or vertical pipes), or AVRO, and it must be well formed. If any devices transmitting telemetry cannot generate output in these formats (e.g., because they are legacy devices), or their output can be not well formed at times, then alternatives that can better deal with these situations should be investigated. Additionally, any custom code or logic cannot be embedded with Stream Analytics---if greater extensibility is required, the alternatives should be considered.
+
+> NOTE: The preferred solution is only one of many possible, viable approaches.
 
 ## Requirements
 
@@ -348,7 +358,7 @@ Fabrikam has left you a partially completed sample in the form of the Smart Mete
     ```
 5. Save `DeviceManager.cs`.
 
-### Task 2: Implement the communication of telemetry with the IoT Hub
+### Task 2: Implement the communication of telemetry with IoT Hub
 
 1. Open `Sensor.cs` from the Solution Explorer, and complete the `TODO` items indicated within the code that are responsible for transmitting telemetry data to the IoT Hub.
 
@@ -444,6 +454,7 @@ Fabrikam has left you a partially completed sample in the form of the Smart Mete
         }
     }
     ```
+
 3. Save `Sensor.cs`.
 
 ### Task 3: Verify device registration and telemetry
@@ -513,8 +524,6 @@ Fabrikam would like to visualize the "hot" data showing the average temperature 
 4. Once provisioned, navigate to your new Stream Analytics job in the portal.
 
 5. On the Stream Analytics job blade, select **Inputs** from the left-hand menu, under Job Topology, then select **+Add stream input**, and select **IoT Hub** from the dropdown menu to add an input connected to your IoT Hub.
-
-    ![Under Job Topology, Inputs is selected.](./media/image49.png "Job Topology section")
 
     ![On the Stream Analytics job blade, Inputs is selected under Job Topology in the left-hand menu, and +Add stream input is highlighted in the Inputs blade, and IoT Hub is highlighted in the drop down menu.](media/stream-analytics-job-inputs-add.png "Add Stream Analytics job inputs")
 
@@ -623,7 +632,7 @@ Fabrikam would like to visualize the "hot" data showing the average temperature 
 
 9. Next, add a **table visualization**.
 
-    ![On the Visualizations pallete, the table icon is highlighted.](./media/image69.png "Visualizations pallete")
+    ![On the Visualizations pallete, the table icon is highlighted.](./media/power-bi-visualizations-table.png "Visualizations pallete")
 
 10. Set the values to **id** and **Average of average**, by dragging and dropping both fields in the Values field, then selecting the dropdown next to average, and selecting Average.
 
@@ -651,196 +660,121 @@ Duration: 60 minutes
 
 Fabrikam would like to be able to capture all the "cold" data into scalable storage so that they can summarize it periodically using a Spark SQL query.
 
-### Task 1: Provision Event Hub
+### Task 1: Create a Storage account
 
-1. In the [Azure portal](https://portal.azure.com), select **+ Create a resource**, enter "event hub" into the Search the Marketplace box, select **Event Hubs** from the results, and select **Create**.
+1. In the [Azure portal](https://portal.azure.com), select **+ Create a resource**, enter "storage account" into the Search the Marketplace box, select **Storage account - blob, file, table, queue** from the results, and select **Create**.
 
-    ![In the Azure portal, +Create a resource is highlighted, "event hub" is entered into the Search the Marketplace box, and **Event Hubs** is highlighted in the results.](media/create-resource-event-hubs.png "Create Event Hubs")
+    ![In the Azure portal, +Create a resource is highlighted in the navigation pane, "storage account" is entered into the Search the Marketplace box, and Storage account - blob, file, table, queue is highlighted in the results.](media/create-resource-storage-account.png "Create Storage account")
 
-2. On the Create Event Hubs Namespace blade, enter the following:
+2. In the Create storage account blade, enter the following:
 
-    * **Name**: Enter smartmetereventsSUFFIX
-    * **Pricing tier**: Select Basic
+    * **Name**: Enter smartmetersSUFFIX
+    * **Deployment model**: Leave set to Resource manager
+    * **Account kind**: Select Storage (general purpose v1)
+    * **Location**: Select the location you are using for resources in this hands-on lab
+    * **Replication**: Select Locally-redundant storage (LRS)
+    * **Performance**: Select Standard
+    * **Secure transfer required**: Select Disabled
     * **Subscription**: Select the subscription you are using for this hands-on lab
     * **Resource group**: Choose Use existing and select the hands-on-lab-SUFFIX resource group
-    * **Location**: Select the location you are using for resources in this hands-on lab
-    * **Throughput Units**: Leave set to 1
 
-        ![On the Create Event Hubs Namespace blade, the values specified above are entered into the appropriate fields.](media/event-hubs-namespace-create.png "Create Event Hubs Namespace")
+    ![The Create storage account blade is displayed, with the previously mentioned settings entered into the appropriate fields.](media/storage-account-create-new.png "Create storage account")
 
 3. Select **Create**.
 
-4. Once provisioning completes, navigate to the event hub in the Azure portal.
+4. Once provisioned, navigate to your storage account, select **Access keys** from the left-hand menu, and copy the key1 Key value into a text editor, such as Notepad, for later use.
 
-5. On the Overview blade, select **+ Event Hub**.
+### Task 2: Create the Stream Analytics job for cold path processing
 
-    ![On the Overview blade of the Event Hubs Namespace, +Event Hubs is highlighted.](media/event-hubs-namespace-add-event-hub.png "Add Event Hub")
+To capture all metrics for the cold path, set up another Stream Analytics job that will write all events to Blob storage for analysis with Azure Databricks.
 
-6. On the Create Event Hub blade, enter **smart-meter-events** for the Name, then select **Create**.
+1. In the [Azure Portal](https://portal.azure.com), select **+ Create a resource**, enter "stream analytics" into the Search the Marketplace box, select **Stream Analytics job** from the results, and select **Create**.
 
-    !["On the Create Event Hub blade, "smart-meter-events" is entered into the name field, and partition count is set to 2.](media/event-hubs-namespace-create-event-hub.png "Create Event Hub")
+    ![In the Azure Portal, +Create a resource is highlighted, "stream analytics" is entered into the Search the Marketplace box, and Stream Analytics job is highlighted in the results.](media/create-resource-stream-analytics-job.png "Create Stream Analytics job")
 
-### Task 2: Create a messaging endpoint for cold path processing to Power BI
+2. On the New Stream Analytics Job blade, enter the following:
 
-In this task, you will create an endpoint and route for cold data processing.
+    * **Job name**: Enter cold-stream
+    * **Subscription**: Select the subscription you are using for this hands-on lab
+    * **Resource group**: Choose Use existing and select the hands-on-lab-SUFFIX resource group
+    * **Location**: Select the location you are using for resources in this hands-on lab
+    * **Hosting environment**: Select Cloud
 
-1. In the [Azure portal](https://portal.azure.com), navigate to your IoT Hub, select **Endpoints** under Messaging in the left-hand menu, and select **+Add**.
+        ![The New Stream Analytics Job blade is displayed, with the previously mentioned settings entered into the appropriate fields.](media/stream-analytics-job-create-cold-stream.png "New Stream Analytics Job blade")
 
-    ![In the Azure portal, the IoT Hub blade is displayed. Endpoints is highlighted under Messaging in the left-hand menu, and +Add is highlighted on the Endpoints blade.](media/iot-hub-messaging-endpoints.png "IoT Hub Messaging Endpoints")
+3. Select **Create**.
 
-2. On the Add endpoint blade, enter the following:
+4. Once provisioned, navigate to your new Stream Analytics job in the portal.
 
-    * **Name**: Enter cold-path-endpoint
-    * **Endpoint type**: Select Azure Storage Container
-    * Select **Azure Storage Container**, select **+ Storage account**, then enter **smartmetersSUFFIX** for the name, and select **OK**.
+5. On the Stream Analytics job blade, select **Inputs** from the left-hand menu, under Job Topology, then select **+Add stream input**, and select **IoT Hub** from the dropdown menu to add an input connected to your IoT Hub.
 
-        ![The Add endpoint blade for IoT messaging is displayed, with the values specified above entered into the appropriate fields.](media/iot-hub-messaging-endpoints-add-cold-path.png "IoT Hub Messaging Add endpoint")
+    ![On the Stream Analytics job blade, Inputs is selected under Job Topology in the left-hand menu, and +Add stream input is highlighted in the Inputs blade, and IoT Hub is highlighted in the drop down menu.](media/stream-analytics-job-inputs-add.png "Add Stream Analytics job inputs")
 
-    * Next, select the **smartmetersSUFFIX** account the list of storage accounts, then select **+ Container**, and enter **smartmeters** into the name field, and select **OK**.
+6. On the New Input blade, enter the following:
 
-        ![The Storage account blade is selected, and the smartmetersSUFFIX account is highlighted. On the Containers blade, +Container is highlighted, and smartmeters is entered into the Name field.](media/iot-hub-messaging-endpoints-add-cold-path-storage-container.png "IoT Hub Storage accounts Containers")
+    * **Input alias**: Enter iothub.
+    * Choose **Select IoT Hub from your subscriptions**
+    * **Subscription**: Select the subscription you are using for this hands-on lab
+    * **IoT Hub**: Select the smartmeter-hub-SUFFIX IoT Hub
+    * **Endpoint**: Select Messaging
+    * **Shared access policy name**: Select service
+    * **Consumer Group**: Leave set to $Default
+    * **Event serialization format**: Select JSON
+    * **Encoding**: Select UTF-8
+    * **Event compression type**: Leave set to None
 
-    * Select the **smartmeters** container and select **Select**.
-    * Back on the Add endpoint blade, set the **Blob file name format** to **{iothub}-{partition}/{YYYY}-{MM}-{DD}-{HH}-{mm}**.
+        ![IoT Hub New Input blade is displayed with the values specified above entered into the appropriate fields.](media/stream-analytics-job-inputs-add-iot-hub-input-cold-stream.png "IoT Hub New Input blade")
 
-        ![On the Add endpoint blade, the values specified above are entered into the appropriate fields.](media/iot-hub-messaging-endpoint-add-cold-path-final.png "Add endpoint")
+7. Select **Save**.
 
-3. Select **OK**.
+8. Next, select **Outputs** from the left-hand menu, under Job Topology, and select **+ Add**, then select **Blob storage** from the drop down menu.
 
-4. Now, select **Routes** from the left-hand menu of the IoT Hub blade, then select **+Add**.
+    ![Outputs is highlighted in the left-hand menu, under Job Topology, +Add is selected, and Blob storage is highlighted in the drop down menu.](media/stream-analytics-job-outputs-add-blob-storage.png "Add Blob storage Output")
 
-    ![In the Azure portal, the IoT Hub blade is displayed. Routes is highlighted under Messaging in the left-hand menu, and +Add is highlighted on the Routes blade.](media/iot-hub-messaging-routes.png "IoT Hub Messaging Routes")
+9. On the Blob storage output blade, enter the following:
 
-5. On the Create a new route blade, enter the following:
+    * **Output alias**: Set to blobs
+    * Choose **Select blob storage from your subscriptions**
+    * **Subscription**: Select the subscription you are using for this hands-on lab
+    * **Storage account**: Select the smartmetersSUFFIX storage account you created in the previous task
+    * **Container**: Choose Create new and enter smartmeters
+    * **Path pattern**: Enter smartmeters/{date}/{time}
+    * **Date format**: Select YYYY-DD-MM
+    * **Time format**: Select HH
+    * **Event serialization format**: Select CSV
+    * **Delimiter**: Select comma (,)
+    * **Encoding**: Select UTF-8
 
-    * **Name**: enter cold-path-route
-    * **Data source**: Select Device Messages
-    * **Endpoint**: Select cold-data-endpoint
-    * **Query string**: Leave blank (this will match all messages)
+        ![Blob storage New output blade is displayed, with the values mentioned above entered into the appropriate fields.](media/stream-analytics-job-outputs-blob-storage-new.png "Add Blob storage Output")
 
-        ![The Create a new route blade is displayed, and the values specified above are entered into the appropriate fields.](media/iot-hub-messaging-routes-add.png "Add new messaging route")
-
-6. Select **Save**.
-
-### TODO: DELETE: Task 1: Create the Stream Analytics job for cold path processing
-
-To capture all metrics for the cold path, set up another Stream Analytics job that will write all events to Blob storage for analyses by Spark running on HDInsight.
-
-1.  In your browser, navigate to the **Azure Portal** (<https://portal.azure.com>).
-
-2.  Select **+New**, **Data + Analytics**, then select **Stream Analytics job**.
-    
-    ![In the Azure Portal, in the left pane, New is selected. In the New pane, Data + Analytics and Stream Analytics job are highlighted.](./media/image47.png "Azure Portal")
-
-3.  On the New Stream Analytics Job blade, enter the following:
-
-  * Job Name: Enter **cold-stream**.
-
-  * Subscription: Choose the same subscription you have been using thus far.
-
-  * Resource Group: Choose the **iot-hol** Resource Group.
-
-  * Location: Choose the same Location as you have for your other resources.
-
-  * Hosting environment: Select **Cloud**.
-
-        ![The New Stream Analytics Job blade fields display with the previously mentioned settings.](./media/image75.png "New Stream Analytics Job blade")
-
-  * Select **Create**.
-
-4.  Once provisioned, navigate to your new Stream Analytics job in the portal.
-
-5.  Select **Inputs** on the left-hand menu, under Job Topology.
-
-    ![Under Job Topology, Inputs is selected.](./media/image49.png "Job Topology Section")
-
-6.  On the Inputs blade, select **+Add**, then **IoT Hub** to add an input connected to your IoT Hub.
-    
-    ![Select + Add stream input, then select IoT Hub from the dropdown menu](./media/image50.png "Add stream input")
-
-7.  On the New Input blade, enter the following:
-
-  * Input Alias: Set the value to **iothub**.
-
-  * Choose **Select IoT hub from your subscriptions**.
-
-  * IoT Hub: Select your existing IoT Hub, **smartmeter-hub**.
-
-  * Endpoint: Choose **Messaging**.
-
-  * Shared Access Policy Name: Set to **Service**.
-
-  * Consumer Group: Leave as **\$Default**.
-
-  * Event serialization format: Choose **JSON**.
-
-  * Encoding: Choose **UTF-8**.
-
-  * Event compression type: Leave set to **None**.
-
-        ![Form for adding a new IoT Hub input to Stream Analytics](./media/image76.png "IOT hub new input blade")
-
-  * Select **Create**.
-
-8.  Now, select **Outputs** from the left-hand menu, under Job Topology.
-
-    ![Under Job Topology, Outputs is selected.](./media/image52.png "Job Topology Section")
-
-9.  In the Outputs blade, select **+Add**, then **Blob storage** to add the output destination for the query.
-    
-    ![Outputs blade add blob storage](./media/image77.png "Outputs blade add blob storage")
-
-10. On the New output blade, enter the following:
-
-  * Output alias: Set to **blobs**.
-
-  * Choose **Select blob storage from your subscriptions**.
-
-  * Storage account: Choose the storage account name you used for HDInsight in Before the hands-on lab, Task 2, Step 5c.
-
-  * Container: Set to **iotcontainer**.
-
-  * Path pattern: Enter **smartmeters/{date}/{time}**.
-
-  * Date format: Select **YYYY/MM/DD**.
-
-  * Time format: Select **HH**.
-
-  * Event serialization formation: Select **CSV**.
-
-  * Delimiter: Select **comma (,)**.
-
-  * Encoding: Select **UTF-8**.
-
-        ![Blob storage blade with storage account, path pattern and event serialzation format complted.](./media/image78.png "Blob Storage blade")
-
-  * Select **Save**.
+10. Select **Save**.
 
 11. Next, select **Query** from the left-hand menu, under Job Topology.
-    
-    ![Under Job Topology, Query is selected.](./media/image56.png "Job Topology Section")
+
+    ![Under Job Topology, Query is selected.](./media/stream-analytics-job-query.png "Stream Analytics Query")
 
 12. In the query text box, paste the following query.
-    ```
+
+    ```sql
     SELECT
           *
-    INTO 
+    INTO
           blobs
-    FROM 
+    FROM
           iothub
     ```
 
-13. Select **Save,** and **Yes** when prompted with the confirmation.
+13. Select **Save**, and **Yes** when prompted with the confirmation.
 
-    ![Save button](./media/image57.png "Save button")
+    ![Save button on the Query blade is highlighted](./media/stream-analytics-job-query-save.png "Query Save button")
 
-14. Return to the Overview blade on your Stream Analytics job, and select **Start**.
+14. Return to the Overview blade on your Stream Analytics job and select **Start**.
 
-    ![Start button](./media/image58.png "Start button")
+    ![The Start button is highlighted on the Overview blade.](./media/stream-analytics-job-start.png "Overview blade start button")
 
 15. In the Start job blade, select **Now** (the job will start processing messages from the current point in time onward).
-    
-    ![Now button](./media/image59.png "Now button")
+
+    ![Now is selected on the Start job blade.](./media/stream-analytics-job-start-job.png "Start job blade")
 
 16. Select **Start**.
 
@@ -848,7 +782,7 @@ To capture all metrics for the cold path, set up another Stream Analytics job th
 
 18. Once the Stream Analytics Job has successfully started, verify that you are showing a non-zero amount of **Input Events** on the **Monitoring** chart on the overview blade. You may need to reconnect your devices on the Smart Meter Simulator and let it run for a while to see the events.
 
-    ![The Monitoring chart now lists 88 Input Events, 88 Output Events, and 0 runtime errors.](./media/image79.png "Monitoring chart")
+    ![The Stream Analytics job monitoring chart is diplayed with a non-zero amount of input events highlighted.](media/stream-analytics-job-monitoring-events.png "Monitoring chart for Stream Analytics job")
 
 ### Task 3: Verify CSV files in blob storage
 
@@ -870,127 +804,167 @@ In this task, we are going to verify that the CSV file is being written to blob 
 
     ![Storage accounts is expanded in the Visual Studio Cloud Explorer, with the smartmetersSUFFIX account is expanded, and the Open menu item highlighted for the smartmeters container.](media/visual-studio-cloud-explorer-storage-accounts.png "Cloud Explorer Storage Accounts")
 
-6. Verify files are being written to Blob storage and take note of the path to one of the files (the files should be located underneath the smartmeters container).
+6. Verify files are being written to Blob storage (the files should be located underneath the smartmeters container).
 
     ![Files are listed in the blob storage account, as written by the cold path route in IoT Hub Messaging.](media/smart-meters-cold-path-files.png "Smart meters files in blob storage")
 
-### Task 3: Update pandas version on the Spark cluster
+### Task 4: Process with Spark SQL
 
-In this task you will connect SSH into your HDInsight cluster, and update the version of pandas that Jupyter Notebook uses. This task is to address errors that are displayed because the autovizwidget in Jupyter needs a later version of pandas that has the API module.
+In this task, you will create a new Databricks notebook to perform some processing and visualization of the cold path data using Spark.
 
-1.  In the Azure portal, navigate to the blade for your Spark Cluster, under your HDInsight Cluster.
+> NOTE: The complete Databricks notebook can be found in the Databricks-notebook folder of the GitHub repo associated with this hands-on lab, should you need to reference it for troubleshooting.
 
-2.  On the cluster's overview blade, select **Secure Shell (SSH)** from the toolbar.
-    
-    ![On the Overview blade toolbar, Secure Shell (SSH) is highlighted.](./media/image85.png "Overview blade toolbar")
+1. In the [Azure portal](https://portal.azure.com), navigate to the Azure Databricks workspace you created in the [Before the hands-on lab](./Setup.md) exercises, and select **Launch Workspace**.
 
-3.  On the SSH + Cluster login blade, select your cluster from the Hostname drop down, then select the **copy button** next to the text box.
-    
-    ![On the SSH + Cluster login blade, under Hostname, the cluster name is highlighted, as is the copy button next to the textbox.](./media/image86.png "SSH + Cluster login blade")
+    ![On the Azure Databricks Service blade, the Launch Workspace button is highlighted.](media/azure-databricks-launch-workspace.png "Launch Azure Databricks Workspace")
 
-4.  On your Lab VM, select your open Git Bash client (or open a new one if you closed it).
+2. On the Azure Databricks landing page, create a new notebook by selecting **Notebook** under New.
 
-1.  At the command prompt, paste the SSH connection string you copied in step 3, above. When prompted about continuing, type "yes."
-    
-    ![The Git Bash Window displays the SSh connection string, and the prompt, \"Are you sure you want ot continue connecting?\" is highlighted.](./media/image87.png "Git Bash Window")
+    ![Notebook is highlighted under New on the Azure Databricks landing page.](media/azure-databricks-new-notebook.png "New Databricks Notebook")
 
-6.  Enter your password, Password.1!!, when prompted, and press **Enter**.
-    
-    ![The Git Bash Window now has the prompt for the password highlighted.](./media/image88.png "Git Bash Window")
+3. In the Create Notebook dialog, enter **smartmeters** as the name, and select **Python** as the language, then select **Create**.
 
-7.  Once logged in, you will be presented with a command prompt, similar to the following:
-    
-    ![The Git Bash Window now displays with the following prompt: sshuser\@hn0-iothan:\~\$](./media/image89.png "Git Bash Window")
+    ![In the Create Notebook dialog, smartmeters is entered as the Name, and Python is selected in the Language drop down.](media/azure-databricks-create-notebook-dialog.png "Create Notebook dialog")
 
-8.  At the command prompt, enter the following command to install the latest version of pandas, which has the API module required by the autovizwidget.
-    ```
-    sudo -HE /usr/bin/anaconda/bin/conda install pandas
-    ```
-9.  When prompted to Proceed, type "y."
-    
-    ![In the Git Bash Window, the following line is highlighted: Proceed (\[y\]n)? y](./media/image90.png "Git Bash Window")
+4. On the notebook page, attach the notebook to your cluster by selecting Detached, and then selecting your cluster under Attach to.
 
-### Task 4: Process with Spark SQL 
+    ![In the notebook page, Detached is expanded, and the iot-cluster is highlighted under Attach to.](media/azure-databricks-notebook-attach.png "Attach notebook to cluster")
 
-1.  Navigate to the blade for your Spark Cluster in the Azure Portal, under you HDInsight Cluster.
+5. If your cluster is stopped, you can select the down arrow next to your attached cluster name, and select Start Cluster from the menu, then select Confirm when prompted.
 
-2.  Under Quick Links, click **Cluster Dashboard**.
-    
-    ![Under Quick links, the Cluster dashboard option is highlighted.](./media/image91.png "Quick links")
+    ![The iot-cluster is attached and its menu is expanded, with Start Cluster highlighted](media/azure-databricks-notebook-start-cluster.png "Start cluster")
 
-3.  On the Cluster Dashboards blade, select **Jupyter Notebook**. If prompted, log in with admin credentials you provided when creating the cluster (username: **admin**, password: **Password.1!!**).
-    
-    ![On the Cluster Dashboards blade, the Jupyter Notebook option is highlighted.](./media/image92.png "Cluster Dashboards blade")
+6. In the first cell of your Databricks notebook (referred to as a paragraph in notebook jargon), enter the following **Python code** that create widgets in the notebook for entering your Azure storage account name and key.
 
-4.  From the navigation bar in the Jupyter site, select **New** and then **Spark.**
-    
-    ![On the Jupyter site navigation bar, New is selected, and on its drop-down menu, Spark is selected. A pop-up message says, \"Create a new notebook with Spark."](./media/image93.png "Jupyter site navigation bar")
-
-5.  In the first text area (referred to as a paragraph in notebook jargon), enter the following **Scala code** that will load, parse, and save your batch scored telemetry data as a table that you can later query using Spark SQL. Before executing, make sure to replace the highlighted text with the correct path to your telemetry file, noted previously in the Cloud Explorer in Visual Studio.
-    ```
-    import spark.implicits._
-
-    val rawText = spark.read.text("wasb:///smartmeters/2017/08/20/19/1008078303_90a84f7aba614d1fa4688cbda1de3846_1.csv")
-    case class SmartMeterMetrics(id:String,time:String,temp:Integer)
-    val telemetryRDD = rawText.map(row => row.getString(0).split(",")).filter(s=>s(0) != "id").map(
-        s => SmartMeterMetrics(s(0), s(1), s(2).toInt)
-    )
-    val telemetryDF = telemetryRDD.toDF()
-    telemetryDF.write.saveAsTable("SmartMeters")
+    ```python
+    # Create widgets for storage account name and key
+    dbutils.widgets.text("accountName", "", "Account Name")
+    dbutils.widgets.text("accountKey", "", "Account Key")
     ```
 
-1.  Next, click the **Run** icon in the toolbar to execute this code and create the **SmartMeters** table
-    
-    . ![The Run icon is selected on the toolbar.](./media/image94.png "Run icon")
+7. Now, select the Run button on the right side of the cell, and select **Run cell**.
 
-7.  The block is finished running when the In\[\*\] changes to In\[1\]\
-    
-    ![In the top half of this screen capture, code displays. In the bottom half of the screen capture, a SmartMeters table displays.](./media/image95.png "SmartMeters table")
+    ![A cell in a Databricks Notebook is displayed, and the Run menu is visible with Run Cell highlighted in the menu.](media/azure-databricks-notebook-run-cell.png "Datebricks Notebook run cell")
 
-    You may see the below message. You can proceed.
-    
-    ![The message states that the SmartMeters table already exists.](./media/image96.png "Message")
+8. When the cell finishes executing, you will see the Account Key and Account Name widgets appear at the top of the notebook, just below the toolbar.
 
-8.  In the second cell, enter the following SQL query and run it.
+    ![In the Databricks notebook, Account Key and Account Name widgets are highlighted.](media/azure-databricks-notebook-widgets.png "Databricks Notebooks widgets")
+
+9. You will also notice a message at the bottom of the cell indicating that the cell execution completed, and the amount of time it took.
+
+    ![A message is displayed at the bottom of the cell indicating how long the command took to execute.](media/azure-databricks-cell-execution-time.png "Cell execution time")
+
+10. Enter your Azure Storage account key into the Account Key widget text box, and your Azure storage account name into the Account Name widget text box. These values can be obtained from the Access keys blade in your storage account.
+
+    ![The Account Key and Account Name widgets are populated with values from the Azure storage account.](media/azure-databricks-notebook-widgets-populated.png "Databricks Notebooks widgets")
+
+11. At the bottom of the first cell, select the + button to insert a new cell below it.
+
+    ![The Insert new cell button is highlighted at the bottom of the Databricks cell.](media/azure-databricks-insert-new-cell.png "Insert new cell")
+
+12. In the new cell, paste the following code that will assign the values you entered into the widgets you created above into variables that will be used throughout the notebook.
+
+    ``` python
+    # Get values entered into widgets
+    accountName = dbutils.widgets.get("accountName")
+    accountKey = dbutils.widgets.get("accountKey")
     ```
+
+13. Run the cell.
+
+14. Insert a new cell into the notebook, and paste the following code to mount your blob storage account into Databricks File System (DBFS), then run the cell.
+
+    ```python
+    # Mount the blob storage account at /mnt/smartmeters. This assumes your container name is smartmeters, and you have a folder named smartmeters within that container, as specified in the exercises above.
+    dbutils.fs.mount(
+      source = "wasbs://smartmeters@" + accountName + ".blob.core.windows.net/smartmeters",
+      mount_point = "/mnt/smartmeters",
+      extra_configs = {"fs.azure.account.key." + accountName + ".blob.core.windows.net": accountKey})
+    ```
+
+    > NOTE: Mounting Azure Blob storage directly to DBFS allows you to access files as if they were on the local file system.
+
+15. Once your blob storage account is mounted, you can access them with Databricks Utilities, `dbutils.fs` commands. Insert a new cell, and paste the code below to see how `dbutils.fs.ls` can be used to list the files and folders directly below the smartmeters folder.
+
+    ```python
+    # Inspect the file structure
+    dbutils.fs.ls("/mnt/smartmeters/")
+    ```
+
+16. Run the cell.
+
+17. You know from inspecting the files in the storage container that the files are contained within a folder structure resembling, `smartmeters/YYYY-MM-DD/HH`. You can use wildcards to obfuscate the date and hour folders, as well as the file names, and access all the files in all the folders. Insert another cell into the notebook, paste the following code, and run the cell to load the data from the files in blob storage into a Databricks Dataframe.
+
+    ```python
+    # Create a Dataframe containing data from all the files in blob storage, regardless of the folder they are located within.
+    df = spark.read.options(header='true', inferSchema='true').csv("dbfs:/mnt/smartmeters/*/*/*.csv",header=True)
+    print(df.dtypes)
+    ```
+
+18. The cell above also outputs the value of the `df.dtypes` property, which is a list of the data types of the columns added to the Dataframe, similar to the following:
+
+    ![Output from the df.dtypes property is displayed.](media/azure-databricks-df-dtypes-output.png "Output from Dataframe dtypes")
+
+19. Insert another cell, and run the following code to view the first 10 records contained in the Dataframe.
+
+    ```python
+    df.show(10)
+    ```
+
+20. Now, you can save the Dataframe to a global table in Databricks. This will make the table accessible to all users and clusters in your Databricks workspace. Insert a new cell, and run the following code.
+
+    ```python
+    df.write.mode("overwrite").saveAsTable("SmartMeters")
+    ```
+
+21. Now, you will use the `%sql` magic command to change the language of the next cell to SQL from the notebook's default language, Python, then execute a SQL command to aggregate the SmartMeter data by average temperature. Paste the following code into a new cell, and run the cell.
+
+    ```sql
+    %sql
+    SELECT id, COUNT(*) AS count, AVG(temp) AS averageTemp FROM SmartMeters GROUP BY id ORDER BY id
+    ```
+
+22. The output from the SQL command should resemble the following table:
+
+    ![Output from executing a SQL statement a Databricks notebook cell using the %sql magic command.](media/azure-databricks-notebook-sql-magic-command.png "SQL magic command")
+
+23. Now, execute the same command in a new cell, this time using Spark SQL so you can save the summary data into a Dataframe. Copy and execute the following code into a new cell.
+
+    ```python
+    # Query the table to create a Dataframe containing the summary
+    summary = spark.sql("SELECT id, COUNT(*) AS count, AVG(temp) AS averageTemp FROM SmartMeters GROUP BY id ORDER BY id")
+
+    # Save the new pre-computed table
+    summary.write.mode("overwrite").saveAsTable("DeviceSummary")
+    ```
+
+24. Next, query from this summary table by executing the following query in a new cell.
+
+    ```sql
     %%sql
-    select id, count(*) as count, avg(temp) averageTemp from SmartMeters group by id order by id
+    SELECT * FROM DeviceSummary
     ```
 
-    You will see a table like the following:
+25. Below the results table, button provide access to change the visualization for tabular output. Select the **chart** button, and then select **Plot Options**.
 
-    ![A table with three columns displays: id, count, and average temp. Devices 0 through 6 have counts varying between 59 and 60, and average Temps between 69.0 and 69.9.](./media/image97.png "Table")
+    ![Buttons for displaying tablular results in different formats in Databricks](media/azure-databricks-notebook-visualizations.png "Visualization options")
 
-9.  Next, create a table that will summarize the telemetry collected using the previous query. In a new paragraph, try running the following query:
-    ```
-    //query the table to create a summary result set
-    val summary = spark.sql("select id, count(*) as count, avg(temp) averageTemp from SmartMeters group by id order by id")
+26. In the Customize Plot dialog, set the following:
+    * **Keys**: Add id
+    * **Values**: Add averageTemp
+    * **Aggregation**: Select AVG
+    * Select **Grouped** as the chart type
+    * **Display type**: Select Bar chart
 
-    //save the new pre-computed view
-    summary.write.saveAsTable("DeviceSummary")
-    ```
+        ![Plot customization options dialog in Azure databricks, with id in the Keys field, averageTemp in the Values field, Aggregation set to AVG, and the chart set to a grouped bar chart.](media/azure-databricks-notebook-customize-plot.png)
 
-10. Next, query from this summary table by executing the following query.
-    ```
-    %%sql
-    select * from DeviceSummary
-    ```
+27. Select **Apply**.
 
-11. In the results, click the **Bar** button.
+28. Observe the results graphed as a column chart, where each column represents a device's average temperature.
 
-12. In the X dropdown, select **id**.
+    ![A bar chart is displayed, with devices on the X axis, and average temperations on the Y axis.](media/azure-databricks-notebook-visualizations-bar-chart.png "Bar chart")
 
-13. In the Y dropdown, select **averageTemp**.
-
-14. In the Func dropdown, select **Avg**.
-
-15. Check the box for **Log scale** **Y.**
-
-16. Observe the results graphed as a column chart, where each column represents a device's average temperature.
-    
-    ![A bar chart displays, with columns displaying for devices 0, 1, 3, 8, and 9. The chart indicates that Devices 0 and 1 have lower average temperatures, and that Device3 has the highest average temperature. Above the chart, for Type, Bar is highlighted. Under Encoding, for X, id is selected. For Y, averageTemp is selected. for Func, Avg is selected. The checkbox for Log scale Y is selected. ](./media/image98.png "Column chart")
-
-## Exercise 6: Reporting device outages with IoT Hub Operations Monitoring
+## Exercise 5: Reporting device outages with IoT Hub Operations Monitoring
 
 Duration: 20 minutes
 
@@ -1000,110 +974,79 @@ Fabrikam would like to be alerted when devices disconnect and fail to reconnect 
 
 To keep track of device connects and disconnects, we first need to enable verbose connection monitoring.
 
-1.  In your browser, navigate to the **Azure Portal** (<https://portal.azure.com)>.
+1. In the [Azure Portal](https://portal.azure.com), open the IoT Hub you provisioned earlier, **smartmeter-hub-SUFFIX**.
 
-2.  Open the IoT Hub you provisioned earlier, **smart-meter**.
+2. Under Settings in the left-hand menu, select **Operations monitoring**.
 
-3.  Under SETTINGS in the left-hand menu, click on **Operations monitoring**.
-    
-    ![Under Settings, Operations monitoring is selected.](./media/image99.png "Settings section")
+    ![Under Settings, Operations monitoring is selected.](media/iot-hub-settings-operations-monitoring.png "Operations monitoring")
 
-4.  Select **Verbose** for **Log events when a device connects or disconnects from the IoT Hub**.
+3. Select **Verbose** for **Log events when a device connects or disconnects from the IoT Hub**.
 
-    ![In the Monitoring categories section, Verbose is selected under Log events when a device connects or disconnects from the IoT Hub.](./media/image100.png "Monitoring categories section")
+    ![In the Monitoring categories section, Verbose is selected under Log events when a device connects or disconnects from the IoT Hub.](./media/iot-hub-operation-monitoring-device-connections-verbose-logging.png "Monitoring categories section")
 
-5.  Click **Save**.
+4. Select **Save**.
 
 ### Task 2: Collect device connection telemetry with the hot path Stream Analytics job
 
-Now that the device connections are being logged, update your hot path Stream Analytics job (the first one you created) with a new input that ingests device telemetry from Operations Monitoring. Next, create a query that joins all connected and disconnected events with a DATEDIFF function that only returns devices with a disconnect event, but no reconnect event within 120 seconds. Output the events to Power BI.
+Now that the device connections are being logged, update your hot path Stream Analytics job (the first one you created) with a new input that ingests device telemetry from Operations Monitoring. Next, create a query that joins all connected and disconnected events with a `DATEDIFF` function that only returns devices with a disconnect event, but no reconnect event within 120 seconds. Output the events to Power BI.
 
-1.  In your browser, navigate to the **Azure Portal** (<https://portal.azure.com)>.
+1. In the [Azure Portal](https://portal.azure.com), open the **hot-stream** Stream Analytics job (the first one you created).
 
-2.  Open the **hot-stream** Stream Analytics job (the first one you created).
+2. Stop the job if it is currently running, from the Overview blade, by selecting **Stop**, then **Yes** when prompted.
 
-3.  Stop the job if it is currently running, from the Overview blade, by selecting **Stop**, then **Yes** when prompted.
-    
-    ![The Stop button is highlighted on the Overview blade top menu.](./media/image101.png "Overview blade Stop button")
+    ![The Stop button is highlighted on the Stream Analytics job Overview blade.](media/stream-analytics-job-stop.png "Stop Stream Analytics Job")
 
-4.  Select **Inputs** on the left-hand menu, under Job Topology.
+3. On the Stream Analytics job blade, select **Inputs** from the left-hand menu, under Job Topology, then select **+Add stream input**, and select **IoT Hub** from the dropdown menu to add an input connected to your IoT Hub.
 
-    ![Under Job Topology, Inputs is selected.](./media/image49.png "Job Topology Section")
+    ![On the Stream Analytics job blade, Inputs is selected under Job Topology in the left-hand menu, and +Add stream input is highlighted in the Inputs blade, and IoT Hub is highlighted in the drop down menu.](media/stream-analytics-job-inputs-add.png "Add Stream Analytics job inputs")
 
-5.  On the Inputs blade, select **+Add**, then **IoT Hub** to add an input connected to your IoT Hub.
-    
-    ![Add new IoT Hub stream input to Stream Analytics](./media/image50.png "Job topolog add stream input hub")
+4. On the New Input blade, enter the following:
 
-6.  On the New Input blade, enter the following:
+    * **Input alias**: Enter connections.
+    * Choose **Select IoT Hub from your subscriptions**
+    * **Subscription**: Select the subscription you are using for this hands-on lab
+    * **IoT Hub**: Select the smartmeter-hub-SUFFIX IoT Hub
+    * **Endpoint**: Select Operations monitoring
+    * **Shared access policy name**: Select service
+    * **Consumer Group**: Leave set to $Default
+    * **Event serialization format**: Select JSON
+    * **Encoding**: Select UTF-8
+    * **Event compression type**: Leave set to None
 
-  * Input Alias: Set the value to **connections**.
+        ![IoT Hub New Input blade is displayed with the values specified above entered into the appropriate fields.](media/stream-analytics-job-inputs-add-iot-hub-input-operations-management.png "IoT Hub New Input blade")
 
-  * Import Option: Choose **Select IoT hub from your subscriptions**.
+5. Select **Save**.
 
-  * IoT Hub: Select your existing IoT Hub, **smartmeter-hub**.
+6. Next, select **Outputs** from the left-hand menu, under Job Topology, and select **+ Add**, then select **Power BI** from the drop down menu.
 
-  * Endpoint: Choose **Operations monitoring**.
+    ![Outputs is highlighted in the left-hand menu, under Job Topology, +Add is selected, and Power BI is highlighted in the drop down menu.](media/stream-analytics-job-outputs-add-power-bi.png "Add Power BI Output")
 
-  * Shared Access Policy Name: Set to **Service**.
+7. On the Power BI output blade, enter the following:
 
-  * Consumer Group: Leave as **\$Default**.
+    * **Output alias**: Set to powerbi-outage
+    * Select **Authorize** to authorize the connection to your Power BI account. When prompted in the popup window, enter the account credentials you used to create your Power BI account in [Before the Hands-on Lab, Task 1](#task-1-provision-power-bi).
+    * **Group Workspace**: Select the default, My Workspace
+    * **Dataset Name**: Enter deviceoutage
+    * **Table Name**: Enter deviceoutage
 
-  * Event serialization format: Choose **JSON**.
+        ![Power BI blade. Output alias is powerbi-outage, dataset name is deviceoutage, table name is deviceoutage.](media/stream-analytics-job-outputs-add-power-bi-operations-management.png "Add Power BI Output")
 
-  * Encoding: Choose **UTF-8**.
+8. Select **Save**.
 
-  * Event compression type: Leave set to **None**.
+9. Next, select **Query** from the left-hand menu, under Job Topology.
 
-        ![Create new IoT Hub input form for Stream Analytics](./media/image102.png "IoT hub new input blade")
+    ![Under Job Topology, Query is selected.](./media/stream-analytics-job-query.png "Stream Analytics Query")
 
-  * Select **Save**.
+10. Replace the hot path query, which selects the averages of the temperatures into the PowerBI output, with queries that perform the following:
 
-7. Now, select **Outputs** from the left-hand menu, under Job Topology.
+    * Select **device disconnection events**.
+    * Select **device connection events**.
+    * Join these two streams together using the Stream Analytics `DATEDIFF` operation on the `LEFT JOIN`, and then filter out any records where there was a match. This gives us devices that had a disconnect event, but no corresponding connect event within 120 seconds. Output to the Service Bus.
+    * Execute the original hot path query.
 
-    ![Under Job Topology, Outputs is selected.](./media/image52.png "Job Topology Section")
+11. Replace the existing query with the following, and select **Save** in the **command bar** at the top. (Be sure to substitute in your output aliases and input aliases):
 
-8. In the Outputs blade, select **+Add**, the **Power BI**, to add the output destination for the query.
-    
-    ![Select +Add, then Power BI within the outputs blade of your Stream Analytics instance](./media/image53.png "Outputs blade add Power BI")
-
-9. On the New output blade, enter the following:
-
-  * Set the **Output alias** to **powerbi-outage**.
-
-        ![Enter powerbi-outage for the output alias, then select Authorize to authenticate to your Power BI subscription](./media/image103.png "Poewr BI new output")
-
-  * Select **Authorize** under Authorize Connection.
-
-    Follow the on-screen prompts to log on to your Power BI account.
-
-    After authenticating, complete the remaining fields as follows:
-
-  * Group Workspace: Leave set to **My Workspace**.
-
-  * Dataset Name: Enter **deviceoutage**
-
-  * Table Name: Enter **deviceoutage**
-
-  * Select **Save**.
-
-        ![Complete the form by entering deviceoutage as both the Dataset name and Table name. Select the My workspace Group workspace option](./media/image104.png "Power BI new input ")
-
-10. Next, select **Query** from the left-hand menu, under Job Topology.
-    
-    ![Under Job Topology, Query is selected.](./media/image56.png "Job Topology Section")
-
-11. We will replace the hot path query, which selects the averages of the temperatures into the PowerBI output, with queries that perform the following:
-
-  * Select **device disconnection events**.
-
-  * Select **device connection events**.
-
-  * Join these two streams together using the Stream Analytics DATEDIFF operation on the LEFT JOIN, and then filter out any records where there was a match. This gives us devices that had a disconnect event, but no corresponding connect event within 120 seconds. Output to the Service Bus.
-
-  * Execute the original hot path query.
-
-12. Replace the existing query with the following, and click **Save** in the **command bar** at the top. (Be sure to substitute in your output aliases and input aliases):
-    ```
+    ``` sql
     WITH
     Disconnected AS (
     SELECT *
@@ -1119,9 +1062,9 @@ Now that the device connections are being logged, update your hot path Stream An
     )
 
     SELECT Disconnected.DeviceId, Disconnected.Time
-    INTO [powerbi-outage] 
+    INTO [powerbi-outage]
     FROM Disconnected
-    LEFT JOIN Connected 
+    LEFT JOIN Connected
         ON DATEDIFF(second, Disconnected, Connected) BETWEEN 0 AND 120
         AND Connected.deviceId = Disconnected.deviceId
     WHERE Connected.DeviceId IS NULL;
@@ -1132,97 +1075,98 @@ Now that the device connections are being logged, update your hot path Stream An
     GROUP BY TumblingWindow(minute, 5), id;
     ```
 
-13. Select **Save,** and **Yes** when prompted with the confirmation.
+12. Select **Save**, and **Yes** when prompted with the confirmation.
 
-    ![Save button](./media/image57.png "Save button")
+    ![Save button on the Query blade is highlighted](./media/stream-analytics-job-query-save.png "Query Save button")
 
-14. Return to the Overview blade on your Stream Analytics job, and select **Start**.
+13. Return to the Overview blade on your Stream Analytics job and select **Start**.
 
-    ![The start button on the Overview blade is highlighted](./media/image58.png "Overview blade start button")
+    ![The Start button is highlighted on the Overview blade.](./media/stream-analytics-job-start.png "Overview blade start button")
 
-15. In the Start job blade, select **Now** (the job will start processing messages from the current point in time onward).
-    
-    ![Next to Job output start time, the Now button is selected.](./media/image59.png "Now button")
+14. In the Start job blade, select **Now** (the job will start processing messages from the current point in time onward).
 
-16. Select **Start**.
+    ![Now is selected on the Start job blade.](./media/stream-analytics-job-start-job.png "Start job blade")
 
-17. Allow your Stream Analytics Job a few minutes to start.
+15. Select **Start**.
+
+16. Allow your Stream Analytics Job a few minutes to start.
 
 ### Task 3: Test the device outage notifications
 
 Register and activate a few devices on the Smart Meter Simulator, then connect them. Deactivate them without reconnecting in order for them to show up in the device outage report we will create in the next task.
 
-1.  Run the Smart Meter Simulator from Visual Studio.
+1. Run the Smart Meter Simulator from Visual Studio.
 
-2.  Click the **Register** button.
-    
-    ![Register button](./media/image105.png "Register button")
+2. Select **Register**.
 
-3.  Click on 3 of the windows to highlight them.
-    
-    ![In the SmartMeter Simulator, three white windows display.](./media/image106.png "SmartMeter Simulator")
+    ![Register button](./media/smart-meter-simulator-register.png "Register button")
 
-4.  Click the **Activate** button.
-    
-    ![Activate button](./media/image107.png "Activate button")
+3. Select 3 of the windows to highlight them.
 
-5.  Click the **Connect** button.
-    
-    ![Connect button](./media/image108.png "Connect button")
+    ![In the SmartMeter Simulator, three white windows display.](./media/smart-meter-simulator-window-select.png "SmartMeter Simulator")
 
-6.  After a few seconds, click **Disconnect**.
-    
-    ![Disconnect button](./media/image109.png "Disconnect button")
+4. Select **Activate**.
 
-7.  Click **Unregister**.
-    
-    ![Unregister button](./media/image110.png "Unregister button")
+    ![Activate button](./media/smart-meter-simulator-activate.png "Activate button")
+
+5. Select **Connect**.
+
+    ![Connect button](./media/smart-meter-simulator-connect.png "Connect button")
+
+6. After a few seconds, select **Disconnect**.
+
+    ![Disconnect button](media/smart-meter-simulator-disconnect.png "Disconnect button")
+
+7. Select **Unregister**.
+
+    ![Unregister button](media/smart-meter-simulator-unregister.png "Unregister button")
 
 ### Task 4: Visualize disconnected devices with Power BI
 
-1.  Log on to **Power BI** to see if data is being collected.
+1. Log on to **Power BI** to see if data is being collected.
 
-2.  As done previously, select My Workspace on the left-hand menu, then select the Datasets tab. A new dataset should appear, named **deviceoutage**. (It is starred to indicate it is new) If you do not see the dataset, you may need to connect your devices on the Smart Meter Simulator, then disconnect and unregister them and wait up to 5 minutes.
-    
-    ![On the Power BI window, My Workspace is highlighted in the left pane, and the Datasets tab is highlighted in the right pane. Under Name, deviceoutage is highlighted.](./media/image111.png "Power BI window")
+2. As done previously, select My Workspace on the left-hand menu, then select the Datasets tab. A new dataset should appear, named **deviceoutage**. (It is starred to indicate it is new) If you do not see the dataset, you may need to connect your devices on the Smart Meter Simulator, then disconnect and unregister them and wait up to 5 minutes.
 
-3.  Select the **Create report** icon under actions for the dataset.
-    
-    ![Next to deviceoutage, the Create report icon is highlighted.](./media/image112.png "Create report icon")
+    ![On the Power BI window, My Workspace is highlighted in the left pane, and the Datasets tab is highlighted in the right pane. Under Name, deviceoutage is highlighted.](./media/power-bi-datasets-deviceoutage.png "Power BI window")
 
-4.  Add a **Table visualization**.
+3. Select the **Create report** icon under actions for the dataset.
 
-    ![The table icon is highlighted on the Visualizations palette.](./media/image113.png "Visualizations palette")
+    ![Next to deviceoutage, the Create report icon is highlighted.](./media/power-bi-datasets-deviceoutage-create-report.png "Create report icon")
 
-5.  Select the **deviceid** and **time** fields, which will automatically be added to the table. You should see the Device Id of each of the devices you connected, and then disconnected for more than 2 minutes.
-    
-    ![In the Fields listing, under deviceoutage, deviceid and time are both selected.](./media/image114.png "Fields listing")\
-    
-    ![DeviceId and Time results display for Device one, Device five, and Device 8.](./media/image115.png "DeviceId and Time results")
+4. Add a **Table visualization**.
 
-6.  Save the report as **Disconnected Devices**.
+    ![The table icon is highlighted on the Visualizations palette.](./media/power-bi-visualizations-table.png "Visualizations palette")
 
-    ![Screenshot of the Save this report option.](./media/image116.png "Save this report option")
+5. Select the **deviceid** and **time** fields, which will automatically be added to the table.
 
-7.  Switch to **Reading View**.
+    ![In the Fields listing, under deviceoutage, deviceid and time are both selected.](./media/power-bi-visualizations-table-fields.png "Fields listing")
 
-    ![Reading View button](./media/image73.png "Reading View button")
+6. You should see the Device Id of each of the devices you connected, and then disconnected for more than 2 minutes.
 
-8.  Within the report, click the column headers to sort by device or date. You may run a few more tests with the Smart Meter Simulator and periodically refresh the report to see new devices.
+    ![DeviceId and Time results display for Device one, Device five, and Device 8.](./media/power-pi-visualizations-table-output.png "DeviceId and Time results")
 
-    ![This report has two columns: DeviceID, and Time. Data is sorted by time.](./media/image117.png "Report")
+7. Save the report as **Disconnected Devices**.
 
-## After the hands-on lab 
+    ![Screenshot of the Save this report option.](./media/power-bi-save-report.png "Save this report option")
 
-Duration: 10 minutes
+8. Switch to **Reading View**.
 
-In this exercise, attendees will deprovision any Azure resources that were created in support of the lab.
+    ![Reading View button](./media/power-bi-report-reading-view.png "Reading View button")
+
+9. Within the report, select the column headers to sort by device or date. You may run a few more tests with the Smart Meter Simulator and periodically refresh the report to see new devices.
+
+    ![This report has two columns: DeviceID, and Time. Data is sorted by time.](./media/power-bi-report-reading-view-column-sorting.png "Report")
+
+## After the hands-on lab
+
+Duration: 10 mins
+
+In this exercise, you will delete any Azure resources that were created in support of the lab. You should follow all steps provided after attending the Hands-on lab to ensure your account does not continue to be charged for lab resources.
 
 ### Task 1: Delete the resource group
 
-1.  Using the Azure portal, navigate to the Resource group you used throughout this hands-on lab by selecting **Resource groups** in the left menu.
+1. Using the [Azure portal](https://portal.azure.com), navigate to the Resource group you used throughout this hands-on lab by selecting Resource groups in the left menu.
+2. Search for the name of your research group, and select it from the list.
+3. Select Delete in the command bar, and confirm the deletion by re-typing the Resource group name, and selecting Delete.
 
-2.  Search for the name of your research group, and select it from the list.
-
-3.  Select **Delete** in the command bar, and confirm the deletion by re-typing the Resource group name, and selecting **Delete**.
-
+*You should follow all steps provided after attending the Hands-on lab.*

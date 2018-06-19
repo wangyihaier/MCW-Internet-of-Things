@@ -14,8 +14,8 @@ In the Before the hands-on lab exercise, you will set up your environment for us
 * [Task 4: Create Databricks cluster](#task-4-create-databricks-cluster)
 * [Task 5: Provision Power BI](#task-5-provision-power-bi)
 * [Task 6: Connect to your Lab VM](#task-6-connect-to-your-lab-vm)
-* [Task 7: Install an SSH client](#task-7-install-an-ssh-client)
-* [Task 8: Download Smart Meter Simulator project](#task-8-download-smart-meter-simulator-project)
+* [Task 7: Download Smart Meter Simulator project](#task-8-download-smart-meter-simulator-project)
+* [Next steps](#next-steps)
 
 ## Task 1: Provision a resource group
 
@@ -191,27 +191,7 @@ In this task, you will create an RDP connection to your lab virtual machine (VM)
 
 11. Close the Server Manager.
 
-## Task 7: Install an SSH client
-
-In this task, you will download and install the Git Bash SSH client. You will use this to access your HDInsight cluster from your Lab VM.
-
-1. On your Lab VM, open a web browser and navigate to the [Git Bash download page](https://git-scm.com/downloads) to download the latest version of Git Bash.
-
-    ![Screenshot of the Git Bash download screen, with the Download 12.17.x for Windows button highlighted.](./media/git-bash-download.png "Git Bash Download")
-
-2. Select the **Download for 2.17.x for Windows** button.
-
-3. Run the downloaded installer, selecting **Next** on each screen to accept the defaults.
-
-4. On the last screen, select **Install** to complete the installation.
-
-    ![Final screen of the Git Bash install wizard, with the Install button highlighted.](./media/git-bash-install.png "Install Git Bash")
-
-5. When the install is complete, uncheck **View Release Notes**, and select **Finish**.
-
-    ![Completing the Git Bash Setup Wizard, with View Release Notes unchecked, and the Finish button highlighted.](./media/git-bash-install-complete.png "Completing the Git Bash Setup Wizard")
-
-## Task 8: Download Smart Meter Simulator project
+## Task 7: Download Smart Meter Simulator project
 
 Fabrikam has provided a Smart Meter Simulator that they use to simulate device registration, as well as the generation and transmission of telemetry data. They have asked you to use this as the starting point for integrating their smart meters with Azure.
 
