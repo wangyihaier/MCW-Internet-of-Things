@@ -2,12 +2,12 @@
 
 ## Contents
 
-* [Abstract](#abstract)
-* [Overview](#overview)
-* [Solution architecture](#solution-architecture)
-* [Requirements](#requirements)
-* [Before the hands-on lab](#before-the-hands-on-lab)
-* [Hands-on lab](#hands-on-lab)
+- [Abstract](#abstract)
+- [Overview](#overview)
+- [Solution architecture](#solution-architecture)
+- [Requirements](#requirements)
+- [Before the hands-on lab](#before-the-hands-on-lab)
+- [Hands-on lab](#hands-on-lab)
 
 ## Abstract
 
@@ -33,12 +33,12 @@ Other alternatives for processing of the ingested telemetry would be to use an H
 
 ## Requirements
 
-* Microsoft Azure subscription must be pay-as-you-go or MSDN
-  * Trial subscriptions will not work
-* A virtual machine configured with:
-  * Visual Studio Community 2017 15.6 or later
-  * Azure SDK 2.9 or later (Included with Visual Studio 2017)
-* A running Azure Databricks cluster (see [Before the hands-on lab](#before-the-hands-on-lab))
+- Microsoft Azure subscription must be pay-as-you-go or MSDN
+  - Trial subscriptions will not work
+- A virtual machine configured with:
+  - Visual Studio Community 2017 15.6 or later
+  - Azure SDK 2.9 or later (Included with Visual Studio 2017)
+- A running Azure Databricks cluster (see [Before the hands-on lab](#before-the-hands-on-lab))
 
 ## Before the hands-on lab
 
@@ -50,7 +50,7 @@ You should follow all the steps provided in the [Before the hands-on lab](./Setu
 
 Select the guide you are using to complete the Hands-on lab below.
 
-* [Step-by-step guide](./HOL-step-by-step-Intelligent-vending-machines.md)
-  * Provides detailed, step-by-step instructions for completing the lab.
-* [Unguided](./HOL-uguided-Intelligent-vending-machines.md)
-  * This guide provides minimal instruction, and assumes a high-level of knowledge about the technologies used in this lab. This should typically only be used if you are doing this as part of a group.
+- [Step-by-step guide](./HOL-step-by-step-Intelligent-vending-machines.md)
+  - Provides detailed, step-by-step instructions for completing the lab.
+- [Unguided](./HOL-uguided-Intelligent-vending-machines.md)
+  - This guide provides minimal instruction, and assumes a high-level of knowledge about the technologies used in this lab. This should typically only be used if you are doing this as part of a group.

@@ -6,8 +6,8 @@ Fabrikam provides services and smart meters for enterprise energy (electrical po
 
 ## Target audience
 
-* Application developer
-* IoT
+- Application developer
+- IoT
 
 ## Abstract
 
@@ -31,15 +31,15 @@ At the end of this hands-on lab, you will be better able to build an IoT solutio
 
 ## Azure services and related products
 
-* Azure App Services
-* Azure Blob Storage
-* Azure Data Factory
-* Azure Databricks
-* Azure SQL Database
-* Azure Stream Analytics
-* IoT Hub
-* Power BI Desktop
-* Visual Studio 2017
+- Azure App Services
+- Azure Blob Storage
+- Azure Data Factory
+- Azure Databricks
+- Azure SQL Database
+- Azure Stream Analytics
+- IoT Hub
+- Power BI Desktop
+- Visual Studio 2017
 
 ## Azure solution
 

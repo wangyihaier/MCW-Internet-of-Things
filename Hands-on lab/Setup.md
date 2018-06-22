@@ -8,14 +8,14 @@ In the Before the hands-on lab exercise, you will set up your environment for us
 
 ## Contents
 
-* [Task 1: Provision a resource group](#task-1-provision-a-resource-group)
-* [Task 2: Set up a lab virtual machine](#task-2-set-up-a-lab-virtual-machine)
-* [Task 3: Provision Azure Databricks](#task-3-provision-azure-databricks)
-* [Task 4: Create Databricks cluster](#task-4-create-databricks-cluster)
-* [Task 5: Provision Power BI](#task-5-provision-power-bi)
-* [Task 6: Connect to your Lab VM](#task-6-connect-to-your-lab-vm)
-* [Task 7: Download Smart Meter Simulator project](#task-8-download-smart-meter-simulator-project)
-* [Next steps](#next-steps)
+- [Task 1: Provision a resource group](#task-1-provision-a-resource-group)
+- [Task 2: Set up a lab virtual machine](#task-2-set-up-a-lab-virtual-machine)
+- [Task 3: Provision Azure Databricks](#task-3-provision-azure-databricks)
+- [Task 4: Create Databricks cluster](#task-4-create-databricks-cluster)
+- [Task 5: Provision Power BI](#task-5-provision-power-bi)
+- [Task 6: Connect to your Lab VM](#task-6-connect-to-your-lab-vm)
+- [Task 7: Download Smart Meter Simulator project](#task-8-download-smart-meter-simulator-project)
+- [Next steps](#next-steps)
 
 ## Task 1: Provision a resource group
 
@@ -23,15 +23,15 @@ In this task, you will create an Azure resource group for the resources used thr
 
 1. In the [Azure portal](https://portal.azure.com), select **Resource groups**, select **+Add**, then enter the following in the Create an empty resource group blade:
 
-    * **Name**: Enter hands-on-lab-SUFFIX
+    - **Name**: Enter hands-on-lab-SUFFIX
 
-    * **Subscription**: Select the subscription you are using for this hands-on lab
+    - **Subscription**: Select the subscription you are using for this hands-on lab
 
-    * **Resource group location**: Select the region you would like to use for resources in this hands-on lab. Remember this location so you can use it for the other resources you'll provision throughout this lab.
+    - **Resource group location**: Select the region you would like to use for resources in this hands-on lab. Remember this location so you can use it for the other resources you'll provision throughout this lab.
 
         ![Add Resource group Resource groups is highlighted in the navigation pane of the Azure portal, +Add is highlighted in the Resource groups blade, and "hands-on-labs" is entered into the Resource group name box on the Create an empty resource group blade.](media/create-resource-group.png "Create resource group")
 
-    * Select **Create**.
+    - Select **Create**.
 
 ## Task 2: Setup a lab virtual machine
 
@@ -43,23 +43,23 @@ In this task, you will provision a virtual machine running Visual Studio Communi
 
 2. Set the following configuration on the Basics tab.
 
-    * **Name**: Enter LabVM
+    - **Name**: Enter LabVM
 
-    * **VM disk type**: Select SSD
+    - **VM disk type**: Select SSD
 
-    * **User name**: Enter demouser
+    - **User name**: Enter demouser
 
-    * **Password**: Enter Password.1!!
+    - **Password**: Enter Password.1!!
 
-    * **Subscription**: Select the same subscription you are using for this hands-on lab
+    - **Subscription**: Select the same subscription you are using for this hands-on lab
 
-    * **Resource Group**: Select Use existing, and select the hands-on-lab-SUFFIX resource group
+    - **Resource Group**: Select Use existing, and select the hands-on-lab-SUFFIX resource group
 
-    * **Location**: Select the location you are using for resources in this hands-on lab
+    - **Location**: Select the location you are using for resources in this hands-on lab
 
         ![Screenshot of the Basics blade, with fields set to the previously mentioned settings.](./media/virtual-machine-basics-blade.png "Create virtual machine Basics blade")
 
-    * Select **OK** to move to the next step.
+    - Select **OK** to move to the next step.
 
 3. On the Choose a size blade, select **DS2_V3 Standard**.
 
@@ -87,19 +87,19 @@ In this task, you will create an Azure Databricks workspace.
 
 2. On the Azure Databricks Service blade, enter the following:
 
-    * **Workspace name**: Enter iot-db-workspace-SUFFIX
+    - **Workspace name**: Enter iot-db-workspace-SUFFIX
 
-    * **Subscription**: Select the subscription you are using for this hands-on lab
+    - **Subscription**: Select the subscription you are using for this hands-on lab
 
-    * **Resource group**: Choose Use existing and select the hands-on-lab-SUFFIX resource group
+    - **Resource group**: Choose Use existing and select the hands-on-lab-SUFFIX resource group
 
-    * **Location**: Select the location you are using for resources in this hands-on lab
+    - **Location**: Select the location you are using for resources in this hands-on lab
 
-    * **Pricing tier**: Select Standard
+    - **Pricing tier**: Select Standard
 
         ![The Azure Databricks Service blade is displayed, with the values specified above entered into the appropriate fields.](media/azure-databricks-create-workspace.png "Create Azure Databricks workspace")
 
-    * Select **Create**
+    - Select **Create**
 
 ## Task 4: Create Databricks cluster
 
@@ -223,7 +223,7 @@ Fabrikam has provided a Smart Meter Simulator that they use to simulate device r
 
 You are now ready to complete the hands-on lab. Select a guide below to get started, or you can return to the overview page for the lab.
 
-* Complete Hands-on lab
-  * [Step-by-step guide](./HOL-step-by-step-LAB-NAME.md)
-  * [Unguided guide](./HOL-unguided-LAB-NAME.md)
-* Return to [Hands-on lab readme](./readme.md)
+- Complete Hands-on lab
+  - [Step-by-step guide](./HOL-step-by-step-LAB-NAME.md)
+  - [Unguided guide](./HOL-unguided-LAB-NAME.md)
+- Return to [Hands-on lab readme](./readme.md)

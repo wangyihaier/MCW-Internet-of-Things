@@ -19,32 +19,32 @@ If you have not yet completed the steps to set up your environment in [Before th
 
 ## Contents
 
-* [Abstract](#abstract)
-* [Overview](#overview)
-* [Solution architecture](#solution-architecture)
-* [Requirements](#requirements)
-* [Exercise 1: IoT Hub provisioning](#exercise-1-iot-hub-provisioning)
-  * [Task 1: Provision IoT Hub](#task-1-provision-iot-hub)
-  * [Task 2: Configure the Smart Meter Simulator](#task-2-configure-the-smart-meter-simulator)
-* [Exercise 2: Completing the Smart Meter Simulator](#exercise-2-completing-the-smart-meter-simulator)
-  * [Task 1: Implement device management with the IoT Hub](#task-1-implement-device-management-with-the-iot-hub)
-  * [Task 2: Implement the communication of telemetry with IoT Hub](#task-2-implement-the-communication-of-telemetry-with-iot-hub)
-  * [Task 3: Verify device registration and telemetry](#task-3-verify-device-registration-and-telemetry)
-* [Exercise 3: Hot path data processing with Stream Analytics](#exercise-3-hot-path-data-processing-with-stream-analytics)
-  * [Task 1: Create a Stream Analytics job for hot path processing to Power BI](#task-1-create-a-stream-analytics-job-for-hot-path-processing-to-power-bi)
-  * [Task 2: Visualize hot data with Power BI](#task-2-visualize-hot-data-with-power-bi)
-* [Exercise 4: Cold path data processing with Azure Databricks](#exercise-4-cold-path-data-processing-with-azure-databricks)
-  * [Task 1: Create a storage account](task-1-create-a-storage-account)
-  * [Task 2: Create the Stream Analytics job for cold path processing](#task-2-create-the-stream-analytics-job-for-cold-path-processing)
-  * [Task 3: Verify CSV files in blob storage](#task-3-verify-csv-files-in-blob-storage)
-  * [Task 4: Process with Spark SQL](#task-4-process-with-spark-sql)
-* [Exercise 5: Reporting device outages with IoT Hub Operations Monitoring](#exercise-5-reporting-device-outages-with-iot-hub-operations-monitoring)
-  * [Task 1: Enable verbose connection monitoring on the IoT Hub](#task-1-enable-verbose-connection-monitoring-on-the-iot-hub)
-  * [Task 2: Collect device connection telemetry with the hot path Stream Analytics job](#task-2-collect-device-connection-telemetry-with-the-hot-path-stream-analytics-job)
-  * [Task 3: Test the device outage notifications](#task-3-test-the-device-outage-notifications)
-  * [Task 4: Visualize disconnected devices with Power BI](#task-4-visualize-disconnected-devices-with-power-bi)
-* [After the hands-on lab](#after-the-hands-on-lab)
-  * [Task 1: Delete the resource group](#task-1-delete-the-resource-group)
+- [Abstract](#abstract)
+- [Overview](#overview)
+- [Solution architecture](#solution-architecture)
+- [Requirements](#requirements)
+- [Exercise 1: IoT Hub provisioning](#exercise-1-iot-hub-provisioning)
+  - [Task 1: Provision IoT Hub](#task-1-provision-iot-hub)
+  - [Task 2: Configure the Smart Meter Simulator](#task-2-configure-the-smart-meter-simulator)
+- [Exercise 2: Completing the Smart Meter Simulator](#exercise-2-completing-the-smart-meter-simulator)
+  - [Task 1: Implement device management with the IoT Hub](#task-1-implement-device-management-with-the-iot-hub)
+  - [Task 2: Implement the communication of telemetry with IoT Hub](#task-2-implement-the-communication-of-telemetry-with-iot-hub)
+  - [Task 3: Verify device registration and telemetry](#task-3-verify-device-registration-and-telemetry)
+- [Exercise 3: Hot path data processing with Stream Analytics](#exercise-3-hot-path-data-processing-with-stream-analytics)
+  - [Task 1: Create a Stream Analytics job for hot path processing to Power BI](#task-1-create-a-stream-analytics-job-for-hot-path-processing-to-power-bi)
+  - [Task 2: Visualize hot data with Power BI](#task-2-visualize-hot-data-with-power-bi)
+- [Exercise 4: Cold path data processing with Azure Databricks](#exercise-4-cold-path-data-processing-with-azure-databricks)
+  - [Task 1: Create a storage account](task-1-create-a-storage-account)
+  - [Task 2: Create the Stream Analytics job for cold path processing](#task-2-create-the-stream-analytics-job-for-cold-path-processing)
+  - [Task 3: Verify CSV files in blob storage](#task-3-verify-csv-files-in-blob-storage)
+  - [Task 4: Process with Spark SQL](#task-4-process-with-spark-sql)
+- [Exercise 5: Reporting device outages with IoT Hub Operations Monitoring](#exercise-5-reporting-device-outages-with-iot-hub-operations-monitoring)
+  - [Task 1: Enable verbose connection monitoring on the IoT Hub](#task-1-enable-verbose-connection-monitoring-on-the-iot-hub)
+  - [Task 2: Collect device connection telemetry with the hot path Stream Analytics job](#task-2-collect-device-connection-telemetry-with-the-hot-path-stream-analytics-job)
+  - [Task 3: Test the device outage notifications](#task-3-test-the-device-outage-notifications)
+  - [Task 4: Visualize disconnected devices with Power BI](#task-4-visualize-disconnected-devices-with-power-bi)
+- [After the hands-on lab](#after-the-hands-on-lab)
+  - [Task 1: Delete the resource group](#task-1-delete-the-resource-group)
 
 ## Abstract
 
@@ -70,12 +70,12 @@ Other alternatives for processing of the ingested telemetry would be to use an H
 
 ## Requirements
 
-* Microsoft Azure subscription must be pay-as-you-go or MSDN
-  * Trial subscriptions will not work
-* A virtual machine configured with:
-  * Visual Studio Community 2017 15.6 or later
-  * Azure SDK 2.9 or later (Included with Visual Studio 2017)
-* A running Azure Databricks cluster (see [Before the hands-on lab](#before-the-hands-on-lab))
+- Microsoft Azure subscription must be pay-as-you-go or MSDN
+  - Trial subscriptions will not work
+- A virtual machine configured with:
+  - Visual Studio Community 2017 15.6 or later
+  - Azure SDK 2.9 or later (Included with Visual Studio 2017)
+- A running Azure Databricks cluster (see [Before the hands-on lab](#before-the-hands-on-lab))
 
 ## Exercise 1: IoT Hub provisioning
 
@@ -89,13 +89,13 @@ In these steps, you will provision an instance of IoT Hub.
 
 #### Tasks to complete
 
-* Provision an IoT Hub instance.
-* Determine and take note of the connection strings required for 1) full control and 2) read/write access to the device registry.
+- Provision an IoT Hub instance.
+- Determine and take note of the connection strings required for 1) full control and 2) read/write access to the device registry.
 
 #### Exit criteria
 
-* You have an IoT Hub provisioned in your Azure subscription.
-* You have properly selected the connection strings having appropriate permissions.
+- You have an IoT Hub provisioned in your Azure subscription.
+- You have properly selected the connection strings having appropriate permissions.
 
 ### Task 2: Configure the Smart Meter Simulator
 
@@ -103,11 +103,11 @@ If you want to save this connection string with your project (in case you stop d
 
 #### Tasks to complete
 
-* Edit the Fabrikam Smart Meter Simulator so that the IoT connection string text box has a value of your connection string to the IoT Hub having full permissions.
+- Edit the Fabrikam Smart Meter Simulator so that the IoT connection string text box has a value of your connection string to the IoT Hub having full permissions.
 
 #### Exit criteria
 
-* Your connection string should now be present every time you run the Smart Meter Simulator (in subsequent steps).
+- Your connection string should now be present every time you run the Smart Meter Simulator (in subsequent steps).
 
 ## Exercise 2: Completing the Smart Meter Simulator
 
@@ -119,35 +119,35 @@ Fabrikam has left you a partially completed sample in the form of the Smart Mete
 
 #### Tasks to complete
 
-* In the solution, open `DeviceManager.cs`, and complete the lines of code below each of the `TODO` comments.
+- In the solution, open `DeviceManager.cs`, and complete the lines of code below each of the `TODO` comments.
 
 #### Exit criteria
 
-* There are sixteen `TODOs` in this file, and you should have completed all of them. You can use the Task List to see all the tasks at a glance. From the **View** menu, click **Task List**. There you will see a list of `TODO` tasks, where each task represents one line of code that needs to be completed.
+- There are sixteen `TODOs` in this file, and you should have completed all of them. You can use the Task List to see all the tasks at a glance. From the **View** menu, click **Task List**. There you will see a list of `TODO` tasks, where each task represents one line of code that needs to be completed.
 
 ### Task 2: Implement the communication of telemetry with the IoT Hub
 
 #### Tasks to complete
 
-* In the solution, open Sensor.cs`, and complete the lines of code below each of the `TODO` comments.
+- In the solution, open Sensor.cs`, and complete the lines of code below each of the `TODO` comments.
 
 #### Exit criteria
 
-* There are four `TODOs` in this file, and you should have completed all of them. You can use the Task List to see all the tasks at a glance. From the **View** menu, click **Task List**. There you will see a list of `TODO` tasks, where each task represents one line of code that needs to be completed.
+- There are four `TODOs` in this file, and you should have completed all of them. You can use the Task List to see all the tasks at a glance. From the **View** menu, click **Task List**. There you will see a list of `TODO` tasks, where each task represents one line of code that needs to be completed.
 
 ### Task 3: Verify device registration and telemetry
 
 #### Tasks to complete
 
-* Build and run the Smart Meter Simulator.
-* Register all devices.
-* By clicking on 1--10 of the windows within the building in the app, select the devices to install (they should turn yellow) and then activate them (after which they turn green).
-* Use Device Explorer in the IoT blade to view the list of registered devices. How many of them have been activated in the list? How can you tell?
-* Connect the activated devices and observe that they are sending telemetry.
+- Build and run the Smart Meter Simulator.
+- Register all devices.
+- By clicking on 1--10 of the windows within the building in the app, select the devices to install (they should turn yellow) and then activate them (after which they turn green).
+- Use Device Explorer in the IoT blade to view the list of registered devices. How many of them have been activated in the list? How can you tell?
+- Connect the activated devices and observe that they are sending telemetry.
 
 #### Exit criteria
 
-* You should have the Smart Meter Simulator running and actively transmitting telemetry.
+- You should have the Smart Meter Simulator running and actively transmitting telemetry.
 
 ## Exercise 3: Hot path data processing with Stream Analytics
 
@@ -159,24 +159,24 @@ Fabrikam would like to visualize the "hot" data showing the average temperature 
 
 #### Tasks to complete
 
-* Create an Azure Stream Analytics job that reads the JSON/UTF8 serialized telemetry from your IoT Hub and writes to Power BI.
-* Query the input data over a 5-minute tumbling window.
+- Create an Azure Stream Analytics job that reads the JSON/UTF8 serialized telemetry from your IoT Hub and writes to Power BI.
+- Query the input data over a 5-minute tumbling window.
 
 #### Exit criteria
 
-* Verify that your Stream Analytics job is receiving and processing telemetry from your Smart Meter Simulator instance.
+- Verify that your Stream Analytics job is receiving and processing telemetry from your Smart Meter Simulator instance.
 
 ### Task 2: Visualize hot data with Power BI
 
 #### Tasks to complete
 
-* Using Power BI create a report that contains a Column Chart visualization that on the x-axis has the device IDs and on the y-axis has the maximum value of the average temperature reported.
-* Add another Column Chart visualization that plots the minimum value of the average temperature by device.
-* Add a Table visualization that lists a table with a device ID and an average of the temperature columns.
+- Using Power BI create a report that contains a Column Chart visualization that on the x-axis has the device IDs and on the y-axis has the maximum value of the average temperature reported.
+- Add another Column Chart visualization that plots the minimum value of the average temperature by device.
+- Add a Table visualization that lists a table with a device ID and an average of the temperature columns.
 
 #### Exit criteria
 
-* You can view the report in Reading View and click one device data point to highlight it across all three of the visualizations.
+- You can view the report in Reading View and click one device data point to highlight it across all three of the visualizations.
 
 ## Exercise 4: Cold path data processing with HDInsight Spark
 
@@ -188,11 +188,11 @@ Fabrikam would like to be able to capture all the "cold" data into scalable stor
 
 #### Task to complete
 
-* Create a storage account for storing blobs exported from your cold path Stream Analytics job.
+- Create a storage account for storing blobs exported from your cold path Stream Analytics job.
 
 #### Exit criteria
 
-* You have a blob storage account in Azure
+- You have a blob storage account in Azure
 
 ### Task 2: Create the Stream Analytics job for cold path processing
 
@@ -200,22 +200,22 @@ To capture all metrics for the cold path, set up another Stream Analytics job th
 
 #### Tasks to complete
 
-* Create an Azure Stream Analytics job that reads from your IoT Hub the JSON/UTF8 serialized telemetry and writes to Azure Storage blobs as CSV files.
-* Query the input data so that all data points are written raw to storage without any filtering or summarization.
+- Create an Azure Stream Analytics job that reads from your IoT Hub the JSON/UTF8 serialized telemetry and writes to Azure Storage blobs as CSV files.
+- Query the input data so that all data points are written raw to storage without any filtering or summarization.
 
 #### Exit criteria
 
-* Verify that your Stream Analytics job is receiving and processing telemetry from your Smart Meter Simulator instance.
+- Verify that your Stream Analytics job is receiving and processing telemetry from your Smart Meter Simulator instance.
 
 ### Task 3: Verify CSV files in Blob storage
 
 #### Tasks to complete
 
-* Locate the CSV file created in Blob storage.
+- Locate the CSV file created in Blob storage.
 
 #### Exit criteria
 
-* You have taken note of the container relative path to the CSV file as it appears in Blob storage.
+- You have taken note of the container relative path to the CSV file as it appears in Blob storage.
 
 ### Task 4: Process with Spark SQL
 
@@ -223,11 +223,11 @@ In this task, you will create a new Databricks notebook to perform some processi
 
 #### Tasks to complete
 
-* Process the data by using a Databricks notebook to summarize the data by device ID, count of events per device, and the average temperature per device.
+- Process the data by using a Databricks notebook to summarize the data by device ID, count of events per device, and the average temperature per device.
 
 #### Exit criteria
 
-* You can visualize the results of the query in the Databricks notebook using a column chart that displays the ID as the x-axis and the average of the averageTemp as the y-axis.
+- You can visualize the results of the query in the Databricks notebook using a column chart that displays the ID as the x-axis and the average of the averageTemp as the y-axis.
 
 ## Exercise 5: Reporting device outages with IoT Hub Operations Monitoring
 
@@ -241,11 +241,11 @@ To keep track of device connects and disconnects, we first need to enable verbos
 
 #### Tasks to complete
 
-* Enable verbose connection monitoring.
+- Enable verbose connection monitoring.
 
 #### Exit criteria
 
-* You have enabled connection monitoring via IoT Hub Operations Monitoring, collecting all device connect and disconnect events.
+- You have enabled connection monitoring via IoT Hub Operations Monitoring, collecting all device connect and disconnect events.
 
 ### Task 2: Collect device connection telemetry with the hot path Stream Analytics job
 
@@ -253,13 +253,13 @@ Now that the device connections are being logged, update your hot path Stream An
 
 #### Tasks to complete
 
-* Update your hot path Stream Analytics job (the first one you created) with a new input that ingests device telemetry from Operations Monitoring.
-* Create a query that joins all connected and disconnected events with a `DATEDIFF` function that only returns devices with a disconnect event, but no reconnect event within 120 seconds.
-* Output the events to Power BI.
+- Update your hot path Stream Analytics job (the first one you created) with a new input that ingests device telemetry from Operations Monitoring.
+- Create a query that joins all connected and disconnected events with a `DATEDIFF` function that only returns devices with a disconnect event, but no reconnect event within 120 seconds.
+- Output the events to Power BI.
 
 #### Exit criteria
 
-* Verify that your Stream Analytics job is still receiving and processing telemetry from your Smart Meter Simulator instance, and that new events are being captured after the devices have been disconnected for at least 2 minutes.
+- Verify that your Stream Analytics job is still receiving and processing telemetry from your Smart Meter Simulator instance, and that new events are being captured after the devices have been disconnected for at least 2 minutes.
 
 ### Task 3: Test the device outage notifications
 
@@ -267,22 +267,22 @@ Register and activate a few devices on the Smart Meter Simulator, then connect t
 
 #### Tasks to complete
 
-* Register and activate a few devices on the Smart Meter Simulator, then connect them.
-* Deactivate the devices without reconnecting, allowing them to show up in the device outage report we will create in the next task.
+- Register and activate a few devices on the Smart Meter Simulator, then connect them.
+- Deactivate the devices without reconnecting, allowing them to show up in the device outage report we will create in the next task.
 
 #### Exit criteria
 
-* Devices have been connected, and unregistered for more than 120 seconds, so they will appear on the outage report.
+- Devices have been connected, and unregistered for more than 120 seconds, so they will appear on the outage report.
 
 ### Task 4: Visualize disconnected devices with Power BI
 
 #### Tasks to complete
 
-* Create a Table visualization in Power BI, referencing the new device outage dataset created by the Stream Analytics output that was configured in Task 2.
+- Create a Table visualization in Power BI, referencing the new device outage dataset created by the Stream Analytics output that was configured in Task 2.
 
 #### Exit criteria
 
-* Devices that connected, then were disconnected for longer than 120 seconds via the Smart Meter Simulator should be listed in the Table visualization in Power BI. Use the column headings to sort the devices by Device Id or Timestamp.
+- Devices that connected, then were disconnected for longer than 120 seconds via the Smart Meter Simulator should be listed in the Table visualization in Power BI. Use the column headings to sort the devices by Device Id or Timestamp.
 
 ## After the hands-on lab
 

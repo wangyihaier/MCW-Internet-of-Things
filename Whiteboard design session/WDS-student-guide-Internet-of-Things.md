@@ -15,16 +15,16 @@ Updated June 2018
 
 ## Contents
 
-* [Abstract](#abstract)
-* [Step 1: Review the customer case study](#step-1-review-the-customer-case-study)
-  * [Customer situation](#customer-situation)
-  * [Customer needs](#customer-needs)
-  * [Customer objections](#customer-objections)
-  * [Infographic for common scenarios](#infographic-for-common-scenarios)
-* [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution)
-* [Step 3: Present the solution](#step-3-present-the-solution)
-* [Wrap-up](#wrap-up)
-* [Additional references](#additional-references)
+- [Abstract](#abstract)
+- [Step 1: Review the customer case study](#step-1-review-the-customer-case-study)
+  - [Customer situation](#customer-situation)
+  - [Customer needs](#customer-needs)
+  - [Customer objections](#customer-objections)
+  - [Infographic for common scenarios](#infographic-for-common-scenarios)
+- [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution)
+- [Step 3: Present the solution](#step-3-present-the-solution)
+- [Wrap-up](#wrap-up)
+- [Additional references](#additional-references)
 
 ## Abstract
 
@@ -111,16 +111,16 @@ Time frame: 60 minutes
 1. What is the anticipated volume in messages per second and in megabytes (MB) per second that Fabrikam will need to support given their customer base?
 2. How would you propose they ingest that quantity of messages? What Azure service would you recommend and why? At what initial scale?
 3. Diagram the device to cloud communication.
-    * What protocol would they use in sending telemetry from the smart meter devices to the service used for message ingest?
-    * What is the format of the message sent to the ingest endpoint?
-    * What service endpoints do the devices talk to?
+    - What protocol would they use in sending telemetry from the smart meter devices to the service used for message ingest?
+    - What is the format of the message sent to the ingest endpoint?
+    - What service endpoints do the devices talk to?
 
 #### Device provisioning
 
 1. Keeping the Azure service, you selected for ingest of telemetry data from the smart meters in mind, diagram how Fabrikam should handle the following three flows related to the provisioning of new smart meters at a customer site:
-    * Create device identity
-    * Install device
-    * Activate device
+    - Create device identity
+    - Install device
+    - Activate device
 
 #### "Hot" path processing
 
@@ -128,12 +128,12 @@ The "hot" path for Fabrikam is defined as the processing of the data as it arriv
 
 1. How would you select out the "hot" data? Choosing between the stream processing options Azure Stream Analytics and Storm on HDInsight, which would you recommend for this scenario and why?
 2. Explain how you could build the solution using Azure Stream Analytics:
-    * What type of window would you use? What does your query look like?
-    * How many Streaming Units would you need? Explain how you calculated it.
+    - What type of window would you use? What does your query look like?
+    - How many Streaming Units would you need? Explain how you calculated it.
 3. Explain how you could build the solution using Storm on HDInsight:
-    * What are the high-level steps you would need to take?
+    - What are the high-level steps you would need to take?
 4. How would you store the "hot" data for consumption by the web dashboard?
-    * Estimate the write throughput you would require. Does your selected store support it?
+    - Estimate the write throughput you would require. Does your selected store support it?
 
 #### "Cold" path processing
 
