@@ -44,13 +44,13 @@ Other alternatives for processing of the ingested telemetry would be to use an H
 
 Before attending the hands-on lab workshop, you should set up your environment for use in the rest of the hands-on lab.
 
-You should follow all the steps provided in the [Before the hands-on lab](./Setup.md) section to prepare your environment before attending the hands-on lab. Failure to complete the Before the hands-on lab setup may result in an inability to complete the lab with in the time allowed.
+You should follow all the steps provided in the [Before the hands-on lab](./Before%20the%20HOL%20-%20Internet%20of%20Things.md) section to prepare your environment before attending the hands-on lab. Failure to complete the Before the hands-on lab setup may result in an inability to complete the lab with in the time allowed.
 
 ## Hands-on lab
 
 Select the guide you are using to complete the Hands-on lab below.
 
-- [Step-by-step guide](./HOL-step-by-step-Intelligent-vending-machines.md)
+- [Step-by-step guide](./HOL%20step-by-step%20-%20Internet%20of%20Things.md)
   - Provides detailed, step-by-step instructions for completing the lab.
-- [Unguided](./HOL-uguided-Intelligent-vending-machines.md)
+- [Unguided](./HOL%20unguided%20-%20Internet%20of%20Things.md)
   - This guide provides minimal instruction, and assumes a high-level of knowledge about the technologies used in this lab. This should typically only be used if you are doing this as part of a group.

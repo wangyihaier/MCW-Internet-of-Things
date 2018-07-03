@@ -30,7 +30,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
   - [Before the whiteboard design session: How to prepare](#before-the-whiteboard-design-session-how-to-prepare)
   - [During the whiteboard design session: Tips for an effective whiteboard design session](#during-the-whiteboard-design-session-tips-for-an-effective-whiteboard-design-session)
 - [Internet of Things whiteboard design session student guide](#internet-of-things-whiteboard-design-session-student-guide)
-  - [Abstract](#abstract-and-learning-objectives)
+  - [Abstract and learning objectives](#abstract-and-learning-objectives)
   - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study)
     - [Customer situation](#customer-situation)
     - [Customer needs](#customer-needs)
@@ -136,7 +136,7 @@ When participants are doing activities, you can **look ahead to refresh your mem
 
 ## Internet of Things whiteboard design session student guide
 
-### Abstract
+### Abstract and learning objectives
 
 In this whiteboard design session, you will work with a group to design an implementation of an end-to-end IoT solution simulating high velocity data emitted from smart meters and analyzed in Azure. You will design a lambda architecture, filtering a subset of the telemetry data for real-time visualization on the hot path, and storing all the data in long-term storage for the cold path.
 

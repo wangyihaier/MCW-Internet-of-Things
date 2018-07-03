@@ -1,52 +1,64 @@
-![Microsoft Cloud Workshop](../media/ms-cloud-workshop.png "Microsoft Cloud Workshop")
+![Microsoft Cloud Workshops]](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
+
+<div class="MCWHeader1">
+Internet of Things
+</div>
+
+<div class="MCWHeader2">
+Hands-on lab unguided
+</div>
+
+<div class="MCWHeader3">
+June 2018
+</div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
 
 Microsoft may have patents, patent applications, trademarks, copyrights, or other intellectual property rights covering subject matter in this document. Except as expressly provided in any written license agreement from Microsoft, the furnishing of this document does not give you any license to these patents, trademarks, copyrights, or other intellectual property.
 
 The names of manufacturers, products, or URLs are provided for informational purposes only and Microsoft makes no representations and warranties, either expressed, implied, or statutory, regarding these manufacturers or the use of the products with any Microsoft technologies. The inclusion of a manufacturer or product does not imply endorsement of Microsoft of the manufacturer or product. Links may be provided to third party sites. Such sites are not under the control of Microsoft and Microsoft is not responsible for the contents of any linked site or any link contained in a linked site, or any changes or updates to such sites. Microsoft is not responsible for webcasting or any other form of transmission received from any linked site. Microsoft is providing these links to you only as a convenience, and the inclusion of any link does not imply endorsement of Microsoft of the site or the products contained therein.
+
 © 2018 Microsoft Corporation. All rights reserved.
 
 Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx> are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
-# Internet of Things hands-on lab unguided
+## Contents
 
-Updated June 2018
+- [Internet of Things hands-on lab unguided](#internet-of-things-hands-on-lab-unguided)
+  - [Abstract and learning objectives](#abstract-and-learning-objectives)
+  - [Overview](#overview)
+  - [Solution architecture](#solution-architecture)
+  - [Requirements](#requirements)
+  - [Exercise 1: IoT Hub provisioning](#exercise-1-iot-hub-provisioning)
+    - [Task 1: Provision IoT Hub](#task-1-provision-iot-hub)
+    - [Task 2: Configure the Smart Meter Simulator](#task-2-configure-the-smart-meter-simulator)
+  - [Exercise 2: Completing the Smart Meter Simulator](#exercise-2-completing-the-smart-meter-simulator)
+    - [Task 1: Implement device management with the IoT Hub](#task-1-implement-device-management-with-the-iot-hub)
+    - [Task 2: Implement the communication of telemetry with IoT Hub](#task-2-implement-the-communication-of-telemetry-with-iot-hub)
+    - [Task 3: Verify device registration and telemetry](#task-3-verify-device-registration-and-telemetry)
+  - [Exercise 3: Hot path data processing with Stream Analytics](#exercise-3-hot-path-data-processing-with-stream-analytics)
+    - [Task 1: Create a Stream Analytics job for hot path processing to Power BI](#task-1-create-a-stream-analytics-job-for-hot-path-processing-to-power-bi)
+    - [Task 2: Visualize hot data with Power BI](#task-2-visualize-hot-data-with-power-bi)
+  - [Exercise 4: Cold path data processing with Azure Databricks](#exercise-4-cold-path-data-processing-with-azure-databricks)
+    - [Task 1: Create a storage account](task-1-create-a-storage-account)
+    - [Task 2: Create the Stream Analytics job for cold path processing](#task-2-create-the-stream-analytics-job-for-cold-path-processing)
+    - [Task 3: Verify CSV files in blob storage](#task-3-verify-csv-files-in-blob-storage)
+    - [Task 4: Process with Spark SQL](#task-4-process-with-spark-sql)
+  - [Exercise 5: Reporting device outages with IoT Hub Operations Monitoring](#exercise-5-reporting-device-outages-with-iot-hub-operations-monitoring)
+    - [Task 1: Enable verbose connection monitoring on the IoT Hub](#task-1-enable-verbose-connection-monitoring-on-the-iot-hub)
+    - [Task 2: Collect device connection telemetry with the hot path Stream Analytics job](#task-2-collect-device-connection-telemetry-with-the-hot-path-stream-analytics-job)
+    - [Task 3: Test the device outage notifications](#task-3-test-the-device-outage-notifications)
+    - [Task 4: Visualize disconnected devices with Power BI](#task-4-visualize-disconnected-devices-with-power-bi)
+  - [After the hands-on lab](#after-the-hands-on-lab)
+    - [Task 1: Delete the resource group](#task-1-delete-the-resource-group)
+
+# Internet of Things hands-on lab unguided
 
 In this hands-on lab, you will implement an end-to-end IoT solution simulating high velocity data emitted from smart meters and analyzed in Azure. You will design a lambda architecture, filtering a subset of the telemetry data for real-time visualization on the hot path, and storing all the data in long-term storage for the cold path. After completing the hands-on lab, you will have a better understanding of implementing device registration with the IoT Hub Device Provisioning Service and visualizing hot data with Power BI.
 
-If you have not yet completed the steps to set up your environment in [Before the hands-on lab](./Setup.md), you will need to do that before proceeding.
+If you have not yet completed the steps to set up your environment in [Before the hands-on lab](./Before%20the%20HOL%20-%20Internet%20of%20Things.md), you will need to do that before proceeding.
 
-## Contents
-
-- [Abstract](#abstract)
-- [Overview](#overview)
-- [Solution architecture](#solution-architecture)
-- [Requirements](#requirements)
-- [Exercise 1: IoT Hub provisioning](#exercise-1-iot-hub-provisioning)
-  - [Task 1: Provision IoT Hub](#task-1-provision-iot-hub)
-  - [Task 2: Configure the Smart Meter Simulator](#task-2-configure-the-smart-meter-simulator)
-- [Exercise 2: Completing the Smart Meter Simulator](#exercise-2-completing-the-smart-meter-simulator)
-  - [Task 1: Implement device management with the IoT Hub](#task-1-implement-device-management-with-the-iot-hub)
-  - [Task 2: Implement the communication of telemetry with IoT Hub](#task-2-implement-the-communication-of-telemetry-with-iot-hub)
-  - [Task 3: Verify device registration and telemetry](#task-3-verify-device-registration-and-telemetry)
-- [Exercise 3: Hot path data processing with Stream Analytics](#exercise-3-hot-path-data-processing-with-stream-analytics)
-  - [Task 1: Create a Stream Analytics job for hot path processing to Power BI](#task-1-create-a-stream-analytics-job-for-hot-path-processing-to-power-bi)
-  - [Task 2: Visualize hot data with Power BI](#task-2-visualize-hot-data-with-power-bi)
-- [Exercise 4: Cold path data processing with Azure Databricks](#exercise-4-cold-path-data-processing-with-azure-databricks)
-  - [Task 1: Create a storage account](task-1-create-a-storage-account)
-  - [Task 2: Create the Stream Analytics job for cold path processing](#task-2-create-the-stream-analytics-job-for-cold-path-processing)
-  - [Task 3: Verify CSV files in blob storage](#task-3-verify-csv-files-in-blob-storage)
-  - [Task 4: Process with Spark SQL](#task-4-process-with-spark-sql)
-- [Exercise 5: Reporting device outages with IoT Hub Operations Monitoring](#exercise-5-reporting-device-outages-with-iot-hub-operations-monitoring)
-  - [Task 1: Enable verbose connection monitoring on the IoT Hub](#task-1-enable-verbose-connection-monitoring-on-the-iot-hub)
-  - [Task 2: Collect device connection telemetry with the hot path Stream Analytics job](#task-2-collect-device-connection-telemetry-with-the-hot-path-stream-analytics-job)
-  - [Task 3: Test the device outage notifications](#task-3-test-the-device-outage-notifications)
-  - [Task 4: Visualize disconnected devices with Power BI](#task-4-visualize-disconnected-devices-with-power-bi)
-- [After the hands-on lab](#after-the-hands-on-lab)
-  - [Task 1: Delete the resource group](#task-1-delete-the-resource-group)
-
-## Abstract
+## Abstract and learning objectives
 
 In this hands-on lab, you will construct an end-to-end IoT solution simulating high velocity data emitted from smart meters and analyzed in Azure. You will design a lambda architecture, filtering a subset of the telemetry data for real-time visualization on the hot path, and storing all the data in long-term storage for the cold path.
 
