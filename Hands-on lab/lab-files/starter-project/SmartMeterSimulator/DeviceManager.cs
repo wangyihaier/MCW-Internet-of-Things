@@ -44,7 +44,7 @@ namespace SmartMeterSimulator
 
 
             //TODO: 2.Create new device
-            //Device device = ...; 
+            //Device device = ...;
 
             //TODO: 3.Initialize device with a status of Disabled 
             //set status here...
@@ -174,7 +174,6 @@ namespace SmartMeterSimulator
 
             //TODO: 15.Remove the device from the Registry
             //await registryManager...;
-
         }
 
         /// <summary>
