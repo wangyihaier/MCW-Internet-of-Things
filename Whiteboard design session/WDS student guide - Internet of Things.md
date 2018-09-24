@@ -1,4 +1,4 @@
-![](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
+![](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png 'Microsoft Cloud Workshops')
 
 <div class="MCWHeader1">
 Internet of Things
@@ -9,7 +9,7 @@ Whiteboard design session student guide
 </div>
 
 <div class="MCWHeader3">
-June 2018
+September 2018
 </div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
@@ -20,7 +20,7 @@ The names of manufacturers, products, or URLs are provided for informational pur
 
 © 2018 Microsoft Corporation. All rights reserved.
 
-Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx> are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
+Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellectualproperty/Trademarks/Usage/General.aspx> are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
 ## Contents
 
@@ -58,7 +58,7 @@ At the end of this whiteboard design session, you will be better able to design 
 
 ### Customer situation
 
-Fabrikam provides services and smart meters for enterprise energy (electrical power) management. Their "*You-Left-The-Light-On*" service enables the enterprise to understand their energy consumption, not just as monthly totals, but also with a more detailed breakdown providing kilowatt-hours consumed by day. These reports are used by the enterprise to identify operational patterns and address spikes that could be mitigated with better procedures.
+Fabrikam provides services and smart meters for enterprise energy (electrical power) management. Their "_You-Left-The-Light-On_" service enables the enterprise to understand their energy consumption, not just as monthly totals, but also with a more detailed breakdown providing kilowatt-hours consumed by day. These reports are used by the enterprise to identify operational patterns and address spikes that could be mitigated with better procedures.
 
 Today, Fabrikam provides this information as printed reports that are mailed to customer enterprises monthly. However, regulations are changing and are encouraging Fabrikam to upgrade their offering and increase their market share.
 
@@ -95,7 +95,7 @@ In addition to collecting telemetry, Fabrikam not only seeks to gain competitive
 
 ### Infographic of common scenarios
 
-![Screenshot of a sample Internet of Things workflow, which is broken into On-Premises and Azure services.](./media/common-scenarios.png "Common Internet of Things scenarios")
+![Screenshot of a sample Internet of Things workflow, which is broken into On-Premises and Azure services.](./media/common-scenarios.png 'Common Internet of Things scenarios')
 
 ## Step 2: Design a proof of concept solution
 
@@ -123,16 +123,16 @@ Time frame: 60 minutes
 1. What is the anticipated volume in messages per second and in megabytes (MB) per second that Fabrikam will need to support given their customer base?
 2. How would you propose they ingest that quantity of messages? What Azure service would you recommend and why? At what initial scale?
 3. Diagram the device to cloud communication.
-    - What protocol would they use in sending telemetry from the smart meter devices to the service used for message ingest?
-    - What is the format of the message sent to the ingest endpoint?
-    - What service endpoints do the devices talk to?
+   - What protocol would they use in sending telemetry from the smart meter devices to the service used for message ingest?
+   - What is the format of the message sent to the ingest endpoint?
+   - What service endpoints do the devices talk to?
 
 #### Device provisioning
 
 1. Keeping the Azure service, you selected for ingest of telemetry data from the smart meters in mind, diagram how Fabrikam should handle the following three flows related to the provisioning of new smart meters at a customer site:
-    - Create device identity
-    - Install device
-    - Activate device
+   - Create device identity
+   - Install device
+   - Activate device
 
 #### "Hot" path processing
 
@@ -140,12 +140,12 @@ The "hot" path for Fabrikam is defined as the processing of the data as it arriv
 
 1. How would you select out the "hot" data? Choosing between the stream processing options Azure Stream Analytics and Storm on HDInsight, which would you recommend for this scenario and why?
 2. Explain how you could build the solution using Azure Stream Analytics:
-    - What type of window would you use? What does your query look like?
-    - How many Streaming Units would you need? Explain how you calculated it.
+   - What type of window would you use? What does your query look like?
+   - How many Streaming Units would you need? Explain how you calculated it.
 3. Explain how you could build the solution using Storm on HDInsight:
-    - What are the high-level steps you would need to take?
+   - What are the high-level steps you would need to take?
 4. How would you store the "hot" data for consumption by the web dashboard?
-    - Estimate the write throughput you would require. Does your selected store support it?
+   - Estimate the write throughput you would require. Does your selected store support it?
 
 #### "Cold" path processing
 
@@ -194,16 +194,17 @@ Tables reconvene with the larger group to hear a SME share the preferred solutio
 
 ## Additional references
 
-|    |            |
-|----------|-------------|
-| **Description** | **Links** |
-| IoT Hubs | <https://azure.microsoft.com/en-us/documentation/articles/iot-hub-devguide/> |
-| IoT Hub Message Routing | <https://docs.microsoft.com/en-us/azure/iot-hub/tutorial-routing> |
-| Event Hubs | <https://azure.microsoft.com/en-us/documentation/articles/event-hubs-overview/> |
-| Stream Analytics | <https://azure.microsoft.com/en-us/documentation/articles/stream-analytics-introduction/> |
-| Data Factory | <https://azure.microsoft.com/en-us/documentation/articles/data-factory-introduction/> |
-| Storm | <https://azure.microsoft.com/en-us/documentation/articles/hdinsight-storm-overview/> |
-| Hive | <https://azure.microsoft.com/en-us/documentation/articles/hdinsight-use-hive/> |
-| Spark | <https://azure.microsoft.com/en-us/documentation/articles/hdinsight-apache-spark-overview/> |
-| Azure Databricks | <https://azure.microsoft.com/services/databricks/> |
+|                         |                                                                                       |
+| ----------------------- | ------------------------------------------------------------------------------------- |
+| **Description**         | **Links**                                                                             |
+| IoT Hubs                | <https://azure.microsoft.com/documentation/articles/iot-hub-devguide/>                |
+| IoT Hub Message Routing | <https://docs.microsoft.com/azure/iot-hub/tutorial-routing>                           |
+| Event Hubs              | <https://azure.microsoft.com/documentation/articles/event-hubs-overview/>             |
+| Stream Analytics        | <https://azure.microsoft.com/documentation/articles/stream-analytics-introduction/>   |
+| Data Factory            | <https://azure.microsoft.com/documentation/articles/data-factory-introduction/>       |
+| Storm                   | <https://azure.microsoft.com/documentation/articles/hdinsight-storm-overview/>        |
+| Hive                    | <https://azure.microsoft.com/documentation/articles/hdinsight-use-hive/>              |
+| Spark                   | <https://azure.microsoft.com/documentation/articles/hdinsight-apache-spark-overview/> |
+| Azure Databricks        | <https://azure.microsoft.com/services/databricks/>                                    |
+
 |

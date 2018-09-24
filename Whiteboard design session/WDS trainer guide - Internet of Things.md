@@ -1,4 +1,4 @@
-![](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
+![](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png 'Microsoft Cloud Workshops')
 
 <div class="MCWHeader1">
 Internet of Things
@@ -9,7 +9,7 @@ Whiteboard design session trainer guide
 </div>
 
 <div class="MCWHeader3">
-June 2018
+September 2018
 </div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
@@ -20,7 +20,7 @@ The names of manufacturers, products, or URLs are provided for informational pur
 
 © 2018 Microsoft Corporation. All rights reserved.
 
-Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx> are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
+Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellectualproperty/Trademarks/Usage/General.aspx> are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
 ## Contents
 
@@ -156,7 +156,7 @@ At the end of this whiteboard design session, you will be better able to design 
 
 #### Customer situation
 
-Fabrikam provides services and smart meters for enterprise energy (electrical power) management. Their "*You-Left-The-Light-On*" service enables the enterprise to understand their energy consumption, not just as monthly totals, but also with a more detailed breakdown providing kilowatt-hours consumed by day. These reports are used by the enterprise to identify operational patterns and address spikes that could be mitigated with better procedures.
+Fabrikam provides services and smart meters for enterprise energy (electrical power) management. Their "_You-Left-The-Light-On_" service enables the enterprise to understand their energy consumption, not just as monthly totals, but also with a more detailed breakdown providing kilowatt-hours consumed by day. These reports are used by the enterprise to identify operational patterns and address spikes that could be mitigated with better procedures.
 
 Today, Fabrikam provides this information as printed reports that are mailed to customer enterprises monthly. However, regulations are changing and are encouraging Fabrikam to upgrade their offering and increase their market share.
 
@@ -193,7 +193,7 @@ In addition to collecting telemetry, Fabrikam not only seeks to gain competitive
 
 #### Infographic of common scenarios
 
-![Screenshot of a sample Internet of Things workflow, which is broken into On-Premises and Azure services.](./media/common-scenarios.png "Common Internet of Things scenarios")
+![Screenshot of a sample Internet of Things workflow, which is broken into On-Premises and Azure services.](./media/common-scenarios.png 'Common Internet of Things scenarios')
 
 ### Step 2: Design a proof of concept solution
 
@@ -221,16 +221,16 @@ Time frame: 60 minutes
 1. What is the anticipated volume in messages per second and in megabytes (MB) per second that Fabrikam will need to support given their customer base?
 2. How would you propose they ingest that quantity of messages? What Azure service would you recommend and why? At what initial scale?
 3. Diagram the device to cloud communication.
-    - What protocol would they use in sending telemetry from the smart meter devices to the service used for message ingest?
-    - What is the format of the message sent to the ingest endpoint?
-    - What service endpoints do the devices talk to?
+   - What protocol would they use in sending telemetry from the smart meter devices to the service used for message ingest?
+   - What is the format of the message sent to the ingest endpoint?
+   - What service endpoints do the devices talk to?
 
 ##### Device provisioning
 
 1. Keeping the Azure service, you selected for ingest of telemetry data from the smart meters in mind, diagram how Fabrikam should handle the following three flows related to the provisioning of new smart meters at a customer site:
-    - Create device identity
-    - Install device
-    - Activate device
+   - Create device identity
+   - Install device
+   - Activate device
 
 ##### "Hot" path processing
 
@@ -238,12 +238,12 @@ The "hot" path for Fabrikam is defined as the processing of the data as it arriv
 
 1. How would you select out the "hot" data? Choosing between the stream processing options Azure Stream Analytics and Storm on HDInsight, which would you recommend for this scenario and why?
 2. Explain how you could build the solution using Azure Stream Analytics:
-    - What type of window would you use? What does your query look like?
-    - How many Streaming Units would you need? Explain how you calculated it.
+   - What type of window would you use? What does your query look like?
+   - How many Streaming Units would you need? Explain how you calculated it.
 3. Explain how you could build the solution using Storm on HDInsight:
-    - What are the high-level steps you would need to take?
+   - What are the high-level steps you would need to take?
 4. How would you store the "hot" data for consumption by the web dashboard?
-    - Estimate the write throughput you would require. Does your selected store support it?
+   - Estimate the write throughput you would require. Does your selected store support it?
 
 ##### "Cold" path processing
 
@@ -292,18 +292,19 @@ Tables reconvene with the larger group to hear a SME share the preferred solutio
 
 ### Additional references
 
-|    |            |
-|----------|-------------|
-| **Description** | **Links** |
-| IoT Hubs | <https://azure.microsoft.com/en-us/documentation/articles/iot-hub-devguide/> |
-| IoT Hub Message Routing | <https://docs.microsoft.com/en-us/azure/iot-hub/tutorial-routing> |
-| Event Hubs | <https://azure.microsoft.com/en-us/documentation/articles/event-hubs-overview/> |
-| Stream Analytics | <https://azure.microsoft.com/en-us/documentation/articles/stream-analytics-introduction/> |
-| Data Factory | <https://azure.microsoft.com/en-us/documentation/articles/data-factory-introduction/> |
-| Storm | <https://azure.microsoft.com/en-us/documentation/articles/hdinsight-storm-overview/> |
-| Hive | <https://azure.microsoft.com/en-us/documentation/articles/hdinsight-use-hive/> |
-| Spark | <https://azure.microsoft.com/en-us/documentation/articles/hdinsight-apache-spark-overview/> |
-| Azure Databricks | <https://azure.microsoft.com/services/databricks/> |
+|                         |                                                                                       |
+| ----------------------- | ------------------------------------------------------------------------------------- |
+| **Description**         | **Links**                                                                             |
+| IoT Hubs                | <https://azure.microsoft.com/documentation/articles/iot-hub-devguide/>                |
+| IoT Hub Message Routing | <https://docs.microsoft.com/azure/iot-hub/tutorial-routing>                           |
+| Event Hubs              | <https://azure.microsoft.com/documentation/articles/event-hubs-overview/>             |
+| Stream Analytics        | <https://azure.microsoft.com/documentation/articles/stream-analytics-introduction/>   |
+| Data Factory            | <https://azure.microsoft.com/documentation/articles/data-factory-introduction/>       |
+| Storm                   | <https://azure.microsoft.com/documentation/articles/hdinsight-storm-overview/>        |
+| Hive                    | <https://azure.microsoft.com/documentation/articles/hdinsight-use-hive/>              |
+| Spark                   | <https://azure.microsoft.com/documentation/articles/hdinsight-apache-spark-overview/> |
+| Azure Databricks        | <https://azure.microsoft.com/services/databricks/>                                    |
+
 |
 
 ## Internet of Things whiteboard design session trainer guide
@@ -349,144 +350,145 @@ Tables reconvene with the larger group to hear a SME share the preferred solutio
 
 1. Without getting into the details (the following sections will address the details), diagram your initial vision for handling the top-level requirements for data ingest, hot and cold path processing, storage of telemetry data, and reporting. You will refine this diagram as you proceed.
 
-    After speaking with its supportive team at Microsoft, Fabrikam decided that Azure would in fact be the right choice for their platform. They decided on a solution that at a high level appears as follows:
+   After speaking with its supportive team at Microsoft, Fabrikam decided that Azure would in fact be the right choice for their platform. They decided on a solution that at a high level appears as follows:
 
-    ![Diagram of preferred solution, displaying smart meter telemetry being ingested into IoT Hub, then processed via Stream Analytics into hot and cold paths. More about the diagram is described in the text following this diagram.](./media/preferred-solution-architecture.png "Preferred solution architecture")
+   ![Diagram of preferred solution, displaying smart meter telemetry being ingested into IoT Hub, then processed via Stream Analytics into hot and cold paths. More about the diagram is described in the text following this diagram.](./media/preferred-solution-architecture.png 'Preferred solution architecture')
 
-    Messages are ingested from the Smart Meters via IoT Hub and temporarily stored there. A Stream Analytics job pulls telemetry messages from IoT Hub and sends the messages to two different destinations. There are two Stream Analytics jobs, one that retrieves all messages and sends them to Blob Storage (the cold path), and another that selects out only the important events needed for reporting in real time (the hot path) from the website hosted in Azure Web Apps. Data entering the hot path will be reported on using Power BI visualizations and reports. For the cold path, Azure Databricks can be used to apply the batch computation needed for the reports at scale. The entire cold-path processing pipeline could be coordinated with Azure Data Factory.
+   Messages are ingested from the Smart Meters via IoT Hub and temporarily stored there. A Stream Analytics job pulls telemetry messages from IoT Hub and sends the messages to two different destinations. There are two Stream Analytics jobs, one that retrieves all messages and sends them to Blob Storage (the cold path), and another that selects out only the important events needed for reporting in real time (the hot path) from the website hosted in Azure Web Apps. Data entering the hot path will be reported on using Power BI visualizations and reports. For the cold path, Azure Databricks can be used to apply the batch computation needed for the reports at scale. The entire cold-path processing pipeline could be coordinated with Azure Data Factory.
 
-    Other alternatives for processing of the ingested telemetry would be to use an HDInsight Storm cluster, a WebJob running the EventProcessorHost in place of Stream Analytics, or HDInsight running with Spark streaming. Depending on the type of message filtering being conducted for hot and cold stream separation, IoT Hub Message Routing might also be used, but this has the limitation that messages follow a single path, so with the current implementation, it would not be possible to send all messages to the cold path, while simultaneously sending some of the same messages into the hot path. An important limitation to keep in mind for Stream Analytics is that it is very restrictive on the format of the input data it can process: the payload must be UTF8 encoded JSON, UTF8 encoded CSV (fields delimited by commas, spaces, tabs, or vertical pipes), or AVRO, and it must be well formed. If any devices transmitting telemetry cannot generate output in these formats (e.g., because they are legacy devices), or their output can be not well formed at times, then alternatives that can better deal with these situations should be investigated. Additionally, any custom code or logic cannot be embedded with Stream Analytics---if greater extensibility is required, the alternatives should be considered.
+   Other alternatives for processing of the ingested telemetry would be to use an HDInsight Storm cluster, a WebJob running the EventProcessorHost in place of Stream Analytics, or HDInsight running with Spark streaming. Depending on the type of message filtering being conducted for hot and cold stream separation, IoT Hub Message Routing might also be used, but this has the limitation that messages follow a single path, so with the current implementation, it would not be possible to send all messages to the cold path, while simultaneously sending some of the same messages into the hot path. An important limitation to keep in mind for Stream Analytics is that it is very restrictive on the format of the input data it can process: the payload must be UTF8 encoded JSON, UTF8 encoded CSV (fields delimited by commas, spaces, tabs, or vertical pipes), or AVRO, and it must be well formed. If any devices transmitting telemetry cannot generate output in these formats (e.g., because they are legacy devices), or their output can be not well formed at times, then alternatives that can better deal with these situations should be investigated. Additionally, any custom code or logic cannot be embedded with Stream Analytics---if greater extensibility is required, the alternatives should be considered.
 
-    > NOTE: The preferred solution is only one of many possible, viable approaches.
+   > NOTE: The preferred solution is only one of many possible, viable approaches.
 
 #### Device to cloud communication
 
 1. What is the anticipated volume in messages per second and in megabytes (MB) per second that Fabrikam will need to support given their customer base?
 
-    *They would need to support 3,333 messages per second (200,000 meters x 1 msg per minute / 60 s per minute = 3,333.33 messages per second) and about 0.32 MB per second (100 bytes per message x 3,333.33 messages per second = 333,333 bytes per second / (1024 KB/B x 1024 MB/KB) \~= 0.32 MB per second).*
+   _They would need to support 3,333 messages per second (200,000 meters x 1 msg per minute / 60 s per minute = 3,333.33 messages per second) and about 0.32 MB per second (100 bytes per message x 3,333.33 messages per second = 333,333 bytes per second / (1024 KB/B x 1024 MB/KB) \~= 0.32 MB per second)._
 
 2. How would you propose they ingest that quantity of messages? What Azure Service would you recommend and why? At what initial scale?
 
-    *While they could use Event Hubs, Fabrikam should consider IoT Hubs because on top of the high-performance message ingest from the device to cloud, it provides the functionality for cloud to device communication, a device registry, and the ability to correlate incoming messages with the device that sent them. To handle the anticipated 288M messages per day, they would need a single IoT Hub Unit at the S3 scale.*
+   _While they could use Event Hubs, Fabrikam should consider IoT Hubs because on top of the high-performance message ingest from the device to cloud, it provides the functionality for cloud to device communication, a device registry, and the ability to correlate incoming messages with the device that sent them. To handle the anticipated 288M messages per day, they would need a single IoT Hub Unit at the S3 scale._
 
 3. Diagram the device to cloud communication.
-    - What protocol would they use in sending telemetry from the smart meter devices to the service used for message ingest?
 
-        *HTTPS POST or via AMQP (Advanced Message Queueing Protocol) or AMQP over WebSockets or MQTT*
+   - What protocol would they use in sending telemetry from the smart meter devices to the service used for message ingest?
 
-    - What is the format of the message sent to the ingest endpoint?
+     _HTTPS POST or via AMQP (Advanced Message Queueing Protocol) or AMQP over WebSockets or MQTT_
 
-        *Binary, typically a JavaScript Object Notation (JSON), UTF8 encoded string or pure JSON when using HTTPS endpoint*
+   - What is the format of the message sent to the ingest endpoint?
 
-    - What service endpoints do the devices talk to?
+     _Binary, typically a JavaScript Object Notation (JSON), UTF8 encoded string or pure JSON when using HTTPS endpoint_
 
-        *To an endpoint of the form `http(s)://{IoTHubHostName}.azure-devices.net/devices/{deviceId}/events`*
+   - What service endpoints do the devices talk to?
 
-    ![the Device to cloud communication diagram starts with Smart meters. Messages are sent to an IoT Hub via: HTTPS, POST, AMQP, AMQP over WebSockets, and MQTT.](./media/device-to-cloud-communication.png "Device to cloud communication diagram")
+     _To an endpoint of the form `http(s)://{IoTHubHostName}.azure-devices.net/devices/{deviceId}/events`_
+
+   ![the Device to cloud communication diagram starts with Smart meters. Messages are sent to an IoT Hub via: HTTPS, POST, AMQP, AMQP over WebSockets, and MQTT.](./media/device-to-cloud-communication.png 'Device to cloud communication diagram')
 
 #### Device provisioning
 
 1. Keeping the Azure service you selected for ingest of telemetry data from the smart meters in mind, diagram how Fabrikam should handle the following three flows related to the provisioning of new smart meters at a customer site:
 
-    - Create device identity
-    - Install device
-    - Activate device
+   - Create device identity
+   - Install device
+   - Activate device
 
-    ![IoT device provisioning flow. Devices are registered with IoT Hub identity registry, then they are installed and connected to the network. Activation of devices enables the flow of telemetry data to begin. The IoT Device Provisioning Flow is broken into three steps: Create Device Identity, Install Device, and Activate Device. The Create Device Identity workflow begins with an Admin user who sets the pre-shared key on the Smart Meter Device, and registers the device identity at the Fabrikam Device Admin Website. The Device is registered in the IoT Hub identity registry, but the deviceStatus is set to disabled. The Install Device workflow has the device powered up and connected to the network. The Activate Device workflow has the Device Admin activating the device on the Fabrikam Device Admin Website. Using HTTP PUT, and IoT Hub, activation enables set deviceStatus to enabled, to allow connection. Device metadata is updated to reflect the customer who owns it, and the installation location.](./media/iot-device-provisioning-flow.png "IoT Device Provisioning Flow")
+   ![IoT device provisioning flow. Devices are registered with IoT Hub identity registry, then they are installed and connected to the network. Activation of devices enables the flow of telemetry data to begin. The IoT Device Provisioning Flow is broken into three steps: Create Device Identity, Install Device, and Activate Device. The Create Device Identity workflow begins with an Admin user who sets the pre-shared key on the Smart Meter Device, and registers the device identity at the Fabrikam Device Admin Website. The Device is registered in the IoT Hub identity registry, but the deviceStatus is set to disabled. The Install Device workflow has the device powered up and connected to the network. The Activate Device workflow has the Device Admin activating the device on the Fabrikam Device Admin Website. Using HTTP PUT, and IoT Hub, activation enables set deviceStatus to enabled, to allow connection. Device metadata is updated to reflect the customer who owns it, and the installation location.](./media/iot-device-provisioning-flow.png 'IoT Device Provisioning Flow')
 
 #### "Hot" path processing
 
 1. How would you select out the "hot" data? Choosing between the stream processing options Azure Stream Analytics and Storm on HDInsight, which would recommend for this scenario and why?
 
-    *In this scenario, Azure Stream Analytics and Storm can both perform the necessary window computations and write the output to SQL Database. A primary consideration is the effort required. In the case of Stream Analytics, Fabrikam need only author a query using the Stream Analytics Query Language, but for Storm, Fabrikam would need to author, package, and deploy a Java application or if using HDInsight with Storm on a Windows Cluster, they would use SCP.NET to write Storm topologies using .NET.*
+   _In this scenario, Azure Stream Analytics and Storm can both perform the necessary window computations and write the output to SQL Database. A primary consideration is the effort required. In the case of Stream Analytics, Fabrikam need only author a query using the Stream Analytics Query Language, but for Storm, Fabrikam would need to author, package, and deploy a Java application or if using HDInsight with Storm on a Windows Cluster, they would use SCP.NET to write Storm topologies using .NET._
 
 2. Explain how you could build the solution using Azure Stream Analytics:
 
-    - What type of window would you use? What does your query look like?
+   - What type of window would you use? What does your query look like?
 
-        *Use tumbling window with 5-minute duration. The query would look similar to the following:*
+     _Use tumbling window with 5-minute duration. The query would look similar to the following:_
 
-        ```sql
-        SELECT AVG(EnergyUsed) AS Average, DeviceId
-        FROM Input1
-        GROUP BY TumblingWindow(minute, 5), DeviceId
-        ```
+     ```sql
+     SELECT AVG(EnergyUsed) AS Average, DeviceId
+     FROM Input1
+     GROUP BY TumblingWindow(minute, 5), DeviceId
+     ```
 
-    - How many streaming units would you need? Explain how you calculated it.
+   - How many streaming units would you need? Explain how you calculated it.
 
-        *Since the expected volume of data flowing thru the Event Hub is \~325 kilobytes (KB)/s only one Streaming Unit (which supports up to 1 MB/s) is required.*
+     _Since the expected volume of data flowing thru the Event Hub is \~325 kilobytes (KB)/s only one Streaming Unit (which supports up to 1 MB/s) is required._
 
 3. Explain how you could build the solution using Storm on HDInsight.
 
-    - What are the high-level steps you would need to take?
+   - What are the high-level steps you would need to take?
 
-        - *Provision an HDInsight cluster.*
-        - *Author a topology project in Java or C# (when using SCP.NET) that uses the EventHubSpout.*
-        - *Compile and package the project.*
-        - *Manually submit the project using your cluster's Storm Dashboard.*
-        - *Alternately, if developing in Visual Studio using the HDInsight Tools for Visual Studio, right-click the project and choose **Submit to Storm on HDInsight**.*
+     - _Provision an HDInsight cluster._
+     - _Author a topology project in Java or C# (when using SCP.NET) that uses the EventHubSpout._
+     - _Compile and package the project._
+     - _Manually submit the project using your cluster's Storm Dashboard._
+     - _Alternately, if developing in Visual Studio using the HDInsight Tools for Visual Studio, right-click the project and choose **Submit to Storm on HDInsight**._
 
-    > Note: In step 2, support for tumbling windows is something that needs to be built upon the primitives provided by Storm. There are open source projects that can help by providing these higher-level event processing functions (such as FlowMix, [[https://github.com/calrissian/flowmix]](https://github.com/calrissian/flowmix)), but it is important to recognize that this functionality is not a part of the baseline Storm.
+   > Note: In step 2, support for tumbling windows is something that needs to be built upon the primitives provided by Storm. There are open source projects that can help by providing these higher-level event processing functions (such as FlowMix, [[https://github.com/calrissian/flowmix]](https://github.com/calrissian/flowmix)), but it is important to recognize that this functionality is not a part of the baseline Storm.
 
 4. How would you store the "hot" data for consumption by the web dashboard? Estimate the write throughput you would require---does your selected store support it?
 
-    *If Stream Analytics was used, then you could store the hot data in SQL DB. Using Storm, your options broaden to SQL DB or HBase, but SQL DB would still be the preferred option because it would require more development for the Web Dashboard to "join" additional data to the telemetry that is used in the reports (such as friendly device names, labels, and so on).*
+   _If Stream Analytics was used, then you could store the hot data in SQL DB. Using Storm, your options broaden to SQL DB or HBase, but SQL DB would still be the preferred option because it would require more development for the Web Dashboard to "join" additional data to the telemetry that is used in the reports (such as friendly device names, labels, and so on)._
 
-    *When averaged to a 5-minute window per device, the write requirement becomes very low \~0.06 MB/s. SQL DB S0 or higher could easily handle this load.*
+   _When averaged to a 5-minute window per device, the write requirement becomes very low \~0.06 MB/s. SQL DB S0 or higher could easily handle this load._
 
 #### "Cold" path processing
 
 1. How would you structure the output of blobs from your stream-processing component? Draw an example hierarchy.
 
-    *One approach is to use a hierarchy with the year at the root, followed month, day, and hour. This structure is interpreted when declaring an external table (so the files within the folder do not need to also contain the year, month, day, and hour data).*
+   _One approach is to use a hierarchy with the year at the root, followed month, day, and hour. This structure is interpreted when declaring an external table (so the files within the folder do not need to also contain the year, month, day, and hour data)._
 
-    - year = 2015
-    - month = 12
-    - day = 05
-    - hour = 09
+   - year = 2015
+   - month = 12
+   - day = 05
+   - hour = 09
 
 2. What would you use to query these blob files?
 
-    *A Databricks notebook should be used to query the blob files. The storage account containing the blob files can be mounted in Databricks File System (DBFS), or they could be accessed via a `wasbs` path in Databricks. If HDInsight is used, HiveQL or Spark SQL can be used for querying the files. Azure SQL Data Warehouse can also be used to read from Azure Storage blobs.*
+   _A Databricks notebook should be used to query the blob files. The storage account containing the blob files can be mounted in Databricks File System (DBFS), or they could be accessed via a `wasbs` path in Databricks. If HDInsight is used, HiveQL or Spark SQL can be used for querying the files. Azure SQL Data Warehouse can also be used to read from Azure Storage blobs._
 
 3. How would you orchestrate the processing and retain visibility into the status of the data flow? How would you configure this data flow? Be specific on what activities you would use.
 
-    *You can orchestrate the processing and get a status in flowchart form of the data flow by using Azure Data Factory (ADF). In ADF, you would configure a pipeline that has as input a dataset that is pointing to blob storage (where the telemetry data lives), and as output a dataset that writes the data to SQL Database. The pipeline would contain an activity to execute a Databricks notebook, which would start a Databricks cluster on-demand, perform any data processing required, and output the results back into blob storage. A copy activity in the pipeline would then write the data to SQL Database. Alternatively, a single Hive activity that executes a previously defined Hive query (stored in blob storage) cound be used. An on-demand HDInsight cluster would be used for computation of the Hive query.*
+   _You can orchestrate the processing and get a status in flowchart form of the data flow by using Azure Data Factory (ADF). In ADF, you would configure a pipeline that has as input a dataset that is pointing to blob storage (where the telemetry data lives), and as output a dataset that writes the data to SQL Database. The pipeline would contain an activity to execute a Databricks notebook, which would start a Databricks cluster on-demand, perform any data processing required, and output the results back into blob storage. A copy activity in the pipeline would then write the data to SQL Database. Alternatively, a single Hive activity that executes a previously defined Hive query (stored in blob storage) could be used. An on-demand HDInsight cluster would be used for computation of the Hive query._
 
 #### Cloud to device communication
 
 1. Diagram how commands from the Fabrikam device management website would flow to the target device. Be specific and identify endpoints used and protocols selected.
 
-    ![The IoT Cloud to Device workflow begins with an Azure cloud, in which are contained Fabrikam's Device Management website, and the IoT Hub. Messages are transferred via HTTP/1 Polling or AMQP.](./media/iot-cloud-to-device-workflow.png "IoT Cloud to Device workflow")
+   ![The IoT Cloud to Device workflow begins with an Azure cloud, in which are contained Fabrikam's Device Management website, and the IoT Hub. Messages are transferred via HTTP/1 Polling or AMQP.](./media/iot-cloud-to-device-workflow.png 'IoT Cloud to Device workflow')
 
 ### Checklist of preferred objection handling
 
 1. We are considering an out-of-the-box time series database solution. Are there options for this on Azure?
 
-    *There are two primary options you can select, depending on the level of flexibility you desire. The first option is a hosted Azure service that does not require any software installation or server management, called Time Series Insights. It is built to ingest massive amounts of time series data, specifically IoT devices. You can use it to quickly create filters, build reports, and import from more than one source so you can compare the data in one location.*
+   _There are two primary options you can select, depending on the level of flexibility you desire. The first option is a hosted Azure service that does not require any software installation or server management, called Time Series Insights. It is built to ingest massive amounts of time series data, specifically IoT devices. You can use it to quickly create filters, build reports, and import from more than one source so you can compare the data in one location._
 
-    *Another option for hosting a times series database in Azure is Open TSDB, which leverages HBase, and is supported as a service that is a part of Azure HDInsight.*
+   _Another option for hosting a times series database in Azure is Open TSDB, which leverages HBase, and is supported as a service that is a part of Azure HDInsight._
 
 2. We have a mix of large enterprise customers and many SMB customers, which adds up to a lot of telemetry data to ingest---can Azure really handle it?
 
-    *Absolutely. Event Hubs is designed for massive scale of streaming message ingest. As an example, it can handle 1 *billion- events per day, and that is just at a scale of 12 TU (Throughput Units) which costs ~$162/month. You can scale to 20 TUs on your own, or more if you call Microsoft to increase your quota.*
+   *Absolutely. Event Hubs is designed for massive scale of streaming message ingest. As an example, it can handle 1 *billion- events per day, and that is just at a scale of 12 TU (Throughput Units) which costs ~$162/month. You can scale to 20 TUs on your own, or more if you call Microsoft to increase your quota.\*
 
 3. Can Azure handle a lambda architecture?
 
-    *Yes. There are a variety of services in Azure that can be used in combination according to the customer requirements to accomplish the batch or streaming ingest, the hot and cold paths of processing (both stream and batch), transactional and write-once-read-many storage and data pipelining. Many services overlap in their capability to meet the needs of the lambda architecture---it is important to take the time to create a project plan that educates the customer with the Azure options in the analytics pipeline and identifies why specific services were recommended for the final solution.*
+   _Yes. There are a variety of services in Azure that can be used in combination according to the customer requirements to accomplish the batch or streaming ingest, the hot and cold paths of processing (both stream and batch), transactional and write-once-read-many storage and data pipelining. Many services overlap in their capability to meet the needs of the lambda architecture---it is important to take the time to create a project plan that educates the customer with the Azure options in the analytics pipeline and identifies why specific services were recommended for the final solution._
 
 4. We have heard of Azure IoT Suite---does it offer a good starting point for us?
 
-    *Azure IoT Suite offers preconfigured solutions that automate the provisioning and configuration of scenario-oriented solutions that make use of a combination of Azure services. The idea is that a customer can take the preconfigured solution deployed by Azure IoT Suite and customize it to meet their needs. The Remote Monitoring preconfigured solution provided by Azure IoT Suite provides a solution that is reasonably close to the needs of Fabrikam (see the illustration below for the architecture deployed by the Remote Monitoring solution), although some additional work is needed to handle the cold path processing, to capitalize on Spark, or to use Azure SQL Data Warehouse.*
+   _Azure IoT Suite offers preconfigured solutions that automate the provisioning and configuration of scenario-oriented solutions that make use of a combination of Azure services. The idea is that a customer can take the preconfigured solution deployed by Azure IoT Suite and customize it to meet their needs. The Remote Monitoring preconfigured solution provided by Azure IoT Suite provides a solution that is reasonably close to the needs of Fabrikam (see the illustration below for the architecture deployed by the Remote Monitoring solution), although some additional work is needed to handle the cold path processing, to capitalize on Spark, or to use Azure SQL Data Warehouse._
 
-    ![Screenshot of the Azure IoT Suite workflow. At a very high level, the solution includes the following: Web App, Document DB (Device Registry), Web Job, Azure Storage Blob, Event Hubs, Azure Stream Analytics, an IoT Hub, and Simulated Device.](./media/azure-iot-suite-solution.png "Azure IoT Suite solution")
+   ![Screenshot of the Azure IoT Suite workflow. At a very high level, the solution includes the following: Web App, Document DB (Device Registry), Web Job, Azure Storage Blob, Event Hubs, Azure Stream Analytics, an IoT Hub, and Simulated Device.](./media/azure-iot-suite-solution.png 'Azure IoT Suite solution')
 
 5. We need to know when devices are not transmitting telemetry. Is there a way for us to find out?
 
-    *A good indicator that a device is not transmitting telemetry is that it has disconnected but not reconnected after a period of time. To detect this behavior, turn on verbose connection monitoring within the IoT Hub Operations Monitoring settings. Stream Analytics can use Operations Monitoring as an endpoint when selecting IoT Hub as an input source. Next, create a query that joins all connected and disconnected events with a `DATEDIFF` function that only returns devices with a disconnect event, but no reconnect event within the specified period of time, such as 180 seconds. There are many options for outputting that information, such as sending directly to Power BI for visualization, or sending the data to a Service Bus queue for further processing and alerting mechanisms.*
+   _A good indicator that a device is not transmitting telemetry is that it has disconnected but not reconnected after a period of time. To detect this behavior, turn on verbose connection monitoring within the IoT Hub Operations Monitoring settings. Stream Analytics can use Operations Monitoring as an endpoint when selecting IoT Hub as an input source. Next, create a query that joins all connected and disconnected events with a `DATEDIFF` function that only returns devices with a disconnect event, but no reconnect event within the specified period of time, such as 180 seconds. There are many options for outputting that information, such as sending directly to Power BI for visualization, or sending the data to a Service Bus queue for further processing and alerting mechanisms._
 
 ### Customer quote (to be read back to the attendees at the end)
 
-"With Azure we can support tremendous volumes of data, while not giving up our ability to manage and monitor the- *processes behind it."
+"With Azure we can support tremendous volumes of data, while not giving up our ability to manage and monitor the- \*processes behind it."
 
 Sam George, Director of Analytics, Fabrikam
