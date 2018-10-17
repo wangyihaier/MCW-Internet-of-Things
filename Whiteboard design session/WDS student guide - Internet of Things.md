@@ -99,11 +99,11 @@ In addition to collecting telemetry, Fabrikam not only seeks to gain competitive
 
 1. We are considering an out-of-the-box time series database solution. Are there options for this on Azure?
 
-2. We have a mix of large enterprise customers and many small-to-medium business (SMB) customers, which adds up to a lot of telemetry data to ingest---can Azure really handle it?
+2. We have a mix of large enterprise customers and many small-to-medium business (SMB) customers, which adds up to a lot of telemetry data to ingest, can Azure really handle it?
 
 3. Can Azure handle a lambda architecture?
 
-4. We have heard of Azure IoT Suite---does it offer a good starting point for us?
+4. We have heard of Azure IoT Suite, does it offer a good starting point for us?
 
 5. We need to know when devices are not transmitting telemetry. Is there a way for us to find out?
 
