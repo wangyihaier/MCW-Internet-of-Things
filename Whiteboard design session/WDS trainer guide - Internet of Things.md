@@ -22,7 +22,7 @@ The names of manufacturers, products, or URLs are provided for informational pur
 
 Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellectualproperty/Trademarks/Usage/General.aspx> are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
-## Contents
+**Contents**
 
 - [Trainer information](#trainer-information)
   - [Role of the trainer](#role-of-the-trainer)
@@ -50,69 +50,95 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellec
   - [Checklist of preferred objection handling](#checklist-of-preferred-objection-handling)
   - [Customer quote (to be read back to the attendees at the end)](#customer-quote-to-be-read-back-to-the-attendees-at-the-end)
 
-## Trainer information
+# Trainer information
 
 Thank you for taking time to support the whiteboard design sessions as a trainer!
 
-### Role of the trainer
+## Role of the trainer
 
 An amazing trainer:
 
-- Creates a safe environment in which learning can take place.
-- Stimulates the participant's thinking.
-- Involves the participant in the learning process.
-- Manages the learning process (on time, on topic, and adjusting to benefit participants).
-- Ensures individual participant accountability.
-- Ties it all together for the participant.
-- Provides insight and experience to the learning process.
-- Effectively leads the whiteboard design session discussion.
-- Monitors quality and appropriateness of participant deliverables.
-- Effectively leads the feedback process.
+-   Creates a safe environment in which learning can take place.
 
-### Whiteboard design session flow
+-   Stimulates the participant's thinking.
+
+-   Involves the participant in the learning process.
+
+-   Manages the learning process (on time, on topic, and adjusting to benefit participants).
+
+-   Ensures individual participant accountability.
+
+-   Ties it all together for the participant.
+
+-   Provides insight and experience to the learning process.
+
+-   Effectively leads the whiteboard design session discussion.
+
+-   Monitors quality and appropriateness of participant deliverables.
+
+-   Effectively leads the feedback process.
+
+## Whiteboard design session flow 
 
 Each whiteboard design session uses the following flow:
 
-#### Step 1: Review the customer case study (15 minutes)
+**Step 1: Review the customer case study (15 minutes)**
 
-**Outcome**: Analyze your customer's needs
+**Outcome**
 
-- Customer's background, situation, needs and technical requirements
-- Current customer infrastructure and architecture
-- Potential issues, objectives and blockers
+Analyze your customer's needs.
 
-#### Step 2: Design a proof of concept solution (60 minutes)
+-   Customer's background, situation, needs and technical requirements
 
-**Outcome**: Prepare to present a solution for your target customer audience
+-   Current customer infrastructure and architecture
 
-- Determine your target customer audience
-- Determine customer's business needs to address your solution
-- Design and diagram your solution
-- Prepare to present your solution
+-   Potential issues, objectives and blockers
 
-#### Step 3: Present the solution (30 minutes)
+**Step 2: Design a proof of concept solution (60 minutes)**
 
-**Outcome**: Present solution to your customer
+**Outcome**
 
-- Present solution
-- Respond to customer objections
-- Receive feedback
+Design a solution and prepare to present the solution to the target customer audience in a 15-minute chalk-talk format.
 
-#### Wrap-up (15 minutes)
+-   Determine your target customer audience.
 
-- Review preferred solution
+-   Determine customer's business needs to address your solution.
 
-### Before the whiteboard design session: How to prepare
+-   Design and diagram your solution.
+
+-   Prepare to present your solution.
+
+**Step 3: Present the solution (30 minutes)**
+
+**Outcome**
+
+Present solution to your customer:
+
+-   Present solution
+
+-   Respond to customer objections
+
+-   Receive feedback
+
+**Wrap-up (15 minutes)**
+
+-   Review preferred solution
+
+## Before the whiteboard design session: How to prepare
 
 Before conducting your first whiteboard design session:
 
-- Read the Student guide (including the case study) and Trainer guide
-- Become familiar with all key points and activities.
-- Plan the point you want to stress, which questions you want to drive, transitions, and be ready to answer questions.
-- Prior to the whiteboard design session, discuss the case study to pick up more ideas.
-- Make notes for later.
+-   Read the Student guide (including the case study) and Trainer guide.
 
-### During the whiteboard design session: Tips for an effective whiteboard design session
+-   Become familiar with all key points and activities.
+
+-   Plan the point you want to stress, which questions you want to drive, transitions, and be ready to answer questions.
+
+-   Prior to the whiteboard design session, discuss the case study to pick up more ideas.
+
+-   Make notes for later.
+
+## During the whiteboard design session: Tips for an effective whiteboard design session
 
 **Refer to the Trainer guide** to stay on track and observe the timings.
 
@@ -120,11 +146,13 @@ Before conducting your first whiteboard design session:
 
 When participants are doing activities, you can **look ahead to refresh your memory**.
 
-- **Adjust activity and whiteboard design session pace** as needed to allow time for presenting, feedback, and sharing.
-- **Add examples, points, and stories** from your own experience. Think about stories you can share that help you make your points clearly and effectively.
-- **Consider creating a "parking lot"** to record issues or questions raised that are outside the scope of the whiteboard design session or can be answered later. Decide how you will address these issues, so you can acknowledge them without being derailed by them.
+-   **Adjust activity and whiteboard design session pace** as needed to allow time for presenting, feedback, and sharing.
 
-**Have fun**! Encourage participants to have fun and share!
+-   **Add examples, points, and stories** from your own experience. Think about stories you can share that help you make your points clearly and effectively.
+
+-   **Consider creating a "parking lot"** to record issues or questions raised that are outside the scope of the whiteboard design session or can be answered later. Decide how you will address these issues, so you can acknowledge them without being derailed by them.
+
+***Have fun**! Encourage participants to have fun and share!*
 
 **Involve your participants.** Talk and share your knowledge but always involve your participants, even while you are the one speaking.
 
@@ -134,27 +162,31 @@ When participants are doing activities, you can **look ahead to refresh your mem
 
 **Wait for responses**. If you ask a question such as, "What's your experience with (fill in the blank)?" then wait. Do not be afraid of a little silence. If you leap into the silence, your participants will feel you are not serious about involving them and will become passive. Give participants a chance to think, and if no one answers, patiently ask again. You will usually get a response.
 
-## Internet of Things whiteboard design session student guide
+# Internet of Things whiteboard design session student guide
 
-### Abstract and learning objectives
+## Abstract and learning objectives
 
 In this whiteboard design session, you will work with a group to design an implementation of an end-to-end IoT solution simulating high velocity data emitted from smart meters and analyzed in Azure. You will design a lambda architecture, filtering a subset of the telemetry data for real-time visualization on the hot path, and storing all the data in long-term storage for the cold path.
 
 At the end of this whiteboard design session, you will be better able to design an IoT solution implementing device registration with the IoT Hub Device Provisioning Service and visualizing hot data with Power BI.
 
-### Step 1: Review the customer case study
+## Step 1: Review the customer case study 
 
-**Outcome**: Analyze your customer’s needs.
+**Outcome**
 
-**Time frame**: 15 minutes
+Analyze your customer's needs.
 
-**Directions**: With all participants in the session, the facilitator/SME presents an overview of the customer case study along with technical tips.
+Timeframe: 15 minutes
 
-1. Meet your table participants and trainer
-2. Read all of the directions for steps 1–3 in the student guide
-3. As a table team, review the following customer case study
+Directions: With all participants in the session, the facilitator/SME presents an overview of the customer case study along with technical tips.
 
-#### Customer situation
+1.  Meet your table participants and trainer.
+
+2.  Read all of the directions for steps 1-3 in the student guide.
+
+3.  As a table team, review the following customer case study.
+
+### Customer situation
 
 Fabrikam provides services and smart meters for enterprise energy (electrical power) management. Their "_You-Left-The-Light-On_" service enables the enterprise to understand their energy consumption, not just as monthly totals, but also with a more detailed breakdown providing kilowatt-hours consumed by day. These reports are used by the enterprise to identify operational patterns and address spikes that could be mitigated with better procedures.
 
@@ -162,135 +194,175 @@ Today, Fabrikam provides this information as printed reports that are mailed to 
 
 The power company, City Power & Light (CPL), has an offering for enterprises that participate in their Smart Energy program. The program provides significantly discounted rates on electricity for enterprises that are managing their electricity consumption, with awards and rebates when customers demonstrate energy savings across various areas of the enterprise including reducing consumption during peak utility hours and improving efficiencies of energy used.
 
-The requirements for meeting the criteria of the Smart Energy program center on the collection and analysis of detailed energy consumption data. In short, telemetry data must be collected in at least 30-minute intervals; the data needs to include a timestamp, the identifier of the device must be metered, and the energy consumed over the reporting interval. These devices report their telemetry to one of a few energy management solution providers authorized by City Power & Light. These providers store, process, and tag the telemetry data on behalf of City Power & Light, and provide reporting Application Programming Interfaces (APIs) that CPL can use to calculate awards and rebates.
+The requirements for meeting the criteria of the Smart Energy program center on the collection and analysis of detailed energy consumption data. In short, telemetry data must be collected in at least 30-minute intervals; the data needs to include a timestamp, the identifier of the device must be metered, and the energy consumed over the reporting interval. These devices report their telemetry to one of a few energy management solution providers authorized by City Power & Light. These providers store, process, and tag the telemetry data on behalf of City Power & Light and provide reporting Application Programming Interfaces (APIs) that CPL can use to calculate awards and rebates.
 
 Fabrikam would like to become an authorized energy management solution provider. Today, they collect all telemetry data within on-premises servers and all telemetry data for the enterprises they monitor is stored as flat files on their Storage Area Network (SAN). They only keep the current quarter's worth of telemetry data loaded in their on-premises operational data store (running SQL Server 2012).
 
-According to their Director of Analytics, Sam George, "We are investigating a move to the cloud to help our customers not only to meet CPL's data collection and reporting requirements, but also become the number one energy management solution provider." They are intending to enable their enterprise customers with a web-based dashboard where they can see historical trends of power consumption---no longer limited to the current quarter.
+According to their Director of Analytics, Sam George, "We are investigating a move to the cloud to help our customers not only to meet CPL's data collection and reporting requirements, but also become the number one energy management solution provider." They are intending to enable their enterprise customers with a web-based dashboard where they can see historical trends of power consumption, no longer limited to the current quarter.
 
-Fabrikam believes that small optimizations made using intraday data is the best way to help its enterprise customers receive awards from CPL, and cut costs from electricity use in the end. Within the customer dashboard, it would like to provide customized alerts for when a customer's electrical demand is "out of the ordinary" for that customer at that point of the day and could cause them to miss CPL rebates and energy savings. In short, they would like to provide their customers with a "hot" dashboard of near-real-time metrics and ultimately offer predictions over the current 15-minute period of data (albeit the predictive analytics is out of scope for this first effort) and support for the analysis of "cold" historical data (such as month over month, and year over year comparisons).
+Fabrikam believes that small optimizations made using intraday data is the best way to help its enterprise customers receive awards from CPL and cut costs from electricity use in the end. Within the customer dashboard, it would like to provide customized alerts for when a customer's electrical demand is "out of the ordinary" for that customer at that point of the day and could cause them to miss CPL rebates and energy savings. In short, they would like to provide their customers with a "hot" dashboard of near-real-time metrics and ultimately offer predictions over the current 15-minute period of data (albeit the predictive analytics is out of scope for this first effort) and support for the analysis of "cold" historical data (such as month over month, and year over year comparisons).
 
-To accomplish this, Fabrikam will aggressively adjust its reporting interval for its smart meters to one-minute intervals for all of its 20,000 business customers and 200K smart meters. Each beacon generated by a meter is about 100 bytes in size, and is sent to Fabrikam services via an HTTP POST over Transport Layer Security (TLS) or Advanced Message Queueing Protocol (AMQP).
+To accomplish this, Fabrikam will aggressively adjust its reporting interval for its smart meters to one-minute intervals for all of its 20,000 business customers and 200K smart meters. Each beacon generated by a meter is about 100 bytes in size and is sent to Fabrikam services via an HTTP POST over Transport Layer Security (TLS) or Advanced Message Queueing Protocol (AMQP).
 
-In addition to collecting telemetry, Fabrikam not only seeks to gain competitive advantage by providing centralized reporting on their customers' smart meter data, but would also like their new backend to be able to authorize which devices can send telemetry. They want a solution that will in the future enable Fabrikam's device administration website to send control messages to a particular device.
+In addition to collecting telemetry, Fabrikam not only seeks to gain competitive advantage by providing centralized reporting on their customers' smart meter data but would also like their new backend to be able to authorize which devices can send telemetry. They want a solution that will in the future enable Fabrikam's device administration website to send control messages to a particular device.
 
-#### Customer needs
+### Customer needs
 
 1. We expect to have a "hot" and "cold" path of data.
+
 2. The "hot" path will select certain data streaming in from the devices that we need to process in real time to drive updates to the customer dashboard.
+
 3. While the "hot" path may focus on a subset of the incoming data, the "cold" path will store and process everything.
+
 4. Because the "hot" path provides the data for the current day's operations, we only need to process the "cold" path on a nightly basis. Our customers are happy with performing their analysis starting with the last full day of data, which is inherently yesterday.
+
 5. We want a way to visualize our data flow, the steps taken on the data, and the status of our data flow on a single screen.
+
 6. We want to understand the ways in which we can scale the solution to accommodate future growth in terms of number of customers, meters, and the size of the data.
 
-#### Customer objections
+### Customer objections
 
 1. We are considering an out-of-the-box time series database solution. Are there options for this on Azure?
-2. We have a mix of large enterprise customers and many small-to-medium business (SMB) customers, which adds up to a lot of telemetry data to ingest---can Azure really handle it?
+
+2. We have a mix of large enterprise customers and many small-to-medium business (SMB) customers, which adds up to a lot of telemetry data to ingest, can Azure really handle it?
+
 3. Can Azure handle a lambda architecture?
-4. We have heard of Azure IoT Suite---does it offer a good starting point for us?
+
+4. We have heard of Azure IoT Suite, does it offer a good starting point for us?
+
 5. We need to know when devices are not transmitting telemetry. Is there a way for us to find out?
 
-#### Infographic of common scenarios
+### Infographic of common scenarios
 
 ![Screenshot of a sample Internet of Things workflow, which is broken into On-Premises and Azure services.](./media/common-scenarios.png 'Common Internet of Things scenarios')
 
-### Step 2: Design a proof of concept solution
+## Step 2: Design a proof of concept solution
 
-**Outcome**: Design a solution and prepare to present the solution to the target customer audience in a 15-minute chalk-talk format.
+**Outcome**
 
-Time frame: 60 minutes
+Design a solution and prepare to present the solution to the target customer audience in a 15-minute chalk-talk format.
 
-#### Business needs
+Timeframe: 60 minutes
 
-**Directions**: With all participants at your table, answer the following questions and list the answers on a flip chart.
+**Business needs**
 
-1. Who should you present this solution to? Who is your target customer audience? Who are the decision makers?
-2. What customer business needs do you need to address with your solution?
+Directions:  With all participants at your table, answer the following questions and list the answers on a flip chart:
 
-#### Design
+1.  Who should you present this solution to? Who is your target customer audience? Who are the decision makers?
 
-**Directions**: With all participants at your table, respond to the following questions on a flip chart.
+2.  What customer business needs do you need to address with your solution?
 
-##### High-level architecture
+**Design**
+
+Directions: With all participants at your table, respond to the following questions on a flip chart:
+
+*High-level architecture*
 
 1. Without getting into the details (the following sections will address the particular details), diagram your initial vision for handling the top-level requirements for data ingest, hot and cold path processing, storage of telemetry data, and reporting. You will refine this diagram as you proceed.
 
-##### Device to cloud communication
+*Device to cloud communication*
 
 1. What is the anticipated volume in messages per second and in megabytes (MB) per second that Fabrikam will need to support given their customer base?
+
 2. How would you propose they ingest that quantity of messages? What Azure service would you recommend and why? At what initial scale?
+
 3. Diagram the device to cloud communication.
+
    - What protocol would they use in sending telemetry from the smart meter devices to the service used for message ingest?
+   
    - What is the format of the message sent to the ingest endpoint?
+   
    - What service endpoints do the devices talk to?
 
-##### Device provisioning
+*Device provisioning*
 
 1. Keeping the Azure service, you selected for ingest of telemetry data from the smart meters in mind, diagram how Fabrikam should handle the following three flows related to the provisioning of new smart meters at a customer site:
+
    - Create device identity
+   
    - Install device
+   
    - Activate device
 
-##### "Hot" path processing
+*"Hot" path processing*
 
 The "hot" path for Fabrikam is defined as the processing of the data as it arrives in near real-time fashion. A history of data collected this way need only be maintained for the current 24-hour period, providing a moving average of measures for each device across a 5-minute period. It needs to be made available as quickly as possible for consumption to be available on the web-based reporting interface.
 
 1. How would you select out the "hot" data? Choosing between the stream processing options Azure Stream Analytics and Storm on HDInsight, which would you recommend for this scenario and why?
+
 2. Explain how you could build the solution using Azure Stream Analytics:
+
    - What type of window would you use? What does your query look like?
+   
    - How many Streaming Units would you need? Explain how you calculated it.
+   
 3. Explain how you could build the solution using Storm on HDInsight:
+
    - What are the high-level steps you would need to take?
+   
 4. How would you store the "hot" data for consumption by the web dashboard?
+
    - Estimate the write throughput you would require. Does your selected store support it?
 
-##### "Cold" path processing
+*"Cold" path processing*
 
 The "cold" path for Fabrikam is highlighted by the notion that Fabrikam does not want to lose any telemetry data from its devices, so it can be prepared to ask new questions of the data over time in the future. The second requirement is to support the calculation of period over period reports for each meter (for example, year over year, month over month, and week over week). For each new full day of data added, it amounts to updating the summary statistics for the current year, current month, and current week with a three-number summary consisting of minimum, mean, and maximum. Fabrikam would prefer the implementation of these reports to be done using syntax similar to SQL. Assume you want to create the summary statistics for each device by year.
 
 1. How would you structure the output of blobs from your stream processing component? Draw an example hierarchy.
+
 2. What would you use to query these blob files?
+
 3. How would you orchestrate the processing and retain visibility into the status of the data flow? How would you configure this data flow? Be specific on what activities you would use.
 
-##### Cloud to device communication
+*Cloud to device communication*
 
 1. Diagram how commands from the Fabrikam device management website would flow to the target device. Be specific and identify endpoints used and protocols selected.
 
-#### Prepare
+**Prepare**
 
-**Directions**: With all participants at your table:
+Directions: With all participants at your table:
 
-1. Identify any customer needs that are not addressed with the proposed solution.
-2. Identify the benefits of your solution.
-3. Determine how you will respond to the customer’s objections.
-4. Prepare a 15-minute chalk-talk style presentation to the customer.
+1.  Identify any customer needs that are not addressed with the proposed solution.
 
-### Step 3: Present the solution
+2.  Identify the benefits of your solution.
 
-**Outcome**: Present a solution to the target customer audience in a 15-minute chalk-talk format.
+3.  Determine how you will respond to the customer's objections.
 
-**Time frame**: 30 minutes
+Prepare a 15-minute chalk-talk style presentation to the customer.
 
-#### Presentation
+## Step 3: Present the solution
 
-**Directions**:
+**Outcome**
 
-1. Pair with another table.
-2. One table is the Microsoft team and the other table is the customer.
-3. The Microsoft team presents their proposed solution to the customer.
-4. The customer makes one of the objections from the list of objections.
-5. The Microsoft team responds to the objection.
-6. The customer team gives feedback to the Microsoft team.
-7. Tables switch roles and repeat Steps 2–6.
+Present a solution to the target customer audience in a 15-minute chalk-talk format.
 
-### Wrap-up
+Timeframe: 30 minutes
 
-**Timeframe**: 15 minutes
+**Presentation**
 
-Tables reconvene with the larger group to hear a SME share the preferred solution for the case study.
+Directions:
 
-### Additional references
+1.  Pair with another table.
+
+2.  One table is the Microsoft team and the other table is the customer.
+
+3.  The Microsoft team presents their proposed solution to the customer.
+
+4.  The customer makes one of the objections from the list of objections.
+
+5.  The Microsoft team responds to the objection.
+
+6.  The customer team gives feedback to the Microsoft team.
+
+7.  Tables switch roles and repeat Steps 2-6.
+
+##  Wrap-up 
+
+Timeframe: 15 minutes
+
+Directions: Tables reconvene with the larger group to hear the facilitator/SME share the preferred solution for the case study.
+
+## Additional references
 
 |                         |                                                                                       |
 | ----------------------- | ------------------------------------------------------------------------------------- |
@@ -305,48 +377,58 @@ Tables reconvene with the larger group to hear a SME share the preferred solutio
 | Spark                   | <https://azure.microsoft.com/documentation/articles/hdinsight-apache-spark-overview/> |
 | Azure Databricks        | <https://azure.microsoft.com/services/databricks/>                                    |
 
-|
+# Internet of Things whiteboard design session trainer guide
 
-## Internet of Things whiteboard design session trainer guide
+## Step 1: Review the customer case study
 
-### Step 1: Review the customer case study
+-   Check in with your table participants to introduce yourself as the trainer.
 
-- Check in with your table participants to introduce yourself as the trainer.
-- Ask, "What questions do you have about the customer case study?"
-- Briefly review the steps and timeframes of the whiteboard design session.
-- Ready, set, go! Let the table participants begin.
+-   Ask, "What questions do you have about the customer case study?"
 
-### Step 2: Design a proof of concept solution
+-   Briefly review the steps and timeframes of the whiteboard design session.
 
-- Check in with your tables to ensure that they are transitioning from step to step on time.
-- Provide some feedback on their responses to the business needs and design.
-  - Try asking questions first that will lead the participants to discover the answers on their own.
-- Provide feedback for their responses to the customer's objections.
-  - Try asking questions first that will lead the participants to discover the answers on their own.
+-   Ready, set, go! Let the table participants begin.
 
-### Step 3: Present the solution
+## Step 2: Design a proof of concept solution
 
-- Determine which table will be paired with your table before Step 3 begins.
-- For the first round, assign one table as the Microsoft team and the other table as the customer.
-- Have the Microsoft team present their solution to the customer team.
-  - Have the customer team provide one objection for the Microsoft team to respond to.
-  - The presentation and objections should be no longer than 10 minutes.
-- Have participants on the customer team give feedback to the Microsoft team.
-  - The feedback should be no longer than 5 minutes.
-  - If needed, the trainer may also provide feedback.
+-   Check in with your tables to ensure that they are transitioning from step to step on time.
 
-### Wrap-up
+-   Provide some feedback on their responses to the business needs and design.
 
-- Have the table participants reconvene with the larger session group to hear a SME share the following preferred solution.
+    -   Try asking questions first that will lead the participants to discover the answers on their own.
 
-### Preferred target audience
+-   Provide feedback for their responses to the customer's objections.
+
+    -   Try asking questions first that will lead the participants to discover the answers on their own.
+
+
+## Step 3: Present the solution
+
+-   Determine which table will be paired with your table before Step 3 begins.
+
+-   For the first round, assign one table as the presenting team and the other table as the customer.
+
+-   Have the presenting team present their solution to the customer team.
+
+    -   Have the customer team provide one objection for the presenting team to respond to.
+
+    -   The presentation, objections, and feedback should take no longer than 15 minutes.
+
+    -   If needed, the trainer may also provide feedback.
+
+## Wrap-up
+
+-   Have the table participants reconvene with the larger session group to hear the facilitator/SME share the following preferred solution.
+
+## Preferred target audience
 
 - Sam George, Director of Analytics for Fabrikam
+
 - The primary audience is the business and technology decision makers. From the case study scenario, this would include the Director of Analytics. Usually we talk to the infrastructure managers who report to the chief information officers (CIOs), or to application sponsors (like a vice president [VP] line of business [LOB], or chief marketing officer [CMO]), or to those that represent the business unit IT or developers that report to application sponsors.
 
-### Preferred solution
+## Preferred solution
 
-#### High-level architecture
+*High-level architecture*
 
 1. Without getting into the details (the following sections will address the details), diagram your initial vision for handling the top-level requirements for data ingest, hot and cold path processing, storage of telemetry data, and reporting. You will refine this diagram as you proceed.
 
@@ -358,55 +440,57 @@ Tables reconvene with the larger group to hear a SME share the preferred solutio
 
    Other alternatives for processing of the ingested telemetry would be to use an HDInsight Storm cluster, a WebJob running the EventProcessorHost in place of Stream Analytics, or HDInsight running with Spark streaming. Depending on the type of message filtering being conducted for hot and cold stream separation, IoT Hub Message Routing might also be used, but this has the limitation that messages follow a single path, so with the current implementation, it would not be possible to send all messages to the cold path, while simultaneously sending some of the same messages into the hot path. An important limitation to keep in mind for Stream Analytics is that it is very restrictive on the format of the input data it can process: the payload must be UTF8 encoded JSON, UTF8 encoded CSV (fields delimited by commas, spaces, tabs, or vertical pipes), or AVRO, and it must be well formed. If any devices transmitting telemetry cannot generate output in these formats (e.g., because they are legacy devices), or their output can be not well formed at times, then alternatives that can better deal with these situations should be investigated. Additionally, any custom code or logic cannot be embedded with Stream Analytics---if greater extensibility is required, the alternatives should be considered.
 
-   > NOTE: The preferred solution is only one of many possible, viable approaches.
+   >**Note**: The preferred solution is only one of many possible, viable approaches.
 
-#### Device to cloud communication
+*Device to cloud communication*
 
 1. What is the anticipated volume in messages per second and in megabytes (MB) per second that Fabrikam will need to support given their customer base?
 
-   _They would need to support 3,333 messages per second (200,000 meters x 1 msg per minute / 60 s per minute = 3,333.33 messages per second) and about 0.32 MB per second (100 bytes per message x 3,333.33 messages per second = 333,333 bytes per second / (1024 KB/B x 1024 MB/KB) \~= 0.32 MB per second)._
+   They would need to support 3,333 messages per second (200,000 meters x 1 msg per minute / 60 s per minute = 3,333.33 messages per second) and about 0.32 MB per second (100 bytes per message x 3,333.33 messages per second = 333,333 bytes per second / (1024 KB/B x 1024 MB/KB) \~= 0.32 MB per second).
 
 2. How would you propose they ingest that quantity of messages? What Azure Service would you recommend and why? At what initial scale?
 
-   _While they could use Event Hubs, Fabrikam should consider IoT Hubs because on top of the high-performance message ingest from the device to cloud, it provides the functionality for cloud to device communication, a device registry, and the ability to correlate incoming messages with the device that sent them. To handle the anticipated 288M messages per day, they would need a single IoT Hub Unit at the S3 scale._
+   While they could use Event Hubs, Fabrikam should consider IoT Hubs because on top of the high-performance message ingest from the device to cloud, it provides the functionality for cloud to device communication, a device registry, and the ability to correlate incoming messages with the device that sent them. To handle the anticipated 288M messages per day, they would need a single IoT Hub Unit at the S3 scale.
 
 3. Diagram the device to cloud communication.
 
    - What protocol would they use in sending telemetry from the smart meter devices to the service used for message ingest?
 
-     _HTTPS POST or via AMQP (Advanced Message Queueing Protocol) or AMQP over WebSockets or MQTT_
+     HTTPS POST or via AMQP (Advanced Message Queueing Protocol) or AMQP over WebSockets or MQTT.
 
    - What is the format of the message sent to the ingest endpoint?
 
-     _Binary, typically a JavaScript Object Notation (JSON), UTF8 encoded string or pure JSON when using HTTPS endpoint_
+     Binary, typically a JavaScript Object Notation (JSON), UTF8 encoded string or pure JSON when using HTTPS endpoint.
 
    - What service endpoints do the devices talk to?
 
-     _To an endpoint of the form `http(s)://{IoTHubHostName}.azure-devices.net/devices/{deviceId}/events`_
+     To an endpoint of the form `http(s)://{IoTHubHostName}.azure-devices.net/devices/{deviceId}/events`.
 
    ![the Device to cloud communication diagram starts with Smart meters. Messages are sent to an IoT Hub via: HTTPS, POST, AMQP, AMQP over WebSockets, and MQTT.](./media/device-to-cloud-communication.png 'Device to cloud communication diagram')
 
-#### Device provisioning
+*Device provisioning*
 
 1. Keeping the Azure service you selected for ingest of telemetry data from the smart meters in mind, diagram how Fabrikam should handle the following three flows related to the provisioning of new smart meters at a customer site:
 
    - Create device identity
+   
    - Install device
+   
    - Activate device
 
    ![IoT device provisioning flow. Devices are registered with IoT Hub identity registry, then they are installed and connected to the network. Activation of devices enables the flow of telemetry data to begin. The IoT Device Provisioning Flow is broken into three steps: Create Device Identity, Install Device, and Activate Device. The Create Device Identity workflow begins with an Admin user who sets the pre-shared key on the Smart Meter Device, and registers the device identity at the Fabrikam Device Admin Website. The Device is registered in the IoT Hub identity registry, but the deviceStatus is set to disabled. The Install Device workflow has the device powered up and connected to the network. The Activate Device workflow has the Device Admin activating the device on the Fabrikam Device Admin Website. Using HTTP PUT, and IoT Hub, activation enables set deviceStatus to enabled, to allow connection. Device metadata is updated to reflect the customer who owns it, and the installation location.](./media/iot-device-provisioning-flow.png 'IoT Device Provisioning Flow')
 
-#### "Hot" path processing
+*"Hot" path processing*
 
 1. How would you select out the "hot" data? Choosing between the stream processing options Azure Stream Analytics and Storm on HDInsight, which would recommend for this scenario and why?
 
-   _In this scenario, Azure Stream Analytics and Storm can both perform the necessary window computations and write the output to SQL Database. A primary consideration is the effort required. In the case of Stream Analytics, Fabrikam need only author a query using the Stream Analytics Query Language, but for Storm, Fabrikam would need to author, package, and deploy a Java application or if using HDInsight with Storm on a Windows Cluster, they would use SCP.NET to write Storm topologies using .NET._
+   In this scenario, Azure Stream Analytics and Storm can both perform the necessary window computations and write the output to SQL Database. A primary consideration is the effort required. In the case of Stream Analytics, Fabrikam need only author a query using the Stream Analytics Query Language, but for Storm, Fabrikam would need to author, package, and deploy a Java application or if using HDInsight with Storm on a Windows Cluster, they would use SCP.NET to write Storm topologies using .NET.
 
 2. Explain how you could build the solution using Azure Stream Analytics:
 
    - What type of window would you use? What does your query look like?
 
-     _Use tumbling window with 5-minute duration. The query would look similar to the following:_
+    _Use tumbling window with 5-minute duration. The query would look similar to the following:
 
      ```sql
      SELECT AVG(EnergyUsed) AS Average, DeviceId
@@ -416,32 +500,32 @@ Tables reconvene with the larger group to hear a SME share the preferred solutio
 
    - How many streaming units would you need? Explain how you calculated it.
 
-     _Since the expected volume of data flowing thru the Event Hub is \~325 kilobytes (KB)/s only one Streaming Unit (which supports up to 1 MB/s) is required._
+     Since the expected volume of data flowing thru the Event Hub is \~325 kilobytes (KB)/s only one Streaming Unit (which supports up to 1 MB/s) is required.
 
 3. Explain how you could build the solution using Storm on HDInsight.
 
    - What are the high-level steps you would need to take?
 
-     - _Provision an HDInsight cluster._
-     - _Author a topology project in Java or C# (when using SCP.NET) that uses the EventHubSpout._
-     - _Compile and package the project._
-     - _Manually submit the project using your cluster's Storm Dashboard._
-     - _Alternately, if developing in Visual Studio using the HDInsight Tools for Visual Studio, right-click the project and choose **Submit to Storm on HDInsight**._
+     - Provision an HDInsight cluster.
+     - Author a topology project in Java or C# (when using SCP.NET) that uses the EventHubSpout.
+     - Compile and package the project.
+     - Manually submit the project using your cluster's Storm Dashboard.
+     - Alternately, if developing in Visual Studio using the HDInsight Tools for Visual Studio, right-click the project and choose **Submit to Storm on HDInsight**.
 
-   > Note: In step 2, support for tumbling windows is something that needs to be built upon the primitives provided by Storm. There are open source projects that can help by providing these higher-level event processing functions (such as FlowMix, [[https://github.com/calrissian/flowmix]](https://github.com/calrissian/flowmix)), but it is important to recognize that this functionality is not a part of the baseline Storm.
+   >**Note**: In step 2, support for tumbling windows is something that needs to be built upon the primitives provided by Storm. There are open source projects that can help by providing these higher-level event processing functions (such as FlowMix, [[https://github.com/calrissian/flowmix]](https://github.com/calrissian/flowmix)), but it is important to recognize that this functionality is not a part of the baseline Storm.
 
 4. How would you store the "hot" data for consumption by the web dashboard? Estimate the write throughput you would require---does your selected store support it?
 
-   _If Stream Analytics was used, then you could store the hot data in SQL DB. Using Storm, your options broaden to SQL DB or HBase, but SQL DB would still be the preferred option because it would require more development for the Web Dashboard to "join" additional data to the telemetry that is used in the reports (such as friendly device names, labels, and so on)._
+   If Stream Analytics was used, then you could store the hot data in SQL DB. Using Storm, your options broaden to SQL DB or HBase, but SQL DB would still be the preferred option because it would require more development for the Web Dashboard to "join" additional data to the telemetry that is used in the reports (such as friendly device names, labels, and so on).
 
-   _When averaged to a 5-minute window per device, the write requirement becomes very low \~0.06 MB/s. SQL DB S0 or higher could easily handle this load._
+   When averaged to a 5-minute window per device, the write requirement becomes very low \~0.06 MB/s. SQL DB S0 or higher could easily handle this load.
 
-#### "Cold" path processing
+*"Cold" path processing*
 
 1. How would you structure the output of blobs from your stream-processing component? Draw an example hierarchy.
 
-   _One approach is to use a hierarchy with the year at the root, followed month, day, and hour. This structure is interpreted when declaring an external table (so the files within the folder do not need to also contain the year, month, day, and hour data)._
-
+  _One approach is to use a hierarchy with the year at the root, followed month, day, and hour. This structure is interpreted when declaring an external table (so the files within the folder do not need to also contain the year, month, day, and hour data).
+  
    - year = 2015
    - month = 12
    - day = 05
@@ -449,46 +533,46 @@ Tables reconvene with the larger group to hear a SME share the preferred solutio
 
 2. What would you use to query these blob files?
 
-   _A Databricks notebook should be used to query the blob files. The storage account containing the blob files can be mounted in Databricks File System (DBFS), or they could be accessed via a `wasbs` path in Databricks. If HDInsight is used, HiveQL or Spark SQL can be used for querying the files. Azure SQL Data Warehouse can also be used to read from Azure Storage blobs._
+  _A Databricks notebook should be used to query the blob files. The storage account containing the blob files can be mounted in Databricks File System (DBFS), or they could be accessed via a `wasbs` path in Databricks. If HDInsight is used, HiveQL or Spark SQL can be used for querying the files. Azure SQL Data Warehouse can also be used to read from Azure Storage blobs.
 
 3. How would you orchestrate the processing and retain visibility into the status of the data flow? How would you configure this data flow? Be specific on what activities you would use.
 
-   _You can orchestrate the processing and get a status in flowchart form of the data flow by using Azure Data Factory (ADF). In ADF, you would configure a pipeline that has as input a dataset that is pointing to blob storage (where the telemetry data lives), and as output a dataset that writes the data to SQL Database. The pipeline would contain an activity to execute a Databricks notebook, which would start a Databricks cluster on-demand, perform any data processing required, and output the results back into blob storage. A copy activity in the pipeline would then write the data to SQL Database. Alternatively, a single Hive activity that executes a previously defined Hive query (stored in blob storage) could be used. An on-demand HDInsight cluster would be used for computation of the Hive query._
+  _You can orchestrate the processing and get a status in flowchart form of the data flow by using Azure Data Factory (ADF). In ADF, you would configure a pipeline that has as input a dataset that is pointing to blob storage (where the telemetry data lives), and as output a dataset that writes the data to SQL Database. The pipeline would contain an activity to execute a Databricks notebook, which would start a Databricks cluster on-demand, perform any data processing required, and output the results back into blob storage. A copy activity in the pipeline would then write the data to SQL Database. Alternatively, a single Hive activity that executes a previously defined Hive query (stored in blob storage) could be used. An on-demand HDInsight cluster would be used for computation of the Hive query.
 
-#### Cloud to device communication
+*Cloud to device communication*
 
 1. Diagram how commands from the Fabrikam device management website would flow to the target device. Be specific and identify endpoints used and protocols selected.
 
    ![The IoT Cloud to Device workflow begins with an Azure cloud, in which are contained Fabrikam's Device Management website, and the IoT Hub. Messages are transferred via HTTP/1 Polling or AMQP.](./media/iot-cloud-to-device-workflow.png 'IoT Cloud to Device workflow')
 
-### Checklist of preferred objection handling
+## Checklist of preferred objection handling
 
 1. We are considering an out-of-the-box time series database solution. Are there options for this on Azure?
 
-   _There are two primary options you can select, depending on the level of flexibility you desire. The first option is a hosted Azure service that does not require any software installation or server management, called Time Series Insights. It is built to ingest massive amounts of time series data, specifically IoT devices. You can use it to quickly create filters, build reports, and import from more than one source so you can compare the data in one location._
+   There are two primary options you can select, depending on the level of flexibility you desire. The first option is a hosted Azure service that does not require any software installation or server management, called Time Series Insights. It is built to ingest massive amounts of time series data, specifically IoT devices. You can use it to quickly create filters, build reports, and import from more than one source so you can compare the data in one location.
 
-   _Another option for hosting a times series database in Azure is Open TSDB, which leverages HBase, and is supported as a service that is a part of Azure HDInsight._
+  _Another option for hosting a times series database in Azure is Open TSDB, which leverages HBase, and is supported as a service that is a part of Azure HDInsight.
+  
+2. We have a mix of large enterprise customers and many SMB customers, which adds up to a lot of telemetry data to ingest, can Azure really handle it?
 
-2. We have a mix of large enterprise customers and many SMB customers, which adds up to a lot of telemetry data to ingest---can Azure really handle it?
-
-   *Absolutely. Event Hubs is designed for massive scale of streaming message ingest. As an example, it can handle 1 *billion- events per day, and that is just at a scale of 12 TU (Throughput Units) which costs ~$162/month. You can scale to 20 TUs on your own, or more if you call Microsoft to increase your quota.\*
+   Absolutely. Event Hubs is designed for massive scale of streaming message ingest. As an example, it can handle 1 billion events per day, and that is just at a scale of 12 TU (Throughput Units) which costs ~$162/month. You can scale to 20 TUs on your own, or more if you call Microsoft to increase your quota.
 
 3. Can Azure handle a lambda architecture?
 
-   _Yes. There are a variety of services in Azure that can be used in combination according to the customer requirements to accomplish the batch or streaming ingest, the hot and cold paths of processing (both stream and batch), transactional and write-once-read-many storage and data pipelining. Many services overlap in their capability to meet the needs of the lambda architecture---it is important to take the time to create a project plan that educates the customer with the Azure options in the analytics pipeline and identifies why specific services were recommended for the final solution._
+   Yes. There are a variety of services in Azure that can be used in combination according to the customer requirements to accomplish the batch or streaming ingest, the hot and cold paths of processing (both stream and batch), transactional and write-once-read-many storage and data pipelining. Many services overlap in their capability to meet the needs of the lambda architecture---it is important to take the time to create a project plan that educates the customer with the Azure options in the analytics pipeline and identifies why specific services were recommended for the final solution.
 
-4. We have heard of Azure IoT Suite---does it offer a good starting point for us?
+4. We have heard of Azure IoT Suite, does it offer a good starting point for us?
 
-   _Azure IoT Suite offers preconfigured solutions that automate the provisioning and configuration of scenario-oriented solutions that make use of a combination of Azure services. The idea is that a customer can take the preconfigured solution deployed by Azure IoT Suite and customize it to meet their needs. The Remote Monitoring preconfigured solution provided by Azure IoT Suite provides a solution that is reasonably close to the needs of Fabrikam (see the illustration below for the architecture deployed by the Remote Monitoring solution), although some additional work is needed to handle the cold path processing, to capitalize on Spark, or to use Azure SQL Data Warehouse._
+   Azure IoT Suite offers preconfigured solutions that automate the provisioning and configuration of scenario-oriented solutions that make use of a combination of Azure services. The idea is that a customer can take the preconfigured solution deployed by Azure IoT Suite and customize it to meet their needs. The Remote Monitoring preconfigured solution provided by Azure IoT Suite provides a solution that is reasonably close to the needs of Fabrikam (see the illustration below for the architecture deployed by the Remote Monitoring solution), although some additional work is needed to handle the cold path processing, to capitalize on Spark, or to use Azure SQL Data Warehouse.
 
    ![Screenshot of the Azure IoT Suite workflow. At a very high level, the solution includes the following: Web App, Document DB (Device Registry), Web Job, Azure Storage Blob, Event Hubs, Azure Stream Analytics, an IoT Hub, and Simulated Device.](./media/azure-iot-suite-solution.png 'Azure IoT Suite solution')
 
 5. We need to know when devices are not transmitting telemetry. Is there a way for us to find out?
 
-   _A good indicator that a device is not transmitting telemetry is that it has disconnected but not reconnected after a period of time. To detect this behavior, turn on verbose connection monitoring within the IoT Hub Operations Monitoring settings. Stream Analytics can use Operations Monitoring as an endpoint when selecting IoT Hub as an input source. Next, create a query that joins all connected and disconnected events with a `DATEDIFF` function that only returns devices with a disconnect event, but no reconnect event within the specified period of time, such as 180 seconds. There are many options for outputting that information, such as sending directly to Power BI for visualization, or sending the data to a Service Bus queue for further processing and alerting mechanisms._
+   A good indicator that a device is not transmitting telemetry is that it has disconnected but not reconnected after a period of time. To detect this behavior, turn on verbose connection monitoring within the IoT Hub Operations Monitoring settings. Stream Analytics can use Operations Monitoring as an endpoint when selecting IoT Hub as an input source. Next, create a query that joins all connected and disconnected events with a `DATEDIFF` function that only returns devices with a disconnect event, but no reconnect event within the specified period of time, such as 180 seconds. There are many options for outputting that information, such as sending directly to Power BI for visualization, or sending the data to a Service Bus queue for further processing and alerting mechanisms.
 
-### Customer quote (to be read back to the attendees at the end)
+## Customer quote (to be read back to the attendees at the end)
 
-"With Azure we can support tremendous volumes of data, while not giving up our ability to manage and monitor the- \*processes behind it."
+"With Azure we can support tremendous volumes of data, while not giving up our ability to manage and monitor the processes behind it."
 
 Sam George, Director of Analytics, Fabrikam
