@@ -401,7 +401,6 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 
     -   Try asking questions first that will lead the participants to discover the answers on their own.
 
-
 ## Step 3: Present the solution
 
 -   Determine which table will be paired with your table before Step 3 begins.
@@ -490,7 +489,7 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 
    - What type of window would you use? What does your query look like?
 
-    _Use tumbling window with 5-minute duration. The query would look similar to the following:
+    Use tumbling window with 5-minute duration. The query would look similar to the following:
 
      ```sql
      SELECT AVG(EnergyUsed) AS Average, DeviceId
@@ -507,14 +506,18 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
    - What are the high-level steps you would need to take?
 
      - Provision an HDInsight cluster.
+     
      - Author a topology project in Java or C# (when using SCP.NET) that uses the EventHubSpout.
+     
      - Compile and package the project.
+     
      - Manually submit the project using your cluster's Storm Dashboard.
+     
      - Alternately, if developing in Visual Studio using the HDInsight Tools for Visual Studio, right-click the project and choose **Submit to Storm on HDInsight**.
-
+     
    >**Note**: In step 2, support for tumbling windows is something that needs to be built upon the primitives provided by Storm. There are open source projects that can help by providing these higher-level event processing functions (such as FlowMix, [[https://github.com/calrissian/flowmix]](https://github.com/calrissian/flowmix)), but it is important to recognize that this functionality is not a part of the baseline Storm.
 
-4. How would you store the "hot" data for consumption by the web dashboard? Estimate the write throughput you would require---does your selected store support it?
+4. How would you store the "hot" data for consumption by the web dashboard? Estimate the write throughput you would require, does your selected store support it?
 
    If Stream Analytics was used, then you could store the hot data in SQL DB. Using Storm, your options broaden to SQL DB or HBase, but SQL DB would still be the preferred option because it would require more development for the Web Dashboard to "join" additional data to the telemetry that is used in the reports (such as friendly device names, labels, and so on).
 
@@ -524,7 +527,7 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 
 1. How would you structure the output of blobs from your stream-processing component? Draw an example hierarchy.
 
-  _One approach is to use a hierarchy with the year at the root, followed month, day, and hour. This structure is interpreted when declaring an external table (so the files within the folder do not need to also contain the year, month, day, and hour data).
+   One approach is to use a hierarchy with the year at the root, followed month, day, and hour. This structure is interpreted when declaring an external table (so the files within the folder do not need to also contain the year, month, day, and hour data).
   
    - year = 2015
    - month = 12
@@ -533,11 +536,11 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 
 2. What would you use to query these blob files?
 
-  _A Databricks notebook should be used to query the blob files. The storage account containing the blob files can be mounted in Databricks File System (DBFS), or they could be accessed via a `wasbs` path in Databricks. If HDInsight is used, HiveQL or Spark SQL can be used for querying the files. Azure SQL Data Warehouse can also be used to read from Azure Storage blobs.
+   A Databricks notebook should be used to query the blob files. The storage account containing the blob files can be mounted in Databricks File System (DBFS), or they could be accessed via a `wasbs` path in Databricks. If HDInsight is used, HiveQL or Spark SQL can be used for querying the files. Azure SQL Data Warehouse can also be used to read from Azure Storage blobs.
 
 3. How would you orchestrate the processing and retain visibility into the status of the data flow? How would you configure this data flow? Be specific on what activities you would use.
 
-  _You can orchestrate the processing and get a status in flowchart form of the data flow by using Azure Data Factory (ADF). In ADF, you would configure a pipeline that has as input a dataset that is pointing to blob storage (where the telemetry data lives), and as output a dataset that writes the data to SQL Database. The pipeline would contain an activity to execute a Databricks notebook, which would start a Databricks cluster on-demand, perform any data processing required, and output the results back into blob storage. A copy activity in the pipeline would then write the data to SQL Database. Alternatively, a single Hive activity that executes a previously defined Hive query (stored in blob storage) could be used. An on-demand HDInsight cluster would be used for computation of the Hive query.
+   You can orchestrate the processing and get a status in flowchart form of the data flow by using Azure Data Factory (ADF). In ADF, you would configure a pipeline that has as input a dataset that is pointing to blob storage (where the telemetry data lives), and as output a dataset that writes the data to SQL Database. The pipeline would contain an activity to execute a Databricks notebook, which would start a Databricks cluster on-demand, perform any data processing required, and output the results back into blob storage. A copy activity in the pipeline would then write the data to SQL Database. Alternatively, a single Hive activity that executes a previously defined Hive query (stored in blob storage) could be used. An on-demand HDInsight cluster would be used for computation of the Hive query.
 
 *Cloud to device communication*
 
@@ -551,7 +554,7 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 
    There are two primary options you can select, depending on the level of flexibility you desire. The first option is a hosted Azure service that does not require any software installation or server management, called Time Series Insights. It is built to ingest massive amounts of time series data, specifically IoT devices. You can use it to quickly create filters, build reports, and import from more than one source so you can compare the data in one location.
 
-  _Another option for hosting a times series database in Azure is Open TSDB, which leverages HBase, and is supported as a service that is a part of Azure HDInsight.
+   Another option for hosting a times series database in Azure is Open TSDB, which leverages HBase, and is supported as a service that is a part of Azure HDInsight.
   
 2. We have a mix of large enterprise customers and many SMB customers, which adds up to a lot of telemetry data to ingest, can Azure really handle it?
 
