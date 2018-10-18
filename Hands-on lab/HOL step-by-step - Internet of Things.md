@@ -5,7 +5,7 @@ Internet of Things
 </div>
 
 <div class="MCWHeader2">
-Hands-on lab unguided
+Hands-on lab step-by-step
 </div>
 
 <div class="MCWHeader3">
