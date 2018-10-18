@@ -28,18 +28,28 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 <!-- TOC -->
 
 - [Internet of Things before the hands-on lab setup guide](#internet-of-things-before-the-hands-on-lab-setup-guide)
-    - [Before the hands-on lab](#before-the-hands-on-lab)
-        - [Task 1: Provision a resource group](#task-1-provision-a-resource-group)
-        - [Task 2: Set up a lab virtual machine](#task-2-set-up-a-lab-virtual-machine)
-        - [Task 3: Provision Azure Databricks](#task-3-provision-azure-databricks)
-        - [Task 4: Create Databricks cluster](#task-4-create-databricks-cluster)
-        - [Task 5: Provision Power BI](#task-5-provision-power-bi)
-        - [Task 6: Connect to your Lab VM](#task-6-connect-to-your-lab-vm)
-        - [Task 7: Download Smart Meter Simulator project](#task-8-download-smart-meter-simulator-project)
+  - [Requirements](#requirements)
+  - [Before the hands-on lab](#before-the-hands-on-lab)
+       - [Task 1: Provision a resource group](#task-1-provision-a-resource-group)
+       - [Task 2: Set up a lab virtual machine](#task-2-set-up-a-lab-virtual-machine)
+       - [Task 3: Provision Azure Databricks](#task-3-provision-azure-databricks)
+       - [Task 4: Create Databricks cluster](#task-4-create-databricks-cluster)
+       - [Task 5: Provision Power BI](#task-5-provision-power-bi)
+       - [Task 6: Connect to your Lab VM](#task-6-connect-to-your-lab-vm)
+       - [Task 7: Download Smart Meter Simulator project](#task-8-download-smart-meter-simulator-project)
 
 <!-- /TOC -->
 
 # Internet of Things before the hands-on lab setup guide 
+
+## Requirements
+
+- Microsoft Azure subscription must be pay-as-you-go or MSDN.
+  - Trial subscriptions will not work.
+- A virtual machine configured with:
+  - Visual Studio Community 2017 15.6 or later
+  - Azure SDK 2.9 or later (Included with Visual Studio 2017)
+- A running Azure Databricks cluster. 
 
 ## Before the hands-on lab
 
