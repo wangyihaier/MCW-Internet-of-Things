@@ -1,11 +1,9 @@
 ﻿# HTML Files for Workshop
-[Hands-on lab step-by step - Internet of Things.html](https://cloudworkshop.blob.core.windows.net/internet-of-things/Hands-on%20lab%20step-by%20step%20-%20Internet%20of%20Things.html)
+[WDS student guide - Internet of Things.html](https://cloudworkshop.blob.core.windows.net/internet-of-things/Whiteboard%20design%20session/WDS%20student%20guide%20-%20Internet%20of%20Things.html)
 
-[Hands-on lab unguided - Internet of Things.html](https://cloudworkshop.blob.core.windows.net/internet-of-things/Hands-on%20lab%20unguided%20-%20Internet%20of%20Things.html)
+[WDS trainer guide - Internet of Things.html](https://cloudworkshop.blob.core.windows.net/internet-of-things/Whiteboard%20design%20session/WDS%20trainer%20guide%20-%20Internet%20of%20Things.html)
 
-[Setup.html](https://cloudworkshop.blob.core.windows.net/internet-of-things/Setup.html)
+[Before the HOL - Internet of Things.html](https://cloudworkshop.blob.core.windows.net/internet-of-things/Hands-on%20lab/Before%20the%20HOL%20-%20Internet%20of%20Things.html)
 
-[Whiteboard design session student guide - Internet of Things.html](https://cloudworkshop.blob.core.windows.net/internet-of-things/Whiteboard%20design%20session%20student%20guide%20-%20Internet%20of%20Things.html)
-
-[Whiteboard design session trainer guide - Internet of Things.html](https://cloudworkshop.blob.core.windows.net/internet-of-things/Whiteboard%20design%20session%20trainer%20guide%20-%20Internet%20of%20Things.html)
+[HOL step-by-step - Internet of Things.html](https://cloudworkshop.blob.core.windows.net/internet-of-things/Hands-on%20lab/HOL%20step-by-step%20-%20Internet%20of%20Things.html)
 
