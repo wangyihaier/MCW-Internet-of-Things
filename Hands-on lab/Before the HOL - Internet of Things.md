@@ -55,9 +55,9 @@ In this task, you will create an Azure resource group for the resources used thr
 
 1. In the [Azure portal](https://portal.azure.com), select **Resource groups**, select **+Add**, then enter the following in the Create an empty resource group blade:
 
-   - **Name**: Enter hands-on-lab-SUFFIX
+   - **Name**: Enter hands-on-lab-SUFFIX.
 
-   - **Subscription**: Select the subscription you are using for this hands-on lab
+   - **Subscription**: Select the subscription you are using for this hands-on lab.
 
    - **Resource group location**: Select the region you would like to use for resources in this hands-on lab. Remember this location so you can use it for the other resources you'll provision throughout this lab.
 
@@ -73,7 +73,7 @@ In this task, you will provision a virtual machine running Visual Studio Communi
 
    ![+Create a resource is selected in the Azure navigation pane, and "visual studio community" is entered into the Search the Marketplace box. Visual Studio Community 2017 (latest release) on Windows Server 2016 (x64) is selected in the results.](./media/create-resource-visual-studio-on-windows-server-2016.png 'Create Windows Server 2016 with Visual Studio Community 2017')
 
-2. Set the following configuration on the Basics tab.
+2. Set the following configuration on the Basics tab:
 
    - **Name**: Enter LabVM
 
@@ -83,11 +83,11 @@ In this task, you will provision a virtual machine running Visual Studio Communi
 
    - **Password**: Enter Password.1!!
 
-   - **Subscription**: Select the same subscription you are using for this hands-on lab
+   - **Subscription**: Select the same subscription you are using for this hands-on lab.
 
-   - **Resource Group**: Select Use existing, and select the hands-on-lab-SUFFIX resource group
+   - **Resource Group**: Select Use existing, and select the hands-on-lab-SUFFIX resource group.
 
-   - **Location**: Select the location you are using for resources in this hands-on lab
+   - **Location**: Select the location you are using for resources in this hands-on lab.
 
      ![Screenshot of the Basics blade, with fields set to the previously mentioned settings.](./media/virtual-machine-basics-blade.png 'Create virtual machine Basics blade')
 
@@ -119,19 +119,19 @@ In this task, you will create an Azure Databricks workspace.
 
 2. On the Azure Databricks Service blade, enter the following:
 
-   - **Workspace name**: Enter iot-db-workspace-SUFFIX
+   - **Workspace name**: Enter iot-db-workspace-SUFFIX.
 
-   - **Subscription**: Select the subscription you are using for this hands-on lab
+   - **Subscription**: Select the subscription you are using for this hands-on lab.
 
-   - **Resource group**: Choose Use existing and select the hands-on-lab-SUFFIX resource group
+   - **Resource group**: Choose Use existing and select the hands-on-lab-SUFFIX resource group.
 
-   - **Location**: Select the location you are using for resources in this hands-on lab
+   - **Location**: Select the location you are using for resources in this hands-on lab.
 
-   - **Pricing tier**: Select Standard
+   - **Pricing tier**: Select Standard.
 
      ![The Azure Databricks Service blade is displayed, with the values specified above entered into the appropriate fields.](media/azure-databricks-create-workspace.png 'Create Azure Databricks workspace')
 
-   - Select **Create**
+   - Select **Create**.
 
 ### Task 4: Create Databricks cluster
 
@@ -173,7 +173,7 @@ If you do not already have a Power BI account:
 
 4. Follow the on-screen prompts, and your Power BI environment should be ready within minutes.
 
-   > You can always return to your Power BI environment by navigating to <https://app.powerbi.com/>.
+   >**Note**: You can always return to your Power BI environment by navigating to <https://app.powerbi.com/>.
 
 ### Task 6: Connect to your Lab VM
 
@@ -235,7 +235,7 @@ Fabrikam has provided a Smart Meter Simulator that they use to simulate device r
 
    ![Download .zip containing the Intelligent vending machines repository](media/git-hub-download-repo.png 'Download ZIP')
 
-4. Unzip the contents to the folder **C:\SmartMeter.**
+4. Unzip the contents to the folder **C:\SmartMeter**.
 
 5. Navigate to the `SmartMeterSimulator.sln` file within the `Hands-on lab\lab-files\starter-project` folder and open it with Visual Studio 2017.
 
