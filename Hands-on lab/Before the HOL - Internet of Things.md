@@ -1,23 +1,55 @@
-# Before the hands-on lab
+![](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
+
+<div class="MCWHeader1">
+Internet of Things
+</div>
+
+<div class="MCWHeader2">
+Before the hands-on lab setup guide
+</div>
+
+<div class="MCWHeader3">
+September 2018
+</div>
+
+
+Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
+
+Microsoft may have patents, patent applications, trademarks, copyrights, or other intellectual property rights covering subject matter in this document. Except as expressly provided in any written license agreement from Microsoft, the furnishing of this document does not give you any license to these patents, trademarks, copyrights, or other intellectual property.
+
+The names of manufacturers, products, or URLs are provided for informational purposes only and Microsoft makes no representations and warranties, either expressed, implied, or statutory, regarding these manufacturers or the use of the products with any Microsoft technologies. The inclusion of a manufacturer or product does not imply endorsement of Microsoft of the manufacturer or product. Links may be provided to third party sites. Such sites are not under the control of Microsoft and Microsoft is not responsible for the contents of any linked site or any link contained in a linked site, or any changes or updates to such sites. Microsoft is not responsible for webcasting or any other form of transmission received from any linked site. Microsoft is providing these links to you only as a convenience, and the inclusion of any link does not imply endorsement of Microsoft of the site or the products contained therein.
+
+© 2018 Microsoft Corporation. All rights reserved.
+
+Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx> are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
+
+**Contents**
+
+<!-- TOC -->
+
+- [Internet of Things before the hands-on lab setup guide](#internet-of-things-before-the-hands-on-lab-setup-guide)
+    - [Before the hands-on lab](#before-the-hands-on-lab)
+        - [Task 1: Provision a resource group](#task-1-provision-a-resource-group)
+        - [Task 2: Set up a lab virtual machine](#task-2-set-up-a-lab-virtual-machine)
+        - [Task 3: Provision Azure Databricks](#task-3-provision-azure-databricks)
+        - [Task 4: Create Databricks cluster](#task-4-create-databricks-cluster)
+        - [Task 5: Provision Power BI](#task-5-provision-power-bi)
+        - [Task 6: Connect to your Lab VM](#task-6-connect-to-your-lab-vm)
+        - [Task 7: Download Smart Meter Simulator project](#task-8-download-smart-meter-simulator-project)
+
+<!-- /TOC -->
+
+# Internet of Things before the hands-on lab setup guide 
+
+## Before the hands-on lab
 
 Duration: 30 minutes
 
 In the Before the hands-on lab exercise, you will set up your environment for use in the rest of the hands-on lab. You should follow all the steps provided in the Before the hands-on lab section to prepare your environment **before attending** the hands-on lab. Failure to do so will significantly impact your ability to complete the lab within the time allowed.
 
-> IMPORTANT: Most Azure resources require unique names. Throughout this lab you will see the word “SUFFIX” as part of resource names. You should replace this with your Microsoft alias, initials, or another value to ensure the resource is uniquely named.
+>**IMPORTANT**: Most Azure resources require unique names. Throughout this lab you will see the word “SUFFIX” as part of resource names. You should replace this with your Microsoft alias, initials, or another value to ensure the resource is uniquely named.
 
-## Contents
-
-- [Task 1: Provision a resource group](#task-1-provision-a-resource-group)
-- [Task 2: Set up a lab virtual machine](#task-2-set-up-a-lab-virtual-machine)
-- [Task 3: Provision Azure Databricks](#task-3-provision-azure-databricks)
-- [Task 4: Create Databricks cluster](#task-4-create-databricks-cluster)
-- [Task 5: Provision Power BI](#task-5-provision-power-bi)
-- [Task 6: Connect to your Lab VM](#task-6-connect-to-your-lab-vm)
-- [Task 7: Download Smart Meter Simulator project](#task-8-download-smart-meter-simulator-project)
-- [Next steps](#next-steps)
-
-## Task 1: Provision a resource group
+### Task 1: Provision a resource group
 
 In this task, you will create an Azure resource group for the resources used throughout this lab.
 
@@ -33,7 +65,7 @@ In this task, you will create an Azure resource group for the resources used thr
 
    - Select **Create**.
 
-## Task 2: Setup a lab virtual machine
+### Task 2: Setup a lab virtual machine
 
 In this task, you will provision a virtual machine running Visual Studio Community 2017 that you will use as your development machine for this hands-on lab.
 
@@ -77,7 +109,7 @@ In this task, you will provision a virtual machine running Visual Studio Communi
 
 8. You can move on to the next task while waiting for the lab VM to provision.
 
-## Task 3: Provision Azure Databricks
+### Task 3: Provision Azure Databricks
 
 In this task, you will create an Azure Databricks workspace.
 
@@ -101,7 +133,7 @@ In this task, you will create an Azure Databricks workspace.
 
    - Select **Create**
 
-## Task 4: Create Databricks cluster
+### Task 4: Create Databricks cluster
 
 In this task, you will create an Azure Databricks cluster within the workspace you created previously.
 
@@ -125,7 +157,7 @@ In this task, you will create an Azure Databricks cluster within the workspace y
 
    ![The iot-cluster-SUFFIX cluster is displayed under Interactive Clusters, and ](media/azure-databricks-interactive-clusters.png 'Databricks Interactive clusters')
 
-## Task 5: Provision Power BI
+### Task 5: Provision Power BI
 
 If you do not already have a Power BI account:
 
@@ -143,7 +175,7 @@ If you do not already have a Power BI account:
 
    > You can always return to your Power BI environment by navigating to <https://app.powerbi.com/>.
 
-## Task 6: Connect to your Lab VM
+### Task 6: Connect to your Lab VM
 
 In this task, you will create an RDP connection to your lab virtual machine (VM).
 
@@ -169,9 +201,9 @@ In this task, you will create an RDP connection to your lab virtual machine (VM)
 
 6. Enter the following credentials when prompted:
 
-   a. **User name**: demouser
+   - **User name**: demouser
 
-   b. **Password**: Password.1!!
+   - **Password**: Password.1!!
 
 7. Select **Yes** to connect, if prompted that the identity of the remote computer cannot be verified.
 
@@ -191,7 +223,7 @@ In this task, you will create an RDP connection to your lab virtual machine (VM)
 
 11. Close the Server Manager.
 
-## Task 7: Download Smart Meter Simulator project
+### Task 7: Download Smart Meter Simulator project
 
 Fabrikam has provided a Smart Meter Simulator that they use to simulate device registration, as well as the generation and transmission of telemetry data. They have asked you to use this as the starting point for integrating their smart meters with Azure.
 
@@ -215,12 +247,5 @@ Fabrikam has provided a Smart Meter Simulator that they use to simulate device r
 
 > **Note**: If you attempt to build the solution at this point, you will see many build errors. This is intentional. You will correct these in the exercises that follow.
 
-_These steps should be completed prior to starting the rest of the Lab._
+You should follow all steps provided *before* performing the Hands-on lab.
 
-## Next steps
-
-You are now ready to complete the hands-on lab. Select a guide below to get started, or you can return to the overview page for the lab.
-
-- Complete Hands-on lab
-  - [Step-by-step guide](./HOL-step-by-step-LAB-NAME.md)
-- Return to [Hands-on lab readme](./readme.md)
