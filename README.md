@@ -1,46 +1,48 @@
-# Abstract
+# Internet of Things
 
-## Workshop
+Fabrikam provides services and smart meters for enterprise energy (electrical power) management. Their “You-Left-The-Light-On” service enables the enterprise to understand their energy consumption. Fabrikam would like to become an authorized energy management solution provider. According to their Director of Analytics, Sam George, "We are investigating a move to the cloud to help our customers not only to meet data collection and reporting requirements, but also become the number one energy management solution provider." They are intending to enable their enterprise customers with a web-based dashboard where they can see historical trends of power consumption.
 
-This workshop is designed to guide you through an implementation of an end-to-end IoT solution simulating high velocity data emitted from smart meters and analyzed in Azure. In this session, you will design a lambda architecture, filtering a subset of the telemetry data for real-time visualization on the hot path, and storing all the data in long-term storage for the cold path. After completing the package, you will be better able to implement device registration with the IoT Hub registry and visualize hot data with Power BI.
+## Target audience
 
-Learning objectives:
+- Application developer
+- IoT
 
--   Implement a simulator sending telemetry from smart meters
+## Abstract
 
--   Capture and process both hot and cold data using Stream Analytics and HDInsight with Spark
+### Workshop
 
--   Visualize hot data with Power BI
+This workshop will guide you through an implementation of an end-to-end IoT solution simulating high velocity data emitted from smart meters and analyzed in Azure. You will design a lambda architecture, filtering a subset of the telemetry data for real-time visualization on the hot path, and storing all the data in long-term storage for the cold path.
 
+At the end of this workshop, you will be better able to construct an IoT solution implementing device registration with the IoT Hub Device Provisioning Service and visualizing hot data with Power BI.
 
-## Whiteboard Design Session
-TBD
+### Whiteboard design session
 
-## Hand-on Lab
-TBD
+In this whiteboard design session, you will work with a group to design an implementation of an end-to-end IoT solution simulating high velocity data emitted from smart meters and analyzed in Azure. You will design a lambda architecture, filtering a subset of the telemetry data for real-time visualization on the hot path, and storing all the data in long-term storage for the cold path.
 
+At the end of this whiteboard design session, you will be better able to design an IoT solution implementing device registration with the IoT Hub Device Provisioning Service and visualizing hot data with Power BI.
+
+### Hands-on lab
+
+In this hands-on lab, you will construct an end-to-end IoT solution simulating high velocity data emitted from smart meters and analyzed in Azure. You will design a lambda architecture, filtering a subset of the telemetry data for real-time visualization on the hot path, and storing all the data in long-term storage for the cold path.
+
+At the end of this hands-on lab, you will be better able to build an IoT solution implementing device registration with the IoT Hub Device Provisioning Service and visualizing hot data with Power BI.
 
 ## Azure services and related products
+
+- Azure App Services
+- Azure Blob Storage
 - Azure Data Factory
-- Azure IoT Hub
+- Azure Databricks
+- Azure SQL Database
 - Azure Stream Analytics
-- Azure HDInsight
-- Azure Spark & Spark SQL
-- Azure Storage
-- Power BI
+- IoT Hub
+- Power BI Desktop
+- Visual Studio 2017
 
+## Azure solution
 
-# Contributing
+Internet of Things
 
-This project welcomes contributions and suggestions.  Most contributions require you to agree to a
-Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
-the rights to use your contribution. For details, visit https://cla.microsoft.com.
+## Related references
 
-When you submit a pull request, a CLA-bot will automatically determine whether you need to provide
-a CLA and decorate the PR appropriately (e.g., label, comment). Simply follow the instructions
-provided by the bot. You will only need to do this once across all repos using our CLA.
-
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
-For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
-contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
-
+[MCW](https://github.com/Microsoft/MCW)
