@@ -22,7 +22,7 @@ The names of manufacturers, products, or URLs are provided for informational pur
 
 Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx> are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
-## Contents
+**Contents** 
 
 - [Internet of Things hands-on lab step-by-step](#internet-of-things-hands-on-lab-step-by-step)
   - [Abstract and learning objectives](#abstract-and-learning-objectives)
@@ -54,8 +54,6 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 # Internet of Things hands-on lab step-by-step
 
-In this hands-on lab, you will implement an end-to-end IoT solution simulating high velocity data emitted from smart meters and analyzed in Azure. You will design a lambda architecture, filtering a subset of the telemetry data for real-time visualization on the hot path, and storing all the data in long-term storage for the cold path. After completing the hands-on lab, you will have a better understanding of implementing device registration with the IoT Hub Device Provisioning Service and visualizing hot data with Power BI.
-
 If you have not yet completed the steps to set up your environment in [Before the hands-on lab](./Before%20the%20HOL%20-%20Internet%20of%20Things.md), you will need to do that before proceeding.
 
 ## Abstract and learning objectives
@@ -74,18 +72,16 @@ Below is a diagram of the solution architecture you will build in this lab. Plea
 
 ![Diagram of the preferred solution. From a high-level, the commerce solution uses an API App to host the Payments web service with which the Vending Machine interacts to conduct purchase transactions. The Payment Web API invokes a 3rd party payment gateway as needed for authorizing and capturing credit card payments, and logs the purchase transaction to SQL DB. The data for these purchase transactions is stored using an In-Memory table with a Columnar Index, which will support the write-heavy workload while still allowing analytics to operate, such as queries coming from Power BI Desktop.](./media/preferred-solution-architecture.png 'Preferred high-level architecture')
 
-![](media/preferred-solution-architecture.png)
-
 Messages are ingested from the Smart Meters via IoT Hub and temporarily stored there. A Stream Analytics job pulls telemetry messages from IoT Hub and sends the messages to two different destinations. There are two Stream Analytics jobs, one that retrieves all messages and sends them to Blob Storage (the cold path), and another that selects out only the important events needed for reporting in real time (the hot path). Data entering the hot path will be reported on using Power BI visualizations and reports. For the cold path, Azure Databricks can be used to apply the batch computation needed for the reports at scale.
 
 Other alternatives for processing of the ingested telemetry would be to use an HDInsight Storm cluster, a WebJob running the EventProcessorHost in place of Stream Analytics, or HDInsight running with Spark streaming. Depending on the type of message filtering being conducted for hot and cold stream separation, IoT Hub Message Routing might also be used, but this has the limitation that messages follow a single path, so with the current implementation, it would not be possible to send all messages to the cold path, while simultaneously sending some of the same messages into the hot path. An important limitation to keep in mind for Stream Analytics is that it is very restrictive on the format of the input data it can process: the payload must be UTF8 encoded JSON, UTF8 encoded CSV (fields delimited by commas, spaces, tabs, or vertical pipes), or AVRO, and it must be well formed. If any devices transmitting telemetry cannot generate output in these formats (e.g., because they are legacy devices), or their output can be not well formed at times, then alternatives that can better deal with these situations should be investigated. Additionally, any custom code or logic cannot be embedded with Stream Analytics---if greater extensibility is required, the alternatives should be considered.
 
-> NOTE: The preferred solution is only one of many possible, viable approaches.
+>**Note**: The preferred solution is only one of many possible, viable approaches.
 
 ## Requirements
 
-- Microsoft Azure subscription must be pay-as-you-go or MSDN
-  - Trial subscriptions will not work
+- Microsoft Azure subscription must be pay-as-you-go or MSDN.
+  - Trial subscriptions will not work.
 - A virtual machine configured with:
   - Visual Studio Community 2017 15.6 or later
   - Azure SDK 2.9 or later (Included with Visual Studio 2017)
@@ -107,13 +103,13 @@ In these steps, you will provision an instance of IoT Hub.
 
 2. On the IoT Hub blade Basics tab, enter the following:
 
-   - **Subscription**: Select the subscription you are using for this hands-on lab
+   - **Subscription**: Select the subscription you are using for this hands-on lab.
 
-   - **Resource group**: Choose Use existing and select the hands-on-lab-SUFFIX resource group
+   - **Resource group**: Choose Use existing and select the hands-on-lab-SUFFIX resource group.
 
-   - **Region**: Select the location you are using for this hands-on lab
+   - **Region**: Select the location you are using for this hands-on lab.
 
-   - **IoT Hub Name**: Enter a unique name, such as smartmeter-hub-SUFFIX
+   - **IoT Hub Name**: Enter a unique name, such as smartmeter-hub-SUFFIX.
 
      ![The Basics blade for IoT Hub is displayed, with the values specified above entered into the appropriate fields.](./media/iot-hub-basics-blade.png 'Create IoT Hub Basic blade')
 
@@ -153,7 +149,7 @@ If you want to save this connection string with your project (in case you stop d
 
    ![The Windows Form designer surface is opened to the MainForm.cs tab. The IoT Hub Connection String is highlighted, but is empty.](./media/smart-meter-simulator-iot-hub-connection-string.png 'Windows Form designer surface')
 
-4. In the Properties panel, scroll until you see the **Text** property. Paste your IoT Hub connection string value copied in step 7 of the previous task into the value for the Text property. (If the properties window is not visible below the Solution Explorer, right-click the TextBox, and select **Properties**.)
+4. In the Properties panel, scroll until you see the **Text** property. Paste your IoT Hub connection string value copied in step 6 of the previous task into the value for the Text property. (If the properties window is not visible below the Solution Explorer, right-click the TextBox, and select **Properties**.)
 
    ![In the Properties panel, the Text property is highlighted, and is set to HostName=smartmeter-hub.](./media/smart-meter-simulator-iot-hub-connection-string-text-property.png 'Solution Explorer')
 
@@ -476,15 +472,15 @@ In this task, you will build and run the Smart Meter Simulator project.
 
 1. In Visual Studio select Build from the Visual Studio menu, then select Build Solution.
 
-   > **NOTE:** If you receive the following error after building the solution, complete the steps that follow: `Couldn't process file MainForm.resx due to its being in the Internet or Restricted zone or having the mark of the web on the file. Remove the mark of the web if you want to process these files.`
+   > **Note**: If you receive the following error after building the solution, complete the steps that follow: `Couldn't process file MainForm.resx due to its being in the Internet or Restricted zone or having the mark of the web on the file. Remove the mark of the web if you want to process these files.`
 
-   1. Open Windows Explorer and navigate to the starter project folder: `C:\SmartMeter\Hands-on lab\lab-files\starter-project\SmartMeterSimulator\`.
-   1. Right-click on the `MainForm.resx` file, then select Properties.
-   1. Check the **Unblock** checkbox on the bottom of the General tab, then click Apply then OK.
+   - Open Windows Explorer and navigate to the starter project folder: `C:\SmartMeter\Hands-on lab\lab-files\starter-project\SmartMeterSimulator\`.
+   - Right-click on the `MainForm.resx` file, then select Properties.
+   - Check the **Unblock** checkbox on the bottom of the General tab, then click Apply then OK.
 
    ![Right-click MainForm.resx, go to Properties, then check the box next to Unblock](media/unblock-file.png 'Unblock file')
 
-   1. Close and reopen Visual Studio. You should now be able to successfully build.
+   - Close and reopen Visual Studio. You should now be able to successfully build.
 
 2. Run the Smart Meter Simulator, by selecting the green Start button on the Visual Studio toolbar.
 
@@ -534,11 +530,11 @@ Fabrikam would like to visualize the "hot" data showing the average temperature 
 
 2. On the New Stream Analytics Job blade, enter the following:
 
-   - **Job name**: Enter hot-stream
-   - **Subscription**: Select the subscription you are using for this hands-on lab
-   - **Resource group**: Choose Use existing and select the hands-on-lab-SUFFIX resource group
-   - **Location**: Select the location you are using for resources in this hands-on lab
-   - **Hosting environment**: Select Cloud
+   - **Job name**: Enter hot-stream.
+   - **Subscription**: Select the subscription you are using for this hands-on lab.
+   - **Resource group**: Choose Use existing and select the hands-on-lab-SUFFIX resource group.
+   - **Location**: Select the location you are using for resources in this hands-on lab.
+   - **Hosting environment**: Select Cloud.
 
      ![The New Stream Analytics Job blade is displayed, with the previously mentioned settings entered into the appropriate fields.](media/stream-analytics-job-create.png 'New Stream Analytics Job blade')
 
@@ -553,15 +549,15 @@ Fabrikam would like to visualize the "hot" data showing the average temperature 
 6. On the New Input blade, enter the following:
 
    - **Input alias**: Enter temps.
-   - Choose **Select IoT Hub from your subscriptions**
-   - **Subscription**: Select the subscription you are using for this hands-on lab
-   - **IoT Hub**: Select the smartmeter-hub-SUFFIX IoT Hub
-   - **Endpoint**: Select Messaging
-   - **Shared access policy name**: Select service
-   - **Consumer Group**: Leave set to $Default
-   - **Event serialization format**: Select JSON
-   - **Encoding**: Select UTF-8
-   - **Event compression type**: Leave set to None
+   - Choose **Select IoT Hub from your subscriptions**.
+   - **Subscription**: Select the subscription you are using for this hands-on lab.
+   - **IoT Hub**: Select the smartmeter-hub-SUFFIX IoT Hub.
+   - **Endpoint**: Select Messaging.
+   - **Shared access policy name**: Select service.
+   - **Consumer Group**: Leave set to $Default.
+   - **Event serialization format**: Select JSON.
+   - **Encoding**: Select UTF-8.
+   - **Event compression type**: Leave set to None.
 
      ![IoT Hub New Input blade is displayed with the values specified above entered into the appropriate fields.](media/stream-analytics-job-inputs-add-iot-hub-input.png 'IoT Hub New Input blade')
 
@@ -573,16 +569,16 @@ Fabrikam would like to visualize the "hot" data showing the average temperature 
 
 9. On the Power BI output blade, enter the following:
 
-   - **Output alias**: Set to powerbi
+   - **Output alias**: Set to powerbi.
    - Select **Authorize** to authorize the connection to your Power BI account. When prompted in the popup window, enter the account credentials you used to create your Power BI account in [Before the Hands-on Lab, Task 1](#task-1-provision-power-bi).
 
      ![Power BI new output blade. Output alias is selected and contains powerbi. Authorize button is highlighted.](media/stream-analytics-job-outputs-add-power-bi-authorize.png 'Power BI new output blade')
 
    - For the remaining Power BI settings, enter the following:
 
-     - **Group Workspace**: Select the default, My Workspace
-     - **Dataset Name**: Enter avgtemps
-     - **Table Name**: Enter avgtemps
+     - **Group Workspace**: Select the default, My Workspace.
+     - **Dataset Name**: Enter avgtemps.
+     - **Table Name**: Enter avgtemps.
 
 10. Select **Save**.
 
@@ -691,13 +687,13 @@ Fabrikam would like to be able to capture all the "cold" data into scalable stor
 
 2. In the Create storage account blade, enter the following:
 
-   - **Subscription**: Select the subscription you are using for this hands-on lab
-   - **Resource group**: Choose Use existing and select the hands-on-lab-SUFFIX resource group
-   - **Storage account name**: Enter smartmetersSUFFIX
-   - **Location**: Select the location you are using for resources in this hands-on lab
-   - **Performance**: Select Standard
-   - **Account kind**: Select Storage (general purpose v1)
-   - **Replication**: Select Locally-redundant storage (LRS)
+   - **Subscription**: Select the subscription you are using for this hands-on lab.
+   - **Resource group**: Choose Use existing and select the hands-on-lab-SUFFIX resource group.
+   - **Storage account name**: Enter smartmetersSUFFIX.
+   - **Location**: Select the location you are using for resources in this hands-on lab.
+   - **Performance**: Select Standard.
+   - **Account kind**: Select Storage (general purpose v1).
+   - **Replication**: Select Locally-redundant storage (LRS).
 
    ![The Create storage account blade is displayed, with the previously mentioned settings entered into the appropriate fields.](media/storage-account-create-new.png 'Create storage account')
 
@@ -705,8 +701,8 @@ Fabrikam would like to be able to capture all the "cold" data into scalable stor
 
 4. In the Advanced tab, select the following:
 
-   - **Secure transfer required**: Select Disabled
-   - **Virtual network**: Select None
+   - **Secure transfer required**: Select Disabled.
+   - **Virtual network**: Select None.
 
    ![The Create storage account blade is displayed with options under the Advanced tab.](media/storage-account-create-new-advanced.png 'Create storage account - Advanced')
 
@@ -726,12 +722,12 @@ To capture all metrics for the cold path, set up another Stream Analytics job th
 
 2. On the New Stream Analytics Job blade, enter the following:
 
-   - **Job name**: Enter cold-stream
-   - **Subscription**: Select the subscription you are using for this hands-on lab
-   - **Resource group**: Select the hands-on-lab-SUFFIX resource group
-   - **Location**: Select the location you are using for resources in this hands-on lab
-   - **Hosting environment**: Select Cloud
-   - **Streaming units**: Drag the slider all the way to the left to select 1 streaming unit
+   - **Job name**: Enter cold-stream.
+   - **Subscription**: Select the subscription you are using for this hands-on lab.
+   - **Resource group**: Select the hands-on-lab-SUFFIX resource group.
+   - **Location**: Select the location you are using for resources in this hands-on lab.
+   - **Hosting environment**: Select Cloud.
+   - **Streaming units**: Drag the slider all the way to the left to select 1 streaming unit.
 
      ![The New Stream Analytics Job blade is displayed, with the previously mentioned settings entered into the appropriate fields.](media/stream-analytics-job-create-cold-stream.png 'New Stream Analytics Job blade')
 
@@ -746,15 +742,15 @@ To capture all metrics for the cold path, set up another Stream Analytics job th
 6. On the New Input blade, enter the following:
 
    - **Input alias**: Enter iothub.
-   - Choose **Select IoT Hub from your subscriptions**
-   - **Subscription**: Select the subscription you are using for this hands-on lab
-   - **IoT Hub**: Select the smartmeter-hub-SUFFIX IoT Hub
-   - **Endpoint**: Select Messaging
-   - **Shared access policy name**: Select service
-   - **Consumer Group**: Leave set to $Default
-   - **Event serialization format**: Select JSON
-   - **Encoding**: Select UTF-8
-   - **Event compression type**: Leave set to None
+   - Choose **Select IoT Hub from your subscriptions**.
+   - **Subscription**: Select the subscription you are using for this hands-on lab.
+   - **IoT Hub**: Select the smartmeter-hub-SUFFIX IoT Hub.
+   - **Endpoint**: Select Messaging.
+   - **Shared access policy name**: Select service.
+   - **Consumer Group**: Leave set to $Default.
+   - **Event serialization format**: Select JSON.
+   - **Encoding**: Select UTF-8.
+   - **Event compression type**: Leave set to None.
 
      ![IoT Hub New Input blade is displayed with the values specified above entered into the appropriate fields.](media/stream-analytics-job-inputs-add-iot-hub-input-cold-stream.png 'IoT Hub New Input blade')
 
@@ -766,17 +762,17 @@ To capture all metrics for the cold path, set up another Stream Analytics job th
 
 9. On the Blob storage output blade, enter the following:
 
-   - **Output alias**: Set to blobs
-   - Choose **Select blob storage from your subscriptions**
-   - **Subscription**: Select the subscription you are using for this hands-on lab
-   - **Storage account**: Select the smartmetersSUFFIX storage account you created in the previous task
-   - **Container**: Choose Create new and enter smartmeters
-   - **Path pattern**: Enter smartmeters/{date}/{time}
-   - **Date format**: Select YYYY-DD-MM
-   - **Time format**: Select HH
-   - **Event serialization format**: Select CSV
-   - **Delimiter**: Select comma (,)
-   - **Encoding**: Select UTF-8
+   - **Output alias**: Set to blobs.
+   - Choose **Select blob storage from your subscriptions**.
+   - **Subscription**: Select the subscription you are using for this hands-on lab.
+   - **Storage account**: Select the smartmetersSUFFIX storage account you created in the previous task.
+   - **Container**: Choose Create new and enter smartmeters.
+   - **Path pattern**: Enter smartmeters/{date}/{time}.
+   - **Date format**: Select YYYY-DD-MM.
+   - **Time format**: Select HH.
+   - **Event serialization format**: Select CSV.
+   - **Delimiter**: Select comma (,).
+   - **Encoding**: Select UTF-8.
 
      ![Blob storage New output blade is displayed, with the values mentioned above entered into the appropriate fields.](media/stream-analytics-job-outputs-blob-storage-new.png 'Add Blob storage Output')
 
@@ -819,7 +815,9 @@ To capture all metrics for the cold path, set up another Stream Analytics job th
 
 ### Task 3: Verify CSV files in blob storage
 
-In this task, we are going to verify that the CSV file is being written to blob storage. (Note, this can be done via Visual Studio, or using the Azure portal. For this lab, we will perform the task using Visual Studio.)
+In this task, we are going to verify that the CSV file is being written to blob storage.
+
+>**Note**: This can be done via Visual Studio, or using the Azure portal. For this lab, we will perform the task using Visual Studio.
 
 1. Within Visual Studio on your Lab VM, select the **View** menu, then select **Cloud Explorer**.
 
@@ -845,9 +843,9 @@ In this task, we are going to verify that the CSV file is being written to blob 
 
 In this task, you will create a new Databricks notebook to perform some processing and visualization of the cold path data using Spark.
 
-> NOTE: The complete Databricks notebook can be found in the Databricks-notebook folder of the GitHub repo associated with this hands-on lab, should you need to reference it for troubleshooting.
+>**Note**: The complete Databricks notebook can be found in the Databricks-notebook folder of the GitHub repo associated with this hands-on lab, should you need to reference it for troubleshooting.
 
-1. In the [Azure portal](https://portal.azure.com), navigate to the Azure Databricks workspace you created in the [Before the hands-on lab](./Setup.md) exercises, and select **Launch Workspace**.
+1. In the [Azure portal](https://portal.azure.com), navigate to the Azure Databricks workspace you created in the [Before the hands-on lab](./Before%20the%20HOL%20-%20Internet%20of%20Things.md) exercises, and select **Launch Workspace**.
 
    ![On the Azure Databricks Service blade, the Launch Workspace button is highlighted.](media/azure-databricks-launch-workspace.png 'Launch Azure Databricks Workspace')
 
@@ -915,7 +913,7 @@ In this task, you will create a new Databricks notebook to perform some processi
       extra_configs = {"fs.azure.account.key." + accountName + ".blob.core.windows.net": accountKey})
     ```
 
-    > NOTE: Mounting Azure Blob storage directly to DBFS allows you to access files as if they were on the local file system.
+    >**Note**: Mounting Azure Blob storage directly to DBFS allows you to access files as if they were on the local file system.
 
 15. Once your blob storage account is mounted, you can access them with Databricks Utilities, `dbutils.fs` commands. Insert a new cell, and paste the code below to see how `dbutils.fs.ls` can be used to list the files and folders directly below the smartmeters folder.
 
@@ -984,11 +982,11 @@ In this task, you will create a new Databricks notebook to perform some processi
 
 26. In the Customize Plot dialog, set the following:
 
-    - **Keys**: Add id
-    - **Values**: Add averageTemp
-    - **Aggregation**: Select AVG
-    - Select **Grouped** as the chart type
-    - **Display type**: Select Bar chart
+    - **Keys**: Add id.
+    - **Values**: Add averageTemp.
+    - **Aggregation**: Select AVG.
+    - Select **Grouped** as the chart type.
+    - **Display type**: Select Bar chart.
 
       ![Plot customization options dialog in Azure databricks, with id in the Keys field, averageTemp in the Values field, Aggregation set to AVG, and the chart set to a grouped bar chart.](media/azure-databricks-notebook-customize-plot.png)
 
@@ -1037,15 +1035,15 @@ Now that the device connections are being logged, update your hot path Stream An
 4. On the New Input blade, enter the following:
 
    - **Input alias**: Enter connections.
-   - Choose **Select IoT Hub from your subscriptions**
-   - **Subscription**: Select the subscription you are using for this hands-on lab
-   - **IoT Hub**: Select the smartmeter-hub-SUFFIX IoT Hub
-   - **Endpoint**: Select Operations monitoring
-   - **Shared access policy name**: Select service
-   - **Consumer Group**: Leave set to $Default
-   - **Event serialization format**: Select JSON
-   - **Encoding**: Select UTF-8
-   - **Event compression type**: Leave set to None
+   - Choose **Select IoT Hub from your subscriptions**.
+   - **Subscription**: Select the subscription you are using for this hands-on lab.
+   - **IoT Hub**: Select the smartmeter-hub-SUFFIX IoT Hub.
+   - **Endpoint**: Select Operations monitoring.
+   - **Shared access policy name**: Select service.
+   - **Consumer Group**: Leave set to $Default.
+   - **Event serialization format**: Select JSON.
+   - **Encoding**: Select UTF-8.
+   - **Event compression type**: Leave set to None.
 
      ![IoT Hub New Input blade is displayed with the values specified above entered into the appropriate fields.](media/stream-analytics-job-inputs-add-iot-hub-input-operations-management.png 'IoT Hub New Input blade')
 
@@ -1057,11 +1055,11 @@ Now that the device connections are being logged, update your hot path Stream An
 
 7. On the Power BI output blade, enter the following:
 
-   - **Output alias**: Set to powerbi-outage
-   - Select **Authorize** to authorize the connection to your Power BI account. When prompted in the popup window, enter the account credentials you used to create your Power BI account in [Before the Hands-on Lab, Task 1](#task-1-provision-power-bi).
-   - **Group Workspace**: Select the default, My Workspace
-   - **Dataset Name**: Enter deviceoutage
-   - **Table Name**: Enter deviceoutage
+   - **Output alias**: Set to powerbi-outage.
+   - Select **Authorize** to authorize the connection to your Power BI account. When prompted in the popup window, enter the account credentials you used to create your Power BI account in Before the Hands-on Lab, Task 1.
+   - **Group Workspace**: Select the default, My Workspace.
+   - **Dataset Name**: Enter deviceoutage.
+   - **Table Name**: Enter deviceoutage.
 
      ![Power BI blade. Output alias is powerbi-outage, dataset name is deviceoutage, table name is deviceoutage.](media/stream-analytics-job-outputs-add-power-bi-operations-management.png 'Add Power BI Output')
 
@@ -1200,7 +1198,9 @@ In this exercise, you will delete any Azure resources that were created in suppo
 ### Task 1: Delete the resource group
 
 1. Using the [Azure portal](https://portal.azure.com), navigate to the Resource group you used throughout this hands-on lab by selecting Resource groups in the left menu.
+
 2. Search for the name of your research group, and select it from the list.
+
 3. Select Delete in the command bar, and confirm the deletion by re-typing the Resource group name, and selecting Delete.
 
-_You should follow all steps provided after attending the Hands-on lab._
+You should follow all steps provided *after* attending the Hands-on lab.
