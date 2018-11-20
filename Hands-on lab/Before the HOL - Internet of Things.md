@@ -1,4 +1,4 @@
-![](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
+![](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png 'Microsoft Cloud Workshops')
 
 <div class="MCWHeader1">
 Internet of Things
@@ -12,7 +12,6 @@ Before the hands-on lab setup guide
 September 2018
 </div>
 
-
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
 
 Microsoft may have patents, patent applications, trademarks, copyrights, or other intellectual property rights covering subject matter in this document. Except as expressly provided in any written license agreement from Microsoft, the furnishing of this document does not give you any license to these patents, trademarks, copyrights, or other intellectual property.
@@ -25,22 +24,9 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 **Contents**
 
-<!-- TOC -->
+<!-- TOC -->autoauto- [Internet of Things before the hands-on lab setup guide](#internet-of-things-before-the-hands-on-lab-setup-guide)auto  - [Requirements](#requirements)auto  - [Before the hands-on lab](#before-the-hands-on-lab)auto    - [Task 1: Provision a resource group](#task-1-provision-a-resource-group)auto    - [Task 2: Setup a lab virtual machine](#task-2-setup-a-lab-virtual-machine)auto    - [Task 3: Provision Azure Databricks](#task-3-provision-azure-databricks)auto    - [Task 4: Create Databricks cluster](#task-4-create-databricks-cluster)auto    - [Task 5: Provision Power BI](#task-5-provision-power-bi)auto    - [Task 6: Connect to your Lab VM](#task-6-connect-to-your-lab-vm)auto    - [Task 7: Download Smart Meter Simulator project](#task-7-download-smart-meter-simulator-project)autoauto<!-- /TOC -->
 
-- [Internet of Things before the hands-on lab setup guide](#internet-of-things-before-the-hands-on-lab-setup-guide)
-  - [Requirements](#requirements)
-  - [Before the hands-on lab](#before-the-hands-on-lab)
-       - [Task 1: Provision a resource group](#task-1-provision-a-resource-group)
-       - [Task 2: Set up a lab virtual machine](#task-2-set-up-a-lab-virtual-machine)
-       - [Task 3: Provision Azure Databricks](#task-3-provision-azure-databricks)
-       - [Task 4: Create Databricks cluster](#task-4-create-databricks-cluster)
-       - [Task 5: Provision Power BI](#task-5-provision-power-bi)
-       - [Task 6: Connect to your Lab VM](#task-6-connect-to-your-lab-vm)
-       - [Task 7: Download Smart Meter Simulator project](#task-8-download-smart-meter-simulator-project)
-
-<!-- /TOC -->
-
-# Internet of Things before the hands-on lab setup guide 
+# Internet of Things before the hands-on lab setup guide
 
 ## Requirements
 
@@ -49,15 +35,15 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 - A virtual machine configured with:
   - Visual Studio Community 2017 15.6 or later
   - Azure SDK 2.9 or later (Included with Visual Studio 2017)
-- A running Azure Databricks cluster. 
+- A running Azure Databricks cluster.
 
 ## Before the hands-on lab
 
-Duration: 30 minutes
+Duration: 45 minutes
 
 In the Before the hands-on lab exercise, you will set up your environment for use in the rest of the hands-on lab. You should follow all the steps provided in the Before the hands-on lab section to prepare your environment **before attending** the hands-on lab. Failure to do so will significantly impact your ability to complete the lab within the time allowed.
 
->**IMPORTANT**: Most Azure resources require unique names. Throughout this lab you will see the word “SUFFIX” as part of resource names. You should replace this with your Microsoft alias, initials, or another value to ensure the resource is uniquely named.
+> **IMPORTANT**: Most Azure resources require unique names. Throughout this lab you will see the word “SUFFIX” as part of resource names. You should replace this with your Microsoft alias, initials, or another value to ensure the resource is uniquely named.
 
 ### Task 1: Provision a resource group
 
@@ -85,39 +71,37 @@ In this task, you will provision a virtual machine running Visual Studio Communi
 
 2. Set the following configuration on the Basics tab:
 
-   - **Name**: Enter LabVM
-
-   - **VM disk type**: Select SSD
-
-   - **User name**: Enter demouser
-
-   - **Password**: Enter Password.1!!
-
    - **Subscription**: Select the same subscription you are using for this hands-on lab.
 
    - **Resource Group**: Select Use existing, and select the hands-on-lab-SUFFIX resource group.
 
-   - **Location**: Select the location you are using for resources in this hands-on lab.
+   - **Virtual machine name**: Enter LabVM
 
-     ![Screenshot of the Basics blade, with fields set to the previously mentioned settings.](./media/virtual-machine-basics-blade.png 'Create virtual machine Basics blade')
+   - **Region**: Select the same region you selected for the resource group.
 
-   - Select **OK** to move to the next step.
+   - **Availability options**: Select No infrastructure redundancy required.
 
-3. On the Choose a size blade, select **DS2_V3 Standard**.
+   - **Image**: The Visual Studio Community image you selected in the previous step should be listed here.
 
-   ![On the Choose a size blade, the D2S_V3 Standard size is selected.](./media/virtual-machine-choose-a-size-blade.png 'Choose a size blade')
+   - **Size**: Select a Standard D2 v3 size if it is not already selected.
 
-4. Select **Select** to move on to the Settings blade.
+   - **Username**: Enter demouser
 
-5. On the Settings blade, select **RDP (3389)** from the Select public inbound ports drop down, then select **OK**.
+   - **Password**: Enter Password.1!!
 
-   ![On the Create virtual machine settings blade, RDP (3389) is selected in the public inbound ports drop down.](media/virtual-machine-settings-inbound-ports.png 'Open RDP on inbound port 3389')
+   - **Public inbound ports**: Select Allow selected ports.
 
-6. Select **Create** on the Create blade to provision the virtual machine.
+   - **Selected inbound ports**: Select **RDP (3389)** from the drop down.
 
-7. It may take 10+ minutes for the virtual machine to complete provisioning.
+     ![Screenshot of the Create virtual machine blade, with fields set to the previously mentioned settings.](media/virtual-machine.png 'Create virtual machine blade')
 
-8. You can move on to the next task while waiting for the lab VM to provision.
+   - Select **Review + create** to move to the next step.
+
+3. Select **Create** on the Create blade to provision the virtual machine.
+
+4. It may take 10+ minutes for the virtual machine to complete provisioning.
+
+5. You can move on to the next task while waiting for the lab VM to provision.
 
 ### Task 3: Provision Azure Databricks
 
@@ -183,7 +167,7 @@ If you do not already have a Power BI account:
 
 4. Follow the on-screen prompts, and your Power BI environment should be ready within minutes.
 
-   >**Note**: You can always return to your Power BI environment by navigating to <https://app.powerbi.com/>.
+   > **Note**: You can always return to your Power BI environment by navigating to <https://app.powerbi.com/>.
 
 ### Task 6: Connect to your Lab VM
 
@@ -239,11 +223,25 @@ Fabrikam has provided a Smart Meter Simulator that they use to simulate device r
 
 1. From your LabVM, download the starter project by downloading a .zip copy of the Intelligent vending machines GitHub repo.
 
-2. In a web browser, navigate to the [Internet of Things MCW repo](https://github.com/Microsoft/MCW-Internet-of-Things).
+2. In a web browser, navigate to the Internet of Things MCW repo: <https://github.com/Microsoft/MCW-Internet-of-Things>.
 
 3. On the repo page, select **Clone or download**, then select **Download ZIP**.
 
    ![Download .zip containing the Intelligent vending machines repository](media/git-hub-download-repo.png 'Download ZIP')
+
+   > **Note:** If Internet Explorer displays the following message, complete the sub-tasks below: "Your current security settings do not allow this file to be downloaded".
+
+   - Select the Gear icon in the upper right-hand corner of Internet Explorer, then select **Internet options** from the menu.
+
+   ![Internet Explorer internet options](media/internet-options.png 'Internet options')
+
+   - In the Internet Options window, select the **Security** tab. Select the **Trusted sites** zone, then click the **Sites** button to edit the list of trusted sites.
+
+   ![Internet Explorer options: Security tab](media/internet-explorer-security-tab.png 'Security tab')
+
+   - `https://github.com` should automatically be added to the textbox. Click the **Add** button next to the URL to add it to the list of Websites below. Click **Close** when done.
+
+   - Finally, click **OK** to apply the changes and close internet options.
 
 4. Unzip the contents to the folder **C:\SmartMeter**.
 
@@ -257,5 +255,4 @@ Fabrikam has provided a Smart Meter Simulator that they use to simulate device r
 
 > **Note**: If you attempt to build the solution at this point, you will see many build errors. This is intentional. You will correct these in the exercises that follow.
 
-You should follow all steps provided *before* performing the Hands-on lab.
-
+You should follow all steps provided _before_ performing the Hands-on lab.
