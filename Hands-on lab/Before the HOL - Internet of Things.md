@@ -24,7 +24,20 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 **Contents**
 
-<!-- TOC -->autoauto- [Internet of Things before the hands-on lab setup guide](#internet-of-things-before-the-hands-on-lab-setup-guide)auto  - [Requirements](#requirements)auto  - [Before the hands-on lab](#before-the-hands-on-lab)auto    - [Task 1: Provision a resource group](#task-1-provision-a-resource-group)auto    - [Task 2: Setup a lab virtual machine](#task-2-setup-a-lab-virtual-machine)auto    - [Task 3: Provision Azure Databricks](#task-3-provision-azure-databricks)auto    - [Task 4: Create Databricks cluster](#task-4-create-databricks-cluster)auto    - [Task 5: Provision Power BI](#task-5-provision-power-bi)auto    - [Task 6: Connect to your Lab VM](#task-6-connect-to-your-lab-vm)auto    - [Task 7: Download Smart Meter Simulator project](#task-7-download-smart-meter-simulator-project)autoauto<!-- /TOC -->
+<!-- TOC -->
+
+- [Internet of Things before the hands-on lab setup guide](#internet-of-things-before-the-hands-on-lab-setup-guide)
+  - [Requirements](#requirements)
+  - [Before the hands-on lab](#before-the-hands-on-lab)
+       - [Task 1: Provision a resource group](#task-1-provision-a-resource-group)
+       - [Task 2: Set up a lab virtual machine](#task-2-set-up-a-lab-virtual-machine)
+       - [Task 3: Provision Azure Databricks](#task-3-provision-azure-databricks)
+       - [Task 4: Create Databricks cluster](#task-4-create-databricks-cluster)
+       - [Task 5: Provision Power BI](#task-5-provision-power-bi)
+       - [Task 6: Connect to your Lab VM](#task-6-connect-to-your-lab-vm)
+       - [Task 7: Download Smart Meter Simulator project](#task-8-download-smart-meter-simulator-project)
+
+<!-- /TOC -->
 
 # Internet of Things before the hands-on lab setup guide
 
