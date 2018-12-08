@@ -564,7 +564,7 @@ Fabrikam would like to visualize the "hot" data showing the average temperature 
 
 7. Select **Save**.
 
-8. Next, select **Outputs** from the left-hand menu, under Job Topology, and select **+ Add**, then select **Power BI** from the drop down menu.
+8. Next, select **Outputs** from the left-hand menu, under Job Topology, and select **+ Add**, then select **Power BI** from the drop-down menu.
 
    ![Outputs is highlighted in the left-hand menu, under Job Topology, +Add is selected, and Power BI is highlighted in the drop down menu.](media/stream-analytics-job-outputs-add-power-bi.png 'Add Power BI Output')
 
@@ -758,7 +758,7 @@ To capture all metrics for the cold path, set up another Stream Analytics job th
 
 7. Select **Save**.
 
-8. Next, select **Outputs** from the left-hand menu, under Job Topology, and select **+ Add**, then select **Blob storage** from the drop down menu.
+8. Next, select **Outputs** from the left-hand menu, under Job Topology, and select **+ Add**, then select **Blob storage** from the drop-down menu.
 
    ![Outputs is highlighted in the left-hand menu, under Job Topology, +Add is selected, and Blob storage is highlighted in the drop down menu.](media/stream-analytics-job-outputs-add-blob-storage.png 'Add Blob storage Output')
 
@@ -1051,7 +1051,7 @@ Now that the device connections are being logged, update your hot path Stream An
 
 5. Select **Save**.
 
-6. Next, select **Outputs** from the left-hand menu, under Job Topology, and select **+ Add**, then select **Power BI** from the drop down menu.
+6. Next, select **Outputs** from the left-hand menu, under Job Topology, and select **+ Add**, then select **Power BI** from the drop-down menu.
 
    ![Outputs is highlighted in the left-hand menu, under Job Topology, +Add is selected, and Power BI is highlighted in the drop down menu.](media/stream-analytics-job-outputs-add-power-bi.png 'Add Power BI Output')
 
