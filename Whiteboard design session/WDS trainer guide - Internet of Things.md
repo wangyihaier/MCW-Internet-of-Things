@@ -152,7 +152,7 @@ When participants are doing activities, you can **look ahead to refresh your mem
 
 - **Consider creating a "parking lot"** to record issues or questions raised that are outside the scope of the whiteboard design session or can be answered later. Decide how you will address these issues, so you can acknowledge them without being derailed by them.
 
-**\*Have fun**! Encourage participants to have fun and share!\*
+***Have fun**! Encourage participants to have fun and share!*
 
 **Involve your participants.** Talk and share your knowledge but always involve your participants, even while you are the one speaking.
 
