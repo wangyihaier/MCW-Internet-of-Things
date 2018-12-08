@@ -9,7 +9,7 @@ Hands-on lab step-by-step
 </div>
 
 <div class="MCWHeader3">
-September 2018
+November 2018
 </div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
@@ -22,7 +22,7 @@ The names of manufacturers, products, or URLs are provided for informational pur
 
 Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx> are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
-**Contents** 
+**Contents**
 
 - [Internet of Things hands-on lab step-by-step](#internet-of-things-hands-on-lab-step-by-step)
   - [Abstract and learning objectives](#abstract-and-learning-objectives)
@@ -76,7 +76,7 @@ Messages are ingested from the Smart Meters via IoT Hub and temporarily stored t
 
 Other alternatives for processing of the ingested telemetry would be to use an HDInsight Storm cluster, a WebJob running the EventProcessorHost in place of Stream Analytics, or HDInsight running with Spark streaming. Depending on the type of message filtering being conducted for hot and cold stream separation, IoT Hub Message Routing might also be used, but this has the limitation that messages follow a single path, so with the current implementation, it would not be possible to send all messages to the cold path, while simultaneously sending some of the same messages into the hot path. An important limitation to keep in mind for Stream Analytics is that it is very restrictive on the format of the input data it can process: the payload must be UTF8 encoded JSON, UTF8 encoded CSV (fields delimited by commas, spaces, tabs, or vertical pipes), or AVRO, and it must be well formed. If any devices transmitting telemetry cannot generate output in these formats (e.g., because they are legacy devices), or their output can be not well formed at times, then alternatives that can better deal with these situations should be investigated. Additionally, any custom code or logic cannot be embedded with Stream Analytics---if greater extensibility is required, the alternatives should be considered.
 
->**Note**: The preferred solution is only one of many possible, viable approaches.
+> **Note**: The preferred solution is only one of many possible, viable approaches.
 
 ## Requirements
 
@@ -85,7 +85,7 @@ Other alternatives for processing of the ingested telemetry would be to use an H
 - A virtual machine configured with:
   - Visual Studio Community 2017 15.6 or later
   - Azure SDK 2.9 or later (Included with Visual Studio 2017)
-- A running Azure Databricks cluster (see [Before the hands-on lab](#before-the-hands-on-lab))
+- A running Azure Databricks cluster (see [Before the hands-on lab](./Before%20the%20HOL%20-%20Internet%20of%20Things.md))
 
 ## Exercise 1: IoT Hub provisioning
 
@@ -535,6 +535,7 @@ Fabrikam would like to visualize the "hot" data showing the average temperature 
    - **Resource group**: Choose Use existing and select the hands-on-lab-SUFFIX resource group.
    - **Location**: Select the location you are using for resources in this hands-on lab.
    - **Hosting environment**: Select Cloud.
+   - **Streaming units**: Change the value to 1 by sliding the slider all the way left.
 
      ![The New Stream Analytics Job blade is displayed, with the previously mentioned settings entered into the appropriate fields.](media/stream-analytics-job-create.png 'New Stream Analytics Job blade')
 
@@ -554,7 +555,7 @@ Fabrikam would like to visualize the "hot" data showing the average temperature 
    - **IoT Hub**: Select the smartmeter-hub-SUFFIX IoT Hub.
    - **Endpoint**: Select Messaging.
    - **Shared access policy name**: Select service.
-   - **Consumer Group**: Leave set to $Default.
+   - **Consumer Group**: Leave set to \$Default.
    - **Event serialization format**: Select JSON.
    - **Encoding**: Select UTF-8.
    - **Event compression type**: Leave set to None.
@@ -563,14 +564,14 @@ Fabrikam would like to visualize the "hot" data showing the average temperature 
 
 7. Select **Save**.
 
-8. Next, select **Outputs** from the left-hand menu, under Job Topology, and select **+ Add**, then select **Power BI** from the drop down menu.
+8. Next, select **Outputs** from the left-hand menu, under Job Topology, and select **+ Add**, then select **Power BI** from the drop-down menu.
 
    ![Outputs is highlighted in the left-hand menu, under Job Topology, +Add is selected, and Power BI is highlighted in the drop down menu.](media/stream-analytics-job-outputs-add-power-bi.png 'Add Power BI Output')
 
 9. On the Power BI output blade, enter the following:
 
    - **Output alias**: Set to powerbi.
-   
+
    - Select **Authorize** to authorize the connection to your Power BI account. When prompted in the popup window, enter the account credentials you used to create your Power BI account in [Before the hands-on lab setup guide, Task 1](./Before%20the%20HOL%20-%20Internet%20of%20Things.md).
 
      ![Power BI new output blade. Output alias is selected and contains powerbi. Authorize button is highlighted.](media/stream-analytics-job-outputs-add-power-bi-authorize.png 'Power BI new output blade')
@@ -748,7 +749,7 @@ To capture all metrics for the cold path, set up another Stream Analytics job th
    - **IoT Hub**: Select the smartmeter-hub-SUFFIX IoT Hub.
    - **Endpoint**: Select Messaging.
    - **Shared access policy name**: Select service.
-   - **Consumer Group**: Leave set to $Default.
+   - **Consumer Group**: Leave set to \$Default.
    - **Event serialization format**: Select JSON.
    - **Encoding**: Select UTF-8.
    - **Event compression type**: Leave set to None.
@@ -757,7 +758,7 @@ To capture all metrics for the cold path, set up another Stream Analytics job th
 
 7. Select **Save**.
 
-8. Next, select **Outputs** from the left-hand menu, under Job Topology, and select **+ Add**, then select **Blob storage** from the drop down menu.
+8. Next, select **Outputs** from the left-hand menu, under Job Topology, and select **+ Add**, then select **Blob storage** from the drop-down menu.
 
    ![Outputs is highlighted in the left-hand menu, under Job Topology, +Add is selected, and Blob storage is highlighted in the drop down menu.](media/stream-analytics-job-outputs-add-blob-storage.png 'Add Blob storage Output')
 
@@ -818,7 +819,7 @@ To capture all metrics for the cold path, set up another Stream Analytics job th
 
 In this task, we are going to verify that the CSV file is being written to blob storage.
 
->**Note**: This can be done via Visual Studio, or using the Azure portal. For this lab, we will perform the task using Visual Studio.
+> **Note**: This can be done via Visual Studio, or using the Azure portal. For this lab, we will perform the task using Visual Studio.
 
 1. Within Visual Studio on your Lab VM, select the **View** menu, then select **Cloud Explorer**.
 
@@ -844,7 +845,7 @@ In this task, we are going to verify that the CSV file is being written to blob 
 
 In this task, you will create a new Databricks notebook to perform some processing and visualization of the cold path data using Spark.
 
->**Note**: The complete Databricks notebook can be found in the Databricks-notebook folder of the GitHub repo associated with this hands-on lab, should you need to reference it for troubleshooting.
+> **Note**: The complete Databricks notebook can be found in the Databricks-notebook folder of the GitHub repo associated with this hands-on lab, should you need to reference it for troubleshooting.
 
 1. In the [Azure portal](https://portal.azure.com), navigate to the Azure Databricks workspace you created in the [Before the hands-on lab setup guide](./Before%20the%20HOL%20-%20Internet%20of%20Things.md) exercises, and select **Launch Workspace**.
 
@@ -866,7 +867,7 @@ In this task, you will create a new Databricks notebook to perform some processi
 
    ![The iot-cluster is attached and its menu is expanded, with Start Cluster highlighted](media/azure-databricks-notebook-start-cluster.png 'Start cluster')
 
-6. In the first cell of your Databricks notebook (referred to as a paragraph in notebook jargon), enter the following **Python code** that create widgets in the notebook for entering your Azure storage account name and key.
+6. In the first cell of your Databricks notebook (referred to as a paragraph in notebook jargon), enter the following **Python code** that creates widgets in the notebook for entering your Azure storage account name and key.
 
    ```python
    # Create widgets for storage account name and key
@@ -914,13 +915,13 @@ In this task, you will create a new Databricks notebook to perform some processi
       extra_configs = {"fs.azure.account.key." + accountName + ".blob.core.windows.net": accountKey})
     ```
 
-    >**Note**: Mounting Azure Blob storage directly to DBFS allows you to access files as if they were on the local file system.
+    > **Note**: Mounting Azure Blob storage directly to DBFS allows you to access files as if they were on the local file system.
 
 15. Once your blob storage account is mounted, you can access them with Databricks Utilities, `dbutils.fs` commands. Insert a new cell, and paste the code below to see how `dbutils.fs.ls` can be used to list the files and folders directly below the smartmeters folder.
 
     ```python
     # Inspect the file structure
-    dbutils.fs.ls("/mnt/smartmeters/")
+    display(dbutils.fs.ls("/mnt/smartmeters/"))
     ```
 
 16. Run the cell.
@@ -1041,7 +1042,7 @@ Now that the device connections are being logged, update your hot path Stream An
    - **IoT Hub**: Select the smartmeter-hub-SUFFIX IoT Hub.
    - **Endpoint**: Select Operations monitoring.
    - **Shared access policy name**: Select service.
-   - **Consumer Group**: Leave set to $Default.
+   - **Consumer Group**: Leave set to \$Default.
    - **Event serialization format**: Select JSON.
    - **Encoding**: Select UTF-8.
    - **Event compression type**: Leave set to None.
@@ -1050,7 +1051,7 @@ Now that the device connections are being logged, update your hot path Stream An
 
 5. Select **Save**.
 
-6. Next, select **Outputs** from the left-hand menu, under Job Topology, and select **+ Add**, then select **Power BI** from the drop down menu.
+6. Next, select **Outputs** from the left-hand menu, under Job Topology, and select **+ Add**, then select **Power BI** from the drop-down menu.
 
    ![Outputs is highlighted in the left-hand menu, under Job Topology, +Add is selected, and Power BI is highlighted in the drop down menu.](media/stream-analytics-job-outputs-add-power-bi.png 'Add Power BI Output')
 
@@ -1204,4 +1205,4 @@ In this exercise, you will delete any Azure resources that were created in suppo
 
 3. Select Delete in the command bar, and confirm the deletion by re-typing the Resource group name, and selecting Delete.
 
-You should follow all steps provided *after* attending the Hands-on lab.
+You should follow all steps provided _after_ attending the Hands-on lab.
