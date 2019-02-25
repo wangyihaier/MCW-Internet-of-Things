@@ -35,7 +35,9 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
        - [Task 4: Create Databricks cluster](#task-4-create-databricks-cluster)
        - [Task 5: Provision Power BI](#task-5-provision-power-bi)
        - [Task 6: Connect to your Lab VM](#task-6-connect-to-your-lab-vm)
-       - [Task 7: Download Smart Meter Simulator project](#task-8-download-smart-meter-simulator-project)
+       - [Task 7: Provision the Function Apps](#task-7-provision-the-function-apps)
+       - [Task 8: Provision the Azure Cosmos DB account](#task-8-provision-the-azure-cosmos-db-account)
+       - [Task 9: Download Smart Meter Simulator project](#task-9-download-smart-meter-simulator-project)
 
 <!-- /TOC -->
 
@@ -230,13 +232,99 @@ In this task, you will create an RDP connection to your lab virtual machine (VM)
 
 11. Close the Server Manager.
 
-### Task 7: Download Smart Meter Simulator project
+
+### Task 7: Provision the Function Apps
+
+1.  Navigate to the Azure Management portal, <http://portal.azure.com>.
+
+2.  Select **+ Create a resoruce**, then enter **function** into the search box on top. Select **Function App** from the results.
+
+    ![In the menu pane of the Azure Portal, the New button is selected. Function is typed in the search field, and Function App is selected from the search results.](./media/image17.png 'Azure Portal')
+
+3.  Select the **Create** button on the **Function App overview** blade.
+
+4.  On the **Create Function App** blade, specify the following configuration options:
+
+    a. **Name**: Unique value for the App name (ensure the green check mark appears). Provide a name similar to **IotFunction-SUFFIX**.
+
+    b. Specify the Resource Group **hands-on-lab-SUFFIX**.
+
+    c. For hosting plan, select the **Consumption Plan**.
+
+    d. Select the same **location** as your Resource Group.
+
+    e. For Runtime stack, select **.NET**.
+
+    f. Leave the **storage** option as **create new**.
+
+    g. Leave **Application Insights** as default.
+
+    ![Fields in the Function App blade are set to the previously defined settings.](./media/image18_New.png 'Function App blade')
+
+5.  Select **Create**.
+
+    ![Screenshot of the Create button.](./media/image13.png 'Create button')
+
+
+### Task 8: Provision the Azure Cosmos DB account
+
+1.  Navigate to the Azure Management portal, <http://portal.azure.com>.
+
+2.  Select **+ Create a resource**, select **Databases** then select **Azure Cosmos DB**.
+
+    ![In Azure Portal, in the menu, New is selected. Under Azure marketplace, Databases is selected, and under Featured, Azure Cosmos DB is selected.](images/Hands-onlabstep-by-step-Serverlessarchitectureimages/media/image23.png 'Azure Portal')
+
+3.  On the **Create new Azure Cosmos DB** **account** blade, specify the following configuration options:
+
+    a. Specify the Resource Group **hands-on-lab-SUFFIX**.
+
+    a. For Account Name, type a unique value for the App name such as **rvcosmosdb** (ensure the green check mark appears).
+
+    b. Select the **Core (SQL)** API.
+
+    d. Select the same **location** as your Resource Group if available. Otherwise, select the next closest **region**.
+
+    e. Ensure **Enable geo-redundancy** is selected.
+
+    ![Fields in the Azure Cosmos DB blade are set to the previously defined settings.](images/Hands-onlabstep-by-step-Serverlessarchitectureimages/media/image24_New1.png 'Azure Cosmos DB blade')
+
+4.  Select **Review + create**, then select **Create**
+
+5.  After the Azure Cosmos DB account has completed provisioning, open the account by opening the **hands-on-lab-SUFFIX** resource group, and then selecting the **Azure Cosmos DB** account name.
+
+6.  Select **Browse** in the blade menu, then select **+ Add Collection**.
+
+    ![In the Tollbooths blade, Overview is selected, and the Add Collection button is selected.](images/Hands-onlabstep-by-step-Serverlessarchitectureimages/media/image25_New.png 'rvcosmosdb blade')
+
+7.  On the **Add Collection** blade, specify the following configuration options:
+
+    a. Enter **IoTDB** for the **database id**.
+
+    b. Enter **IoTCollection** for the **collection id**.
+
+    c. Storage capacity: **Fixed**
+
+    d. Throughput: **400**
+
+    ![In the Add Collection blade, fields are set to the previously defined settings.](images/Hands-onlabstep-by-step-Serverlessarchitectureimages/media/image26_New.png 'Add Collection blade')
+
+8)  Select **OK**.
+
+9) Select **Keys** under Settings in the menu.
+
+10) Underneath the **Read-write Keys** tab within the Keys blade, copy the **URI** and **Primary Key** values.
+
+    ![In the tollbooth - Keys blade, under Settings, Keys is selected. On the Read-write Keys tab, the copy buttons for the URL and Primary Key fields are selected.](images/Hands-onlabstep-by-step-Serverlessarchitectureimages/media/image28_New.png 'tollbooth - Keys blade')
+
+14) Paste the values into a text editor, such as Notepad, for later reference.
+
+### Task 9: Download Smart Meter Simulator project
 
 Fabrikam has provided a Smart Meter Simulator that they use to simulate device registration, as well as the generation and transmission of telemetry data. They have asked you to use this as the starting point for integrating their smart meters with Azure.
 
 1. From your LabVM, download the starter project by downloading a .zip copy of the Intelligent vending machines GitHub repo.
 
-2. In a web browser, navigate to the Internet of Things MCW repo: <https://github.com/Microsoft/MCW-Internet-of-Things>.
+2. In a web browser, navigate to the Internet of Things MCW repo: <https://github.com/wangyihaier/MCW-Internet-of-Things>.
 
 3. On the repo page, select **Clone or download**, then select **Download ZIP**.
 
