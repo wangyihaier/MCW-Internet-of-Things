@@ -15,17 +15,34 @@ This workshop will guide you through an implementation of an end-to-end IoT solu
 
 At the end of this workshop, you will be better able to construct an IoT solution implementing device registration with the IoT Hub Device Provisioning Service and visualizing hot data with Power BI.
 
-### Whiteboard design session
+### Hands-on labs
 
-In this whiteboard design session, you will work with a group to design an implementation of an end-to-end IoT solution simulating high velocity data emitted from smart meters and analyzed in Azure. You will design a lambda architecture, filtering a subset of the telemetry data for real-time visualization on the hot path, and storing all the data in long-term storage for the cold path.
+#### Lab1 : Pirmary IoT Solution with hot path and cold path analytics
 
-At the end of this whiteboard design session, you will be better able to design an IoT solution implementing device registration with the IoT Hub Device Provisioning Service and visualizing hot data with Power BI.
+**Duration**: 5 hours
 
-### Hands-on lab
+[Internet of Things hands-on lab step-by-step](Hands-on%20lab/Before%20the%20HOL%20-%20Internet%20of%20Things.md)
 
 In this hands-on lab, you will construct an end-to-end IoT solution simulating high velocity data emitted from smart meters and analyzed in Azure. You will design a lambda architecture, filtering a subset of the telemetry data for real-time visualization on the hot path, and storing all the data in long-term storage for the cold path.
 
-At the end of this hands-on lab, you will be better able to build an IoT solution implementing device registration with the IoT Hub Device Provisioning Service and visualizing hot data with Power BI.
+#### Lab2 : Create Azure Time Series Insights and Visualize Device Data
+
+**Duration**: 60 minutes
+
+[Time Series Insights Lab](Hands-on%20lab/HOL%20step-by-step-timeseriesinsights.md)
+
+#### Lab3 : Capture Device Events and Send Notifications
+
+**Duration**: 40 minutes
+
+[Azure IoTHub with Event Grid Lab](Hands-on%20lab/HOL%20step-by-step-EventGrids.md)
+
+#### Lab4 : Save the Sensor Data using Serverless Archiecture and CosmosDB
+
+**Duration**: 100 minutes
+
+[Azure Serverless Architecture](Hands-on%20lab/HOL%20step-by-step%20-%20Serverless%20architecture.md)
+
 
 ## Azure services and related products
 
