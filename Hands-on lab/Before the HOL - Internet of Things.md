@@ -60,6 +60,19 @@ In the Before the hands-on lab exercise, you will set up your environment for us
 
 > **IMPORTANT**: Most Azure resources require unique names. Throughout this lab you will see the word “SUFFIX” as part of resource names. You should replace this with your Microsoft alias, initials, or another value to ensure the resource is uniquely named.
 
+
+### Help references
+
+|                                            |                                                                                                                                                             |
+| ------------------------------------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| **Description**                            |                                                                          **Links**                                                                          |
+| Create resource groups and resources at the subscription level        |                   <https://docs.microsoft.com/en-us/azure/azure-resource-manager/deploy-to-subscription> |
+| Creating a storage account (blob hot tier) | <https://docs.microsoft.com/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json%23create-a-storage-account> |
+| Creating a function app                    |                   <https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal>                    |
+| Concepts in Event Grid                     |                                                <https://docs.microsoft.com/azure/event-grid/concepts>     |                  
+| Creating an Azure Cosmos DB account        |                   <https://docs.microsoft.com/azure/cosmos-db/manage-account> |                  
+| Azure Databricks       |                   <https://docs.microsoft.com/en-us/azure/azure-databricks/> 
+
 ### Task 1: Provision a resource group
 
 In this task, you will create an Azure resource group for the resources used throughout this lab.
@@ -253,7 +266,7 @@ In this task, you will create an RDP connection to your lab virtual machine (VM)
 
     d. Select the same **location** as your Resource Group.
 
-    e. For Runtime stack, select **.NET**.
+    e. For Runtime stack, select **JavaScript**.
 
     f. Leave the **storage** option as **create new**.
 
