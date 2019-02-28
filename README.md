@@ -21,9 +21,11 @@ At the end of this workshop, you will be better able to construct an IoT solutio
 
 **Duration**: 5 hours
 
-[Internet of Things hands-on lab step-by-step](Hands-on%20lab/Before%20the%20HOL%20-%20Internet%20of%20Things.md)
+[Internet of Things hands-on lab step-by-step](Hands-on%20lab/HOL%20step-by-step%20-%20Internet%20of%20Things.md)
 
 In this hands-on lab, you will construct an end-to-end IoT solution simulating high velocity data emitted from smart meters and analyzed in Azure. You will design a lambda architecture, filtering a subset of the telemetry data for real-time visualization on the hot path, and storing all the data in long-term storage for the cold path.
+
+![Diagram of the preferred solution. From a high-level, the commerce solution uses an API App to host the Payments web service with which the Vending Machine interacts to conduct purchase transactions. The Payment Web API invokes a 3rd party payment gateway as needed for authorizing and capturing credit card payments, and logs the purchase transaction to SQL DB. The data for these purchase transactions is stored using an In-Memory table with a Columnar Index, which will support the write-heavy workload while still allowing analytics to operate, such as queries coming from Power BI Desktop.](Hands-on%20lab/media/preferred-solution-architecture.png 'Preferred high-level architecture')
 
 #### Lab2 : Create Azure Time Series Insights and Visualize Device Data
 
@@ -31,11 +33,17 @@ In this hands-on lab, you will construct an end-to-end IoT solution simulating h
 
 [Time Series Insights Lab](Hands-on%20lab/HOL%20step-by-step-timeseriesinsights.md)
 
+
+![The Solution diagram is described in the text following this diagram.](Hands-on%20lab/images/Hands-onlabstep-by-step-Serverlessarchitectureimages/media/image2_New3.png 'Solution diagram')
+
 #### Lab3 : Capture Device Events and Send Notifications
 
 **Duration**: 40 minutes
 
 [Azure IoTHub with Event Grid Lab](Hands-on%20lab/HOL%20step-by-step-EventGrids.md)
+
+
+![The Solution diagram is described in the text following this diagram.](Hands-on%20lab/images/Hands-onlabstep-by-step-Serverlessarchitectureimages/media/image2_New2.png 'Solution diagram')
 
 #### Lab4 : Save the Sensor Data using Serverless Archiecture and CosmosDB
 
@@ -43,6 +51,8 @@ In this hands-on lab, you will construct an end-to-end IoT solution simulating h
 
 [Azure Serverless Architecture](Hands-on%20lab/HOL%20step-by-step%20-%20Serverless%20architecture.md)
 
+
+![The Solution diagram is described in the text following this diagram.](Hands-on%20lab/images/Hands-onlabstep-by-step-Serverlessarchitectureimages/media/image2_New.png 'Solution diagram')
 
 ## Azure services and related products
 
