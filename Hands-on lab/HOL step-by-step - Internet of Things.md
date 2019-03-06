@@ -819,19 +819,15 @@ To capture all metrics for the cold path, set up another Stream Analytics job th
 
 In this task, we are going to verify that the CSV file is being written to blob storage.
 
-> **Note**: This can be done via Visual Studio, or using the Azure portal. For this lab, we will perform the task using Visual Studio.
+> **Note**: This can be done via Visual Studio, or Azure Storage Explore, or using the Azure portal. For this lab, we will perform the task using Azure Storage Explore. [Install Azure Storage Explore](https://azure.microsoft.com/en-us/features/storage-explorer/)
 
-1. Within Visual Studio on your Lab VM, select the **View** menu, then select **Cloud Explorer**.
+1. Run **Microsoft Azure Storage Explore**. In **Storage Explorer**, select Account Management, and connect to your Microsoft Azure Subscription.
 
-   ![On the Visual Studio View menu, Cloud Explorer is highlighted.](./media/visual-studio-menu-view-cloud-explorer.png 'Visual Studio View menu')
+   ![On the Visual Studio View menu, Cloud Explorer is highlighted.](./media/visual-studio-cloud-explorer-account-management_new.png 'Visual Studio View menu')
 
-2. In **Cloud Explorer**, select Account Management, and connect to your Microsoft Azure Subscription.
+2. If prompted, sign into your Azure account.
 
-   ![The Cloud Explorer window displays, and the Account management icon is highlighted.](./media/visual-studio-cloud-explorer-account-management.png 'Cloud Explorer Account Management')
-
-3. If prompted, sign into your Azure account.
-
-4. Allow Cloud Explorer about 30 seconds to load your subscription resources.
+3. Allow Storage Explorer about 30 seconds to load your subscription resources.
 
 5. Expand your Azure account, then expand **Storage Accounts**, expand the smartmetersSUFFIX storage account, then right-click the smartmeters container, and select **Open**. It may take a few moments to load your storage accounts.
 
