@@ -593,7 +593,7 @@ Fabrikam would like to visualize the "hot" data showing the average temperature 
 12. In the query text box, paste the following query.
 
     ```sql
-    SELECT AVG(temp) AS Average, id
+    SELECT AVG(temperature) AS Average, id
     INTO powerbi
     FROM temps
     GROUP BY TumblingWindow(minute, 5), id
