@@ -136,6 +136,8 @@ In these steps, you will provision an instance of IoT Hub.
    ![Screenshot of the iothubowner blade. The connection string - primary key field is highlighted.](./media/iot-hub-shared-access-policies-iothubowner-blade.png 'iothubowner blade')
 
 ### Task 2: Configure the Smart Meter Simulator
+> **Note**: If you have problem to create the Lab VM with Visual Studio, please download the binary vesion [SmartMeterSimulator](https://tinyurl.com/kriot20190306) and you may skip this task and `Exercise 2`. However, you should learn how to use `SmartMeterSimulator` following the `Task 3: Verify device registration and telemetry` under `Exercise 2`
+
 
 If you want to save this connection string with your project (in case you stop debugging or otherwise close the simulator), you can set this as the default text for the text box. Follow these steps to configure the connection string:
 
